@@ -1,0 +1,96 @@
+Dependencies for Project 'project', Target 'Cpu_debug': (DO NOT MODIFY !)
+F (..\..\Source\src\main.c)(0x5B209D31)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\main.o --list_dir ".\\List\\" --list --omf_browse .\obj\main.crf --depend .\obj\main.d)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwUart.h)(0x5908307C)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\hyhwTimer.h)(0x5908307C)
+I (..\..\Driver\inc\hyhwGpio.h)(0x5908307C)
+I (..\..\Driver\inc\hyhwDma.h)(0x5908307C)
+I (..\..\Driver\inc\hyhwSpi.h)(0x592F7D39)
+I (..\..\Driver\inc\hyhwWatchdog.h)(0x5908307C)
+I (..\..\Driver\inc\hyhw_SpiFlash.h)(0x592F7203)
+F (..\..\Source\src\SCM3_it.c)(0x57C3E657)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\scm3_it.o --list_dir ".\\List\\" --list --omf_browse .\obj\scm3_it.crf --depend .\obj\scm3_it.d)
+I (..\..\Source\inc\SCM3_it.h)(0x54258B6E)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (..\..\Driver\inc\hyhwUart.h)(0x5908307C)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\hyhwTimer.h)(0x5908307C)
+I (..\..\Driver\inc\hyhwGpio.h)(0x5908307C)
+I (..\..\Driver\inc\hyhwWatchdog.h)(0x5908307C)
+F (..\..\Source\src\retarget.c)(0x572C6E52)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\retarget.o --list_dir ".\\List\\" --list --omf_browse .\obj\retarget.crf --depend .\obj\retarget.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
+I (..\..\Driver\inc\hyhwUart.h)(0x5908307C)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+F (..\..\Source\src\startup_SCM3.s)(0x57C28248)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include--pd "__UVISION_VERSION SETA 513" --pd "ARMCM3 SETA 1"--list .\list\startup_scm3.lst --xref -o .\obj\startup_scm3.o --depend .\obj\startup_scm3.d)
+F (..\..\Source\src\core_cm3.c)(0x4AC0A34A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\core_cm3.o --list_dir ".\\List\\" --list --omf_browse .\obj\core_cm3.crf --depend .\obj\core_cm3.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (..\..\Driver\src\hyhwUart.c)(0x5908307C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhwuart.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwuart.crf --depend .\obj\hyhwuart.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwUart.h)(0x5908307C)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (..\..\Driver\src\hyhwTimer.c)(0x5AA200E3)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhwtimer.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwtimer.crf --depend .\obj\hyhwtimer.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwTimer.h)(0x5908307C)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\..\Driver\inc\hyhwGpio.h)(0x5908307C)
+F (..\..\Driver\src\hyhwGPIO.c)(0x590836D1)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhwgpio.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwgpio.crf --depend .\obj\hyhwgpio.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwGpio.h)(0x5908307C)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (..\..\Driver\src\hyhwDma.c)(0x5908307C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhwdma.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwdma.crf --depend .\obj\hyhwdma.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwDma.h)(0x5908307C)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (..\..\Driver\src\hyhwSpi.c)(0x5908307C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhwspi.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwspi.crf --depend .\obj\hyhwspi.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwSpi.h)(0x592F7D39)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\..\Driver\inc\hyhwGpio.h)(0x5908307C)
+I (..\..\Driver\inc\hyhwDma.h)(0x5908307C)
+F (..\..\Driver\src\hyhwWatchdog.c)(0x5908307C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhwwatchdog.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwwatchdog.crf --depend .\obj\hyhwwatchdog.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (..\..\Driver\inc\hyhwWatchdog.h)(0x5908307C)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+F (..\..\Driver\src\hyhw_SpiFlash.c)(0x592F7FCB)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\hyhw_spiflash.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhw_spiflash.crf --depend .\obj\hyhw_spiflash.d)
+I (..\..\Driver\inc\hyTypes.h)(0x59083012)
+I (..\..\Driver\inc\BoardSupportPackage.h)(0x597AB8D7)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
+I (..\..\Driver\inc\hyhw_SpiFlash.h)(0x592F7203)
+I (..\..\Driver\inc\hyhwSpi.h)(0x592F7D39)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\..\Driver\inc\hyhwDma.h)(0x5908307C)
+F (..\..\Driver\src\sys_ctl.c)(0x555C550E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="513" -DARMCM3-o .\obj\sys_ctl.o --list_dir ".\\List\\" --list --omf_browse .\obj\sys_ctl.crf --depend .\obj\sys_ctl.d)
+I (..\..\Driver\inc\sys_ctl.h)(0x555594C2)
+I (..\..\Source\inc\SCM3.h)(0x57C3E2B0)
+I (..\..\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)

@@ -1,0 +1,7 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc -I..\..\Driver\inc
+-I E:\00_Workspace\0608_AG16KSDE176_DemoBoard\SCM3_DVK\Project\RVMDK\RTE
+-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0
+-I C:\Keil_v5\ARM\CMSIS\Include
+-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include
+-D__UVISION_VERSION="513" -DARMCM3
+-o .\obj\hyhwdma.o --list_dir ".\\List\\" --list --omf_browse .\obj\hyhwdma.crf --depend .\obj\hyhwdma.d --feedback ".\Obj\output.fed" "..\..\Driver\src\hyhwDma.c"

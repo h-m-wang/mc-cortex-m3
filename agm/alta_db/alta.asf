@@ -1,0 +1,178 @@
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[13]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[0]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[9]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[30]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[24]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[14]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to BEEP~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[7]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[25]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[5]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[1]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[11]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[3]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[0]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[2]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_MISO~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to JTDO~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_MOSI~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[23]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[2]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[29]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to JTMS~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_SCK~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_CS_N~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to UART0_TXD~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[31]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[5]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[1]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[10]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[6]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[3]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[6]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[15]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[12]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[26]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[20]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[19]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[4]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[28]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[21]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[27]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[7]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[18]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[17]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[16]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[4]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[22]~output false
+set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[8]~output false
+set_instance_assignment -name CLKIN_FREQ -extension -to pll_inst|altpll_component|auto_generated|pll1 50
+set_location_assignment -to BEEP PIN_14
+set_instance_assignment -to BEEP -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to CLK PIN_25
+set_instance_assignment -to CLK -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN PIN_3
+set_location_assignment -to IO_KEYIN[0] PIN_3
+set_instance_assignment -to IO_KEYIN[0] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[1] PIN_146
+set_instance_assignment -to IO_KEYIN[1] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[2] PIN_143
+set_instance_assignment -to IO_KEYIN[2] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[3] PIN_140
+set_instance_assignment -to IO_KEYIN[3] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[4] PIN_137
+set_instance_assignment -to IO_KEYIN[4] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[5] PIN_135
+set_instance_assignment -to IO_KEYIN[5] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[6] PIN_130
+set_instance_assignment -to IO_KEYIN[6] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYIN[7] PIN_128
+set_instance_assignment -to IO_KEYIN[7] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT PIN_148
+set_location_assignment -to IO_KEYOUT[0] PIN_148
+set_instance_assignment -to IO_KEYOUT[0] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[1] PIN_144
+set_instance_assignment -to IO_KEYOUT[1] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[2] PIN_142
+set_instance_assignment -to IO_KEYOUT[2] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[3] PIN_139
+set_instance_assignment -to IO_KEYOUT[3] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[4] PIN_136
+set_instance_assignment -to IO_KEYOUT[4] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[5] PIN_134
+set_instance_assignment -to IO_KEYOUT[5] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[6] PIN_129
+set_instance_assignment -to IO_KEYOUT[6] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_KEYOUT[7] PIN_126
+set_instance_assignment -to IO_KEYOUT[7] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT PIN_79
+set_location_assignment -to IO_PRINT[0] PIN_79
+set_instance_assignment -to IO_PRINT[0] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[10] PIN_63
+set_instance_assignment -to IO_PRINT[10] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[11] PIN_62
+set_instance_assignment -to IO_PRINT[11] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[12] PIN_61
+set_instance_assignment -to IO_PRINT[12] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[13] PIN_60
+set_instance_assignment -to IO_PRINT[13] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[14] PIN_59
+set_instance_assignment -to IO_PRINT[14] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[15] PIN_58
+set_instance_assignment -to IO_PRINT[15] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[16] PIN_57
+set_instance_assignment -to IO_PRINT[16] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[17] PIN_56
+set_instance_assignment -to IO_PRINT[17] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[18] PIN_53
+set_instance_assignment -to IO_PRINT[18] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[19] PIN_52
+set_instance_assignment -to IO_PRINT[19] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[1] PIN_78
+set_instance_assignment -to IO_PRINT[1] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[20] PIN_50
+set_instance_assignment -to IO_PRINT[20] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[21] PIN_49
+set_instance_assignment -to IO_PRINT[21] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[22] PIN_48
+set_instance_assignment -to IO_PRINT[22] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[23] PIN_47
+set_instance_assignment -to IO_PRINT[23] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[24] PIN_42
+set_instance_assignment -to IO_PRINT[24] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[25] PIN_40
+set_instance_assignment -to IO_PRINT[25] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[26] PIN_39
+set_instance_assignment -to IO_PRINT[26] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[27] PIN_38
+set_instance_assignment -to IO_PRINT[27] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[28] PIN_37
+set_instance_assignment -to IO_PRINT[28] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[29] PIN_36
+set_instance_assignment -to IO_PRINT[29] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[2] PIN_77
+set_instance_assignment -to IO_PRINT[2] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[30] PIN_35
+set_instance_assignment -to IO_PRINT[30] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[31] PIN_34
+set_instance_assignment -to IO_PRINT[31] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[3] PIN_76
+set_instance_assignment -to IO_PRINT[3] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[4] PIN_75
+set_instance_assignment -to IO_PRINT[4] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[5] PIN_74
+set_instance_assignment -to IO_PRINT[5] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[6] PIN_72
+set_instance_assignment -to IO_PRINT[6] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[7] PIN_70
+set_instance_assignment -to IO_PRINT[7] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[8] PIN_65
+set_instance_assignment -to IO_PRINT[8] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to IO_PRINT[9] PIN_64
+set_instance_assignment -to IO_PRINT[9] -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to JTCK PIN_103
+set_instance_assignment -to JTCK -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to JTDI PIN_101
+set_instance_assignment -to JTDI -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to JTDO PIN_102
+set_instance_assignment -to JTDO -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to JTMS PIN_104
+set_instance_assignment -to JTMS -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to SPI1_CS_N PIN_168
+set_instance_assignment -to SPI1_CS_N -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to SPI1_MISO PIN_165
+set_instance_assignment -to SPI1_MISO -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to SPI1_MOSI PIN_163
+set_instance_assignment -to SPI1_MOSI -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to SPI1_SCK PIN_166
+set_instance_assignment -to SPI1_SCK -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to SWITCH PIN_67
+set_instance_assignment -to SWITCH -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to UART0_RXD PIN_170
+set_instance_assignment -to UART0_RXD -name IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment -to UART0_TXD PIN_171
+set_instance_assignment -to UART0_TXD -name IO_STANDARD "3.3-V LVCMOS"
+set_instance_assignment -to altera_reserved_tck -name VIRTUAL_PIN ON
+set_instance_assignment -to altera_reserved_tdi -name VIRTUAL_PIN ON
+set_instance_assignment -to altera_reserved_tdo -name VIRTUAL_PIN ON
+set_instance_assignment -to altera_reserved_tms -name VIRTUAL_PIN ON

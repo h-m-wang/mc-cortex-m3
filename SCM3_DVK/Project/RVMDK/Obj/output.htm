@@ -1,0 +1,246 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<title>Static Call Graph - [.\Obj\output.axf]</title></head>
+<body><HR>
+<H1>Static Call Graph for image .\Obj\output.axf</H1><HR>
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Jun 13 12:27:35 2018
+<BR><P>
+<H3>Maximum Stack Usage =         16 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+Call chain for Maximum Stack Depth:</H3>
+Timer1IntHandler &rArr; hyhwTimerA_IRQ
+<P>
+<H3>
+Mutually Recursive functions
+</H3> <LI><a href="#[a]">DMAIntHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a]">DMAIntHandler</a><BR>
+</UL>
+<P>
+<H3>
+Function Pointers
+</H3><UL>
+ <LI><a href="#[4]">BusFault_Handler</a> from scm3_it.o(i.BusFault_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[e]">DINTC_IRQHandler</a> from scm3_it.o(i.DINTC_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[f]">DINTE_IRQHandler</a> from scm3_it.o(i.DINTE_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[a]">DMAIntHandler</a> from startup_scm3.o(.text) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[7]">DebugMon_Handler</a> from scm3_it.o(i.DebugMon_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[14]">FLASH_IRQHandler</a> from scm3_it.o(i.FLASH_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[12]">GPIOA_IRQHandler</a> from scm3_it.o(i.GPIOA_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[13]">GPIOB_IRQHandler</a> from scm3_it.o(i.GPIOB_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[10]">GPIOC_IRQHandler</a> from scm3_it.o(i.GPIOC_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[2]">HardFault_Handler</a> from scm3_it.o(i.HardFault_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[3]">MemManage_Handler</a> from scm3_it.o(i.MemManage_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[1]">NMI_Handler</a> from scm3_it.o(i.NMI_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[8]">PendSV_Handler</a> from scm3_it.o(i.PendSV_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[0]">Reset_Handler</a> from startup_scm3.o(.text) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[6]">SVC_Handler</a> from scm3_it.o(i.SVC_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[9]">SysTick_Handler</a> from scm3_it.o(i.SysTick_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[b]">Timer1IntHandler</a> from scm3_it.o(i.Timer1IntHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[c]">Timer2IntHandler</a> from scm3_it.o(i.Timer2IntHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[11]">UART_IRQHandler</a> from scm3_it.o(i.UART_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[5]">UsageFault_Handler</a> from scm3_it.o(i.UsageFault_Handler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[d]">WWDG_IRQHandler</a> from scm3_it.o(i.WWDG_IRQHandler) referenced from startup_scm3.o(RESET)
+ <LI><a href="#[16]">__main</a> from entry.o(.ARM.Collect$$$$00000000) referenced from startup_scm3.o(.text)
+ <LI><a href="#[15]">main</a> from main.o(i.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
+</UL>
+<P>
+<H3>
+Global Symbols
+</H3>
+<P><STRONG><a name="[16]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(.text)
+</UL>
+<P><STRONG><a name="[24]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+
+<P><STRONG><a name="[17]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<BR><BR>[Calls]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+
+<P><STRONG><a name="[19]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<BR><BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+</UL>
+
+<P><STRONG><a name="[25]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+
+<P><STRONG><a name="[26]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+
+<P><STRONG><a name="[27]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+
+<P><STRONG><a name="[28]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+
+<P><STRONG><a name="[29]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+
+<P><STRONG><a name="[2a]"></a>SystemInit_ExtMemCtl</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_scm3.o(.text), UNUSED)
+
+<P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, startup_scm3.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[a]"></a>DMAIntHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_scm3.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMAIntHandler
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMAIntHandler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[18]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+</UL>
+<BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
+</UL>
+
+<P><STRONG><a name="[2b]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+
+<P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.BusFault_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[e]"></a>DINTC_IRQHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.DINTC_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[f]"></a>DINTE_IRQHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.DINTE_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.DebugMon_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[14]"></a>FLASH_IRQHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.FLASH_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[12]"></a>GPIOA_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, scm3_it.o(i.GPIOA_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GPIOA_IRQHandler &rArr; hyhwGpioA_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpioA_IRQ
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[13]"></a>GPIOB_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, scm3_it.o(i.GPIOB_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GPIOB_IRQHandler &rArr; hyhwGpioB_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpioB_IRQ
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[10]"></a>GPIOC_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, scm3_it.o(i.GPIOC_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIOC_IRQHandler
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpioC_IRQ
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.HardFault_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[3]"></a>MemManage_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.MemManage_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, scm3_it.o(i.NMI_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.PendSV_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.SVC_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.SysTick_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[b]"></a>Timer1IntHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, scm3_it.o(i.Timer1IntHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Timer1IntHandler &rArr; hyhwTimerA_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwTimerA_IRQ
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[c]"></a>Timer2IntHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.Timer2IntHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[11]"></a>UART_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, scm3_it.o(i.UART_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = UART_IRQHandler &rArr; hyhwUart_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwUart_IRQ
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scm3_it.o(i.UsageFault_Handler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[d]"></a>WWDG_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, scm3_it.o(i.WWDG_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_scm3.o(RESET)
+</UL>
+<P><STRONG><a name="[2c]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+
+<P><STRONG><a name="[2d]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+
+<P><STRONG><a name="[2e]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+
+<P><STRONG><a name="[1a]"></a>hyhwGpioA_IRQ</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, hyhwgpio.o(i.hyhwGpioA_IRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = hyhwGpioA_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_IntClr
+</UL>
+<BR>[Called By]<UL><LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOA_IRQHandler
+</UL>
+
+<P><STRONG><a name="[1b]"></a>hyhwGpioB_IRQ</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, hyhwgpio.o(i.hyhwGpioB_IRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = hyhwGpioB_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_IntClr
+</UL>
+<BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOB_IRQHandler
+</UL>
+
+<P><STRONG><a name="[1c]"></a>hyhwGpioC_IRQ</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hyhwgpio.o(i.hyhwGpioC_IRQ))
+<BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOC_IRQHandler
+</UL>
+
+<P><STRONG><a name="[1f]"></a>hyhwGpio_IntClr</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, hyhwgpio.o(i.hyhwGpio_IntClr))
+<BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpioB_IRQ
+<LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpioA_IRQ
+</UL>
+
+<P><STRONG><a name="[21]"></a>hyhwGpio_SetHigh</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, hyhwgpio.o(i.hyhwGpio_SetHigh))
+<BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwTimerA_IRQ
+<LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[20]"></a>hyhwGpio_SetLow</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, hyhwgpio.o(i.hyhwGpio_SetLow))
+<BR><BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwTimerA_IRQ
+<LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[23]"></a>hyhwGpio_SetOut</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, hyhwgpio.o(i.hyhwGpio_SetOut))
+<BR><BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1d]"></a>hyhwTimerA_IRQ</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, hyhwtimer.o(i.hyhwTimerA_IRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = hyhwTimerA_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_SetLow
+<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_SetHigh
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1IntHandler
+</UL>
+
+<P><STRONG><a name="[1e]"></a>hyhwUart_IRQ</STRONG> (Thumb, 28 bytes, Stack size 4 bytes, hyhwuart.o(i.hyhwUart_IRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = hyhwUart_IRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwUart_SendCh
+</UL>
+<BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_IRQHandler
+</UL>
+
+<P><STRONG><a name="[22]"></a>hyhwUart_SendCh</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, hyhwuart.o(i.hyhwUart_SendCh))
+<BR><BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwUart_IRQ
+</UL>
+
+<P><STRONG><a name="[15]"></a>main</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_SetOut
+<LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_SetLow
+<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hyhwGpio_SetHigh
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
+</UL><P>
+<H3>
+Local Symbols
+</H3><P>
+<H3>
+Undefined Global Symbols
+</H3><HR></body></html>

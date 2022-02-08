@@ -1,0 +1,456 @@
+
+af.exe -B --batch --mode QUARTUS -X "set QUARTUS_SDC true" -X "set FITTING timing_more" -X "set FITTER hybrid" -X "set EFFORT highest" -X "set HOLDX default" -X "set SKEW basic"
+
+Thu Jan 27 23:46:36 2022
+Using pre-ASF file top.pre.asf.
+Total IO  : 498
+Total Pin : 251/33
+Top array is built.
+Loading architect libraries...
+## CPU time: 0:0:0, REAL time: 0:0:0
+## Memory Usage: 52MB (52MB)
+Loading route table...
+## CPU time: 0:0:33, REAL time: 0:0:34
+## Memory Usage: 831MB (831MB)
+Using design verilog file E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/simulation/modelsim/top.vo.
+Preparing design...
+Info: Rename duplicated module cell alta_mcu_m3 to alta_mcu_m3_duplicated at ./alta_db/flatten.vx:1.
+Info: Connecting auto_signaltap_0|acq_trigger_in[0] to CLK.
+Info: Connecting auto_signaltap_0|acq_trigger_in[1] to IO_PRINT[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[2] to IO_PRINT[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[3] to IO_PRINT[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[4] to IO_PRINT[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[5] to IO_PRINT[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[6] to IO_PRINT[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[7] to IO_PRINT[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[8] to IO_PRINT[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[9] to IO_PRINT[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[10] to IO_PRINT[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[11] to IO_PRINT[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[12] to IO_PRINT[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[13] to IO_PRINT[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[14] to IO_PRINT[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[15] to IO_PRINT[22].
+Info: Connecting auto_signaltap_0|acq_trigger_in[16] to IO_PRINT[23].
+Info: Connecting auto_signaltap_0|acq_trigger_in[17] to IO_PRINT[24].
+Info: Connecting auto_signaltap_0|acq_trigger_in[18] to IO_PRINT[25].
+Info: Connecting auto_signaltap_0|acq_trigger_in[19] to IO_PRINT[26].
+Info: Connecting auto_signaltap_0|acq_trigger_in[20] to IO_PRINT[27].
+Info: Connecting auto_signaltap_0|acq_trigger_in[21] to IO_PRINT[28].
+Info: Connecting auto_signaltap_0|acq_trigger_in[22] to IO_PRINT[29].
+Info: Connecting auto_signaltap_0|acq_trigger_in[23] to IO_PRINT[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[24] to IO_PRINT[30].
+Info: Connecting auto_signaltap_0|acq_trigger_in[25] to IO_PRINT[31].
+Info: Connecting auto_signaltap_0|acq_trigger_in[26] to IO_PRINT[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[27] to IO_PRINT[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[28] to IO_PRINT[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[29] to IO_PRINT[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[30] to IO_PRINT[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[31] to IO_PRINT[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[32] to IO_PRINT[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[34] to counter[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[35] to counter[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[36] to counter[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[37] to counter[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[38] to data_in[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[39] to data_in[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[40] to data_in[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[41] to data_in[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[42] to data_in[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[43] to data_in[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[44] to data_in[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[45] to data_in[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[46] to data_in[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[47] to data_in[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[48] to data_in[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[49] to data_in[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[50] to data_in[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[51] to data_in[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[52] to data_in[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[53] to data_in[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[54] to data_in[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[55] to data_in[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[56] to data_in[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[57] to data_in[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[58] to data_in[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[59] to data_in[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[60] to data_out[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[61] to data_out[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[62] to data_out[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[63] to data_out[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[64] to data_out[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[65] to data_out[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[66] to data_out[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[67] to data_out[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[68] to data_out[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[69] to data_out[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[70] to data_out[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[71] to data_out[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[72] to data_out[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[73] to data_out[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[74] to data_out[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[75] to data_out[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[76] to data_out[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[77] to data_out[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[78] to data_out[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[79] to data_out[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[80] to data_out[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[81] to data_out[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[82] to param[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[83] to param[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[84] to param[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[88] to read_source[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[89] to read_source[1].
+Info: Connecting auto_signaltap_0|acq_data_in[0] to CLK.
+Info: Connecting auto_signaltap_0|acq_data_in[1] to IO_PRINT[0].
+Info: Connecting auto_signaltap_0|acq_data_in[2] to IO_PRINT[10].
+Info: Connecting auto_signaltap_0|acq_data_in[3] to IO_PRINT[11].
+Info: Connecting auto_signaltap_0|acq_data_in[4] to IO_PRINT[12].
+Info: Connecting auto_signaltap_0|acq_data_in[5] to IO_PRINT[13].
+Info: Connecting auto_signaltap_0|acq_data_in[6] to IO_PRINT[14].
+Info: Connecting auto_signaltap_0|acq_data_in[7] to IO_PRINT[15].
+Info: Connecting auto_signaltap_0|acq_data_in[8] to IO_PRINT[16].
+Info: Connecting auto_signaltap_0|acq_data_in[9] to IO_PRINT[17].
+Info: Connecting auto_signaltap_0|acq_data_in[10] to IO_PRINT[18].
+Info: Connecting auto_signaltap_0|acq_data_in[11] to IO_PRINT[19].
+Info: Connecting auto_signaltap_0|acq_data_in[12] to IO_PRINT[1].
+Info: Connecting auto_signaltap_0|acq_data_in[13] to IO_PRINT[20].
+Info: Connecting auto_signaltap_0|acq_data_in[14] to IO_PRINT[21].
+Info: Connecting auto_signaltap_0|acq_data_in[15] to IO_PRINT[22].
+Info: Connecting auto_signaltap_0|acq_data_in[16] to IO_PRINT[23].
+Info: Connecting auto_signaltap_0|acq_data_in[17] to IO_PRINT[24].
+Info: Connecting auto_signaltap_0|acq_data_in[18] to IO_PRINT[25].
+Info: Connecting auto_signaltap_0|acq_data_in[19] to IO_PRINT[26].
+Info: Connecting auto_signaltap_0|acq_data_in[20] to IO_PRINT[27].
+Info: Connecting auto_signaltap_0|acq_data_in[21] to IO_PRINT[28].
+Info: Connecting auto_signaltap_0|acq_data_in[22] to IO_PRINT[29].
+Info: Connecting auto_signaltap_0|acq_data_in[23] to IO_PRINT[2].
+Info: Connecting auto_signaltap_0|acq_data_in[24] to IO_PRINT[30].
+Info: Connecting auto_signaltap_0|acq_data_in[25] to IO_PRINT[31].
+Info: Connecting auto_signaltap_0|acq_data_in[26] to IO_PRINT[3].
+Info: Connecting auto_signaltap_0|acq_data_in[27] to IO_PRINT[4].
+Info: Connecting auto_signaltap_0|acq_data_in[28] to IO_PRINT[5].
+Info: Connecting auto_signaltap_0|acq_data_in[29] to IO_PRINT[6].
+Info: Connecting auto_signaltap_0|acq_data_in[30] to IO_PRINT[7].
+Info: Connecting auto_signaltap_0|acq_data_in[31] to IO_PRINT[8].
+Info: Connecting auto_signaltap_0|acq_data_in[32] to IO_PRINT[9].
+Info: Connecting auto_signaltap_0|acq_data_in[34] to counter[0].
+Info: Connecting auto_signaltap_0|acq_data_in[35] to counter[1].
+Info: Connecting auto_signaltap_0|acq_data_in[36] to counter[2].
+Info: Connecting auto_signaltap_0|acq_data_in[37] to counter[3].
+Info: Connecting auto_signaltap_0|acq_data_in[38] to data_in[0].
+Info: Connecting auto_signaltap_0|acq_data_in[39] to data_in[10].
+Info: Connecting auto_signaltap_0|acq_data_in[40] to data_in[11].
+Info: Connecting auto_signaltap_0|acq_data_in[41] to data_in[12].
+Info: Connecting auto_signaltap_0|acq_data_in[42] to data_in[13].
+Info: Connecting auto_signaltap_0|acq_data_in[43] to data_in[14].
+Info: Connecting auto_signaltap_0|acq_data_in[44] to data_in[15].
+Info: Connecting auto_signaltap_0|acq_data_in[45] to data_in[16].
+Info: Connecting auto_signaltap_0|acq_data_in[46] to data_in[17].
+Info: Connecting auto_signaltap_0|acq_data_in[47] to data_in[18].
+Info: Connecting auto_signaltap_0|acq_data_in[48] to data_in[19].
+Info: Connecting auto_signaltap_0|acq_data_in[49] to data_in[1].
+Info: Connecting auto_signaltap_0|acq_data_in[50] to data_in[20].
+Info: Connecting auto_signaltap_0|acq_data_in[51] to data_in[21].
+Info: Connecting auto_signaltap_0|acq_data_in[52] to data_in[2].
+Info: Connecting auto_signaltap_0|acq_data_in[53] to data_in[3].
+Info: Connecting auto_signaltap_0|acq_data_in[54] to data_in[4].
+Info: Connecting auto_signaltap_0|acq_data_in[55] to data_in[5].
+Info: Connecting auto_signaltap_0|acq_data_in[56] to data_in[6].
+Info: Connecting auto_signaltap_0|acq_data_in[57] to data_in[7].
+Info: Connecting auto_signaltap_0|acq_data_in[58] to data_in[8].
+Info: Connecting auto_signaltap_0|acq_data_in[59] to data_in[9].
+Info: Connecting auto_signaltap_0|acq_data_in[60] to data_out[0].
+Info: Connecting auto_signaltap_0|acq_data_in[61] to data_out[10].
+Info: Connecting auto_signaltap_0|acq_data_in[62] to data_out[11].
+Info: Connecting auto_signaltap_0|acq_data_in[63] to data_out[12].
+Info: Connecting auto_signaltap_0|acq_data_in[64] to data_out[13].
+Info: Connecting auto_signaltap_0|acq_data_in[65] to data_out[14].
+Info: Connecting auto_signaltap_0|acq_data_in[66] to data_out[15].
+Info: Connecting auto_signaltap_0|acq_data_in[67] to data_out[16].
+Info: Connecting auto_signaltap_0|acq_data_in[68] to data_out[17].
+Info: Connecting auto_signaltap_0|acq_data_in[69] to data_out[18].
+Info: Connecting auto_signaltap_0|acq_data_in[70] to data_out[19].
+Info: Connecting auto_signaltap_0|acq_data_in[71] to data_out[1].
+Info: Connecting auto_signaltap_0|acq_data_in[72] to data_out[20].
+Info: Connecting auto_signaltap_0|acq_data_in[73] to data_out[21].
+Info: Connecting auto_signaltap_0|acq_data_in[74] to data_out[2].
+Info: Connecting auto_signaltap_0|acq_data_in[75] to data_out[3].
+Info: Connecting auto_signaltap_0|acq_data_in[76] to data_out[4].
+Info: Connecting auto_signaltap_0|acq_data_in[77] to data_out[5].
+Info: Connecting auto_signaltap_0|acq_data_in[78] to data_out[6].
+Info: Connecting auto_signaltap_0|acq_data_in[79] to data_out[7].
+Info: Connecting auto_signaltap_0|acq_data_in[80] to data_out[8].
+Info: Connecting auto_signaltap_0|acq_data_in[81] to data_out[9].
+Info: Connecting auto_signaltap_0|acq_data_in[82] to param[0].
+Info: Connecting auto_signaltap_0|acq_data_in[83] to param[1].
+Info: Connecting auto_signaltap_0|acq_data_in[84] to param[2].
+Info: Connecting auto_signaltap_0|acq_data_in[88] to read_source[0].
+Info: Connecting auto_signaltap_0|acq_data_in[89] to read_source[1].
+## CPU time: 0:0:1, REAL time: 0:0:2
+## Memory Usage: 852MB (852MB)
+Pseudo pack design...
+Using location file E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/src/top.ve
+Info: Ignored dedicate pin altera_reserved_tdo.
+Info: Ignored dedicate pin altera_reserved_tms.
+Info: Ignored dedicate pin altera_reserved_tck.
+Info: Ignored dedicate pin altera_reserved_tdi.
+VCO frequency: 1000.000 Mhz
+  clkout0: Enabled , 200.000 Mhz
+  clkout1: Disabled, 1.953 Mhz
+  clkout2: Disabled, 1.953 Mhz
+  clkout3: Enabled , 25.000 Mhz
+  clkout4: Disabled, 1.953 Mhz
+Warn: Unrecognized pin SPI0_CS_N or location PIN_9.
+Warn: Unrecognized pin SPI0_MISO or location PIN_16.
+Warn: Unrecognized pin SPI0_MOSI or location PIN_8.
+Warn: Unrecognized pin SPI0_SCK or location PIN_15.
+Warn: Unrecognized pin SPI1_CS_n or location PIN_168.
+Packing Statistics
+ Total      Logics : 2155/16624 ( 12%)
+ Total        LUTs : 1899/16624 ( 11%)
+ Total   Registers : 1858/16624 ( 11%)
+ Total  Block Rams :   34/   56 ( 60%)
+ Total Multipliers :    0/   56 (  0%)
+ Total        PLLs :    1/    4 ( 25%)
+ Total        Pins :   65/  251 ( 25%)
+ Global    Signals :    6/   10 ( 60%)
+                                                              CLK~inputclkctrl_outclk (from:                                                          CLK~input_o)
+                                           altera_internal_jtag~TCKUTAPclkctrl_outclk (from:                                         altera_internal_jtag~TCKUTAP)
+             pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk (from:                       auto_generated_inst.hbo_22_a632587f90865e69_bp)
+             pll_inst|altpll_component|auto_generated|wire_pll1_clk[3]~clkctrl_outclk (from:                       auto_generated_inst.hbo_22_fdfd88c1f279a59d_bp)
+      auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~clkctrl_outclk (from:   auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~q)
+                                                         rst_mod|rst_n~clkctrl_outclk (from:                                                      rst_mod|rst_n~q)
+ Total Lonely   Datain   : 0
+ Total Lonely   Register : 256
+ Total LUT-FF   Pairs    : 1467
+ Total Register Packings : 135
+ Registers with synchronous    reset : 44
+ Registers with asynchronous   reset : 748
+ Registers with sync and async reset : 30
+## CPU time: 0:0:0, REAL time: 0:0:1
+## Memory Usage: 853MB (853MB)
+Filter verilog...
+## CPU time: 0:0:0, REAL time: 0:0:1
+## Memory Usage: 853MB (853MB)
+Read DB design...
+## CPU time: 0:0:0, REAL time: 0:0:0
+## Memory Usage: 855MB (855MB)
+Process design...
+Info: Pin altera_internal_jtag|tdouser is inversely assigned to net auto_hub|jtag_hub_gen:sld_jtag_hub_inst|tdo~q.
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[1].
+Error: Can not find IO cell related to IO port CLK.
+Error: Can not find IO cell related to IO port IO_PRINT[0].
+Error: Can not find IO cell related to IO port IO_PRINT[10].
+Error: Can not find IO cell related to IO port IO_PRINT[11].
+Error: Can not find IO cell related to IO port IO_PRINT[12].
+Error: Can not find IO cell related to IO port IO_PRINT[13].
+Error: Can not find IO cell related to IO port IO_PRINT[14].
+Error: Can not find IO cell related to IO port IO_PRINT[15].
+Error: Can not find IO cell related to IO port IO_PRINT[16].
+Error: Can not find IO cell related to IO port IO_PRINT[17].
+Error: Can not find IO cell related to IO port IO_PRINT[18].
+Error: Can not find IO cell related to IO port IO_PRINT[19].
+Error: Can not find IO cell related to IO port IO_PRINT[1].
+Error: Can not find IO cell related to IO port IO_PRINT[20].
+Error: Can not find IO cell related to IO port IO_PRINT[21].
+Error: Can not find IO cell related to IO port IO_PRINT[22].
+Error: Can not find IO cell related to IO port IO_PRINT[23].
+Error: Can not find IO cell related to IO port IO_PRINT[24].
+Error: Can not find IO cell related to IO port IO_PRINT[25].
+Error: Can not find IO cell related to IO port IO_PRINT[26].
+Error: Can not find IO cell related to IO port IO_PRINT[27].
+Error: Can not find IO cell related to IO port IO_PRINT[28].
+Error: Can not find IO cell related to IO port IO_PRINT[29].
+Error: Can not find IO cell related to IO port IO_PRINT[2].
+Error: Can not find IO cell related to IO port IO_PRINT[30].
+Error: Can not find IO cell related to IO port IO_PRINT[31].
+Error: Can not find IO cell related to IO port IO_PRINT[3].
+Error: Can not find IO cell related to IO port IO_PRINT[4].
+Error: Can not find IO cell related to IO port IO_PRINT[5].
+Error: Can not find IO cell related to IO port IO_PRINT[6].
+Error: Can not find IO cell related to IO port IO_PRINT[7].
+Error: Can not find IO cell related to IO port IO_PRINT[8].
+Error: Can not find IO cell related to IO port IO_PRINT[9].
+Info: Found tie LOW cell auto_hub|~GND.
+Info: Found GCLK net rst_mod|rst_n~clkctrl_outclk (68).
+Info: Found GCLK net auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~clkctrl_outclk (67).
+Info: Found GCLK net CLK~inputclkctrl_outclk (4).
+Info: Found GCLK net pll_inst|altpll_component|auto_generated|wire_pll1_clk[3]~clkctrl_outclk (44).
+Info: Found GCLK net altera_internal_jtag~TCKUTAPclkctrl_outclk (100).
+Info: Found GCLK net pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk (146).
+Info: Adding byte enable net u_ahb2ram|byteena[0] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0.
+Info: Adding byte enable net u_ahb2ram|byteena[1] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12.
+Info: Adding byte enable net u_ahb2ram|byteena[2] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16.
+Info: Adding byte enable net u_ahb2ram|byteena[2] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20.
+Info: Adding byte enable net u_ahb2ram|byteena[3] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24.
+Info: Adding byte enable net u_ahb2ram|byteena[3] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28.
+Info: Adding byte enable net u_ahb2ram|byteena[0] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4.
+Info: Adding byte enable net u_ahb2ram|byteena[1] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8.
+Info: Slice ~VCC is removed.
+Info: Applying IP info mcu_inst to slice mcu_inst.
+## CPU time: 0:0:0, REAL time: 0:0:1
+## Memory Usage: 866MB (866MB)
+Using design SDC file ./top.sdc.
+Using AQF file ./alta_db/alta.aqf.
+Using ASF file top.asf.
+Info: Applying IP info mcu_inst to slice mcu_inst.
+Warn: IO IO_PRINT[0] is not assigned, placed at pin NC_PIN_29N.
+Warn: IO IO_PRINT[10] is not assigned, placed at pin PIN_47.
+Warn: IO IO_PRINT[11] is not assigned, placed at pin PIN_46.
+Warn: IO IO_PRINT[12] is not assigned, placed at pin PIN_176.
+Warn: IO IO_PRINT[13] is not assigned, placed at pin PIN_175.
+Warn: IO IO_PRINT[14] is not assigned, placed at pin PIN_49.
+Warn: IO IO_PRINT[15] is not assigned, placed at pin PIN_48.
+Warn: IO IO_PRINT[16] is not assigned, placed at pin PIN_50.
+Warn: IO IO_PRINT[17] is not assigned, placed at pin PIN_173.
+Warn: IO IO_PRINT[18] is not assigned, placed at pin PIN_42.
+Warn: IO IO_PRINT[19] is not assigned, placed at pin PIN_172.
+Warn: IO IO_PRINT[21] is not assigned, placed at pin PIN_2.
+Warn: IO IO_PRINT[22] is not assigned, placed at pin PIN_40.
+Warn: IO IO_PRINT[23] is not assigned, placed at pin PIN_6.
+Warn: IO IO_PRINT[24] is not assigned, placed at pin PIN_4.
+Warn: IO IO_PRINT[25] is not assigned, placed at pin PIN_37.
+Warn: IO IO_PRINT[27] is not assigned, placed at pin PIN_39.
+Warn: IO IO_PRINT[28] is not assigned, placed at pin PIN_57.
+Warn: IO IO_PRINT[29] is not assigned, placed at pin PIN_38.
+Warn: IO IO_PRINT[30] is not assigned, placed at pin PIN_56.
+Warn: IO IO_PRINT[3] is not assigned, placed at pin NC_PIN_74N.
+Warn: IO IO_PRINT[4] is not assigned, placed at pin SDRAM_DQ1.
+Warn: IO IO_PRINT[5] is not assigned, placed at pin PIN_35.
+Warn: IO IO_PRINT[8] is not assigned, placed at pin NC_PIN_257_VREFB8N1.
+Warn: IO IO_PRINT[9] is not assigned, placed at pin SDRAM_DQ5.
+Warn: Input clock CLK~input of PLL pll_inst|altpll_component|auto_generated|pll1 is assigned to a non-optimal location.
+Info: Auto constraint: create_clock -name Internal_generated_clock_altera_internal_jtag|tckutap -period 100.000 altera_internal_jtag|tckutap.
+Placement Statistics
+ Total  Logic    Tiles   : 212/1039 (20.4%)
+ Total  Other    Tiles   : 34/56 (60.7%)
+ Total  Valid    Nets    : 3355 (980+2375)
+ Total  Valid    Fanouts : 14487 (5210+9277)
+ Total  Tile     Fanouts : 2558
+ Tile   Zip      Fanins  : 8 (0:34)
+ Tile   Zip      Fanouts : 12 (0:288)
+ Total  Ignored  Nets    : 2835
+ Total  Valid    Blocks  : 265 (244/17)
+ Total  Ignored  Blocks  : 16
+ Total  Zip Complexities : 938/3250 1.60/1504.90
+ Avg    Zip   Bottleneck : 3.31 25.74
+ Avg    Net   Bottleneck : 8.68 177.25
+Iter #1/1 ...
+Pass 1 #1/2 ...
+Partitioning...
+ step = 4, partition : 2,2
+....................
+ step = 5, partition : 2,2
+....................
+
+## CPU time: 0:0:15, REAL time: 0:0:16
+Pass 1 #2/2 ...
+Partitioning...
+ step = 4, partition : 2,2
+....................
+ step = 5, partition : 2,2
+....................
+
+## CPU time: 0:0:16, REAL time: 0:0:16
+Pass 2 #1/1 ...
+Legalization and Swapping...
+..........
+
+## CPU time: 0:0:15, REAL time: 0:0:16
+Pass 3 #1/1 ...
+Touchup...
+
+
+## CPU time: 0:0:0, REAL time: 0:0:0
+Pass 4 #1/1 ...
+Optimization...
+............................................................
+Finishing...
+
+## CPU time: 0:0:6, REAL time: 0:0:7
+Total wire cost after placement: 5.618:0.49365:0.292(5.618:0.49365) 6450.24(1888.02)+19942(9)+11956.2 5673.77(982.53)+2268.5
+
+*** Post Placement Timing Report ***
+=== User constraints ===
+Fmax report
+  User constraint:  10.000MHz, Fmax:  57.644MHz, Clock: Internal_generated_clock_altera_internal_jtag|tckutap
+  User constraint:  50.000MHz, Fmax:  98.746MHz, Clock: clk
+  User constraint:  50.000MHz, Fmax:  98.746MHz, Clock: cpu_clk
+  User constraint:  50.000MHz, Fmax:  99.167MHz, Clock: spi_clk
+
+Clock transfer report:
+  Worst setup:  41.326, with clock Internal_generated_clock_altera_internal_jtag|tckutap
+  Worst setup:  15.870, with clock clk
+  Worst setup:  12.599, with clock cpu_clk
+  Worst setup:  13.252, with clock spi_clk
+  Worst setup:   9.873, from clock clk to cpu_clk
+  Worst setup:   9.916, from clock clk to spi_clk
+  Worst setup:  17.935, from clock cpu_clk to spi_clk
+  Worst setup:  15.735, from clock spi_clk to cpu_clk
+
+  Worst  hold:   0.550, with clock Internal_generated_clock_altera_internal_jtag|tckutap
+  Worst  hold:   0.550, with clock clk
+  Worst  hold:   0.292, with clock cpu_clk
+  Worst  hold:   0.292, with clock spi_clk
+  Worst  hold:   2.765, from clock clk to cpu_clk
+  Worst  hold:   9.470, from clock clk to spi_clk
+  Worst  hold:   0.865, from clock cpu_clk to spi_clk
+  Worst  hold:   0.255, from clock spi_clk to cpu_clk
+
+=== Auto constraints ===
+
+
+Coverage report
+  User constraints covered 9371 connections out of 9412 total, coverage: 99.6%
+  Auto constraints covered 9371 connections out of 9412 total, coverage: 99.6%
+
+
+Hold from pll_inst|altpll_component|auto_generated|pll1 to auto_signaltap_0|acq_data_in_reg[85], clock spi_clk to cpu_clk, constraint 0.000
+  Slack:   0.255
+    Arrival Time:   -0.632
+    Required Time:  -0.887
+
+*** End Timing Report ***
+
+route_design -dump ./alta_db/route.tx -replace ./alta_db/replace.tx 
+Route Design Statistics
+ Total Routing Nets : 3359
+ Fanout     Average : 3.35 (1..181)
+ Max   Fanout  Net  : pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk
+ Logic       Slices : 2158/16624 (13.0%)
+
+Routing...
+ Budget Useful Skew...
+=== User constraints ===
+Fmax report
+  User constraint:  10.000MHz, Fmax:  67.907MHz, Clock: Internal_generated_clock_altera_internal_jtag|tckutap
+  User constraint:  50.000MHz, Fmax:  99.167MHz, Clock: clk
+  User constraint:  50.000MHz, Fmax:  99.167MHz, Clock: cpu_clk
+  User constraint:  50.000MHz, Fmax:  99.167MHz, Clock: spi_clk
+
+=== Auto constraints ===
+Error: Can not route to pin pll_inst|altpll_component|auto_generated|pll1|clkin.
+Error: Failed to route net CLK~input_o.
+Error: [route_design] Failed to route design.
+
+Total 0 fatals, 36 errors, 31 warnings, 213 infos.
+
+Compile design top terminated by user
+
+

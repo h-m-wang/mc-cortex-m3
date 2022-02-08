@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="top">
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|ahb2ram:u_ahb2ram|ram_two_port:u1_ram_two_port|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_1mf2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|pll:pll_inst|altpll:altpll_component" CBX_FILE_NAME="pll_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|remote_reconf:remote_reconf_inst|remote_reconf_rmtupdt_51n:remote_reconf_rmtupdt_51n_component|lpm_counter:cntr5" CBX_FILE_NAME="cntr_paj.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_mux:mux" CBX_FILE_NAME="mux_psc.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:\adv_point_3_and_more:advance_pointer_counter" CBX_FILE_NAME="cntr_jgi.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|remote_reconf:remote_reconf_inst|remote_reconf_rmtupdt_51n:remote_reconf_rmtupdt_51n_component|lpm_counter:cntr6" CBX_FILE_NAME="cntr_oaj.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altdpram:\stp_non_zero_ram_gen:attribute_mem_gen:attribute_mem|lpm_decode:wdecoder" CBX_FILE_NAME="decode_dvf.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram" CBX_FILE_NAME="altsyncram_sr14.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:status_advance_pointer_counter" CBX_FILE_NAME="cntr_cgi.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:status_read_pointer_counter" CBX_FILE_NAME="cntr_23j.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|top|sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_offload_buffer_mgr:\stp_non_zero_depth_offload_gen:stp_offload_buff_mgr_inst|lpm_counter:read_pointer_counter" CBX_FILE_NAME="cntr_89j.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

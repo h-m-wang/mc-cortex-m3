@@ -1,0 +1,153 @@
+Info: Rename duplicated module cell alta_mcu_m3 to alta_mcu_m3_duplicated at ./alta_db/flatten.vx:1.
+Info: Connecting auto_signaltap_0|acq_trigger_in[1] to counter[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[2] to counter[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[3] to counter[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[4] to counter[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[5] to data_in[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[6] to data_in[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[7] to data_in[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[8] to data_in[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[9] to data_in[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[10] to data_in[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[11] to data_in[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[12] to data_in[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[13] to data_in[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[14] to data_in[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[15] to data_in[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[16] to data_in[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[17] to data_in[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[18] to data_in[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[19] to data_in[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[20] to data_in[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[21] to data_in[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[22] to data_in[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[23] to data_in[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[24] to data_in[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[25] to data_in[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[26] to data_in[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[27] to data_out[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[28] to data_out[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[29] to data_out[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[30] to data_out[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[31] to data_out[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[32] to data_out[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[33] to data_out[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[34] to data_out[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[35] to data_out[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[36] to data_out[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[37] to data_out[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[38] to data_out[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[39] to data_out[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[40] to data_out[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[41] to data_out[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[42] to data_out[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[43] to data_out[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[44] to data_out[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[45] to data_out[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[46] to data_out[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[47] to data_out[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[48] to data_out[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[49] to param[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[50] to param[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[51] to param[2].
+Info: Connecting auto_signaltap_0|acq_data_in[1] to counter[0].
+Info: Connecting auto_signaltap_0|acq_data_in[2] to counter[1].
+Info: Connecting auto_signaltap_0|acq_data_in[3] to counter[2].
+Info: Connecting auto_signaltap_0|acq_data_in[4] to counter[3].
+Info: Connecting auto_signaltap_0|acq_data_in[5] to data_in[0].
+Info: Connecting auto_signaltap_0|acq_data_in[6] to data_in[10].
+Info: Connecting auto_signaltap_0|acq_data_in[7] to data_in[11].
+Info: Connecting auto_signaltap_0|acq_data_in[8] to data_in[12].
+Info: Connecting auto_signaltap_0|acq_data_in[9] to data_in[13].
+Info: Connecting auto_signaltap_0|acq_data_in[10] to data_in[14].
+Info: Connecting auto_signaltap_0|acq_data_in[11] to data_in[15].
+Info: Connecting auto_signaltap_0|acq_data_in[12] to data_in[16].
+Info: Connecting auto_signaltap_0|acq_data_in[13] to data_in[17].
+Info: Connecting auto_signaltap_0|acq_data_in[14] to data_in[18].
+Info: Connecting auto_signaltap_0|acq_data_in[15] to data_in[19].
+Info: Connecting auto_signaltap_0|acq_data_in[16] to data_in[1].
+Info: Connecting auto_signaltap_0|acq_data_in[17] to data_in[20].
+Info: Connecting auto_signaltap_0|acq_data_in[18] to data_in[21].
+Info: Connecting auto_signaltap_0|acq_data_in[19] to data_in[2].
+Info: Connecting auto_signaltap_0|acq_data_in[20] to data_in[3].
+Info: Connecting auto_signaltap_0|acq_data_in[21] to data_in[4].
+Info: Connecting auto_signaltap_0|acq_data_in[22] to data_in[5].
+Info: Connecting auto_signaltap_0|acq_data_in[23] to data_in[6].
+Info: Connecting auto_signaltap_0|acq_data_in[24] to data_in[7].
+Info: Connecting auto_signaltap_0|acq_data_in[25] to data_in[8].
+Info: Connecting auto_signaltap_0|acq_data_in[26] to data_in[9].
+Info: Connecting auto_signaltap_0|acq_data_in[27] to data_out[0].
+Info: Connecting auto_signaltap_0|acq_data_in[28] to data_out[10].
+Info: Connecting auto_signaltap_0|acq_data_in[29] to data_out[11].
+Info: Connecting auto_signaltap_0|acq_data_in[30] to data_out[12].
+Info: Connecting auto_signaltap_0|acq_data_in[31] to data_out[13].
+Info: Connecting auto_signaltap_0|acq_data_in[32] to data_out[14].
+Info: Connecting auto_signaltap_0|acq_data_in[33] to data_out[15].
+Info: Connecting auto_signaltap_0|acq_data_in[34] to data_out[16].
+Info: Connecting auto_signaltap_0|acq_data_in[35] to data_out[17].
+Info: Connecting auto_signaltap_0|acq_data_in[36] to data_out[18].
+Info: Connecting auto_signaltap_0|acq_data_in[37] to data_out[19].
+Info: Connecting auto_signaltap_0|acq_data_in[38] to data_out[1].
+Info: Connecting auto_signaltap_0|acq_data_in[39] to data_out[20].
+Info: Connecting auto_signaltap_0|acq_data_in[40] to data_out[21].
+Info: Connecting auto_signaltap_0|acq_data_in[41] to data_out[2].
+Info: Connecting auto_signaltap_0|acq_data_in[42] to data_out[3].
+Info: Connecting auto_signaltap_0|acq_data_in[43] to data_out[4].
+Info: Connecting auto_signaltap_0|acq_data_in[44] to data_out[5].
+Info: Connecting auto_signaltap_0|acq_data_in[45] to data_out[6].
+Info: Connecting auto_signaltap_0|acq_data_in[46] to data_out[7].
+Info: Connecting auto_signaltap_0|acq_data_in[47] to data_out[8].
+Info: Connecting auto_signaltap_0|acq_data_in[48] to data_out[9].
+Info: Connecting auto_signaltap_0|acq_data_in[49] to param[0].
+Info: Connecting auto_signaltap_0|acq_data_in[50] to param[1].
+Info: Connecting auto_signaltap_0|acq_data_in[51] to param[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[64] to read_source[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[65] to read_source[1].
+Info: Connecting auto_signaltap_0|acq_data_in[64] to read_source[0].
+Info: Connecting auto_signaltap_0|acq_data_in[65] to read_source[1].
+Info: Ignored dedicate pin altera_reserved_tdo.
+Info: Ignored dedicate pin altera_reserved_tms.
+Info: Ignored dedicate pin altera_reserved_tck.
+Info: Ignored dedicate pin altera_reserved_tdi.
+Info: Pin altera_internal_jtag|tdouser is inversely assigned to net auto_hub|jtag_hub_gen:sld_jtag_hub_inst|tdo~q.
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Found GCLK net auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~clkctrl_outclk (51).
+Info: Found GCLK net rst_mod|rst_n~clkctrl_outclk (59).
+Info: Found GCLK net CLK~inputclkctrl_outclk (5).
+Info: Found GCLK net pll_inst|altpll_component|auto_generated|wire_pll1_clk[3]~clkctrl_outclk (42).
+Info: Found GCLK net altera_internal_jtag~TCKUTAPclkctrl_outclk (83).
+Info: Found GCLK net pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk (105).
+Info: Adding byte enable net u_ahb2ram|byteena[0] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0.
+Info: Adding byte enable net u_ahb2ram|byteena[1] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12.
+Info: Adding byte enable net u_ahb2ram|byteena[2] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16.
+Info: Adding byte enable net u_ahb2ram|byteena[2] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20.
+Info: Adding byte enable net u_ahb2ram|byteena[3] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24.
+Info: Adding byte enable net u_ahb2ram|byteena[3] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28.
+Info: Adding byte enable net u_ahb2ram|byteena[0] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4.
+Info: Adding byte enable net u_ahb2ram|byteena[1] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8.
+Info: Slice ~VCC is removed.
+Info: Slice auto_hub|~GND is removed.
+Info: Applying IP info mcu_inst to slice mcu_inst.
+Info: Clock altera_reserved_tck is overwriting an existing clock.
+Info: Clock clk is overwriting an existing clock.
+Info: Generated clock cpu_clk is overwriting an existing clock.
+Info: Generated clock spi_clk is overwriting an existing clock.
+Info: Applying IP info mcu_inst to slice mcu_inst.
+Warn: Auto constraint INTERNAL: create_clock -name Internal_generated_clock_altera_internal_jtag|tckutap -period 100.000 altera_internal_jtag|tckutap.
+
+Total 0 fatals, 0 errors, 1 warnings, 150 infos.

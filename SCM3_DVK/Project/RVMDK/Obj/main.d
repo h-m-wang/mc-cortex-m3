@@ -1,0 +1,14 @@
+.\obj\main.o: ..\..\Source\src\main.c
+.\obj\main.o: ..\..\Source\inc\SCM3.h
+.\obj\main.o: ..\..\Source\inc\core_cm3.h
+.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\main.o: ..\..\Driver\inc\BoardSupportPackage.h
+.\obj\main.o: ..\..\Driver\inc\hyhwUart.h
+.\obj\main.o: ..\..\Driver\inc\hyTypes.h
+.\obj\main.o: ..\..\Driver\inc\hyhwTimer.h
+.\obj\main.o: ..\..\Driver\inc\hyhwGpio.h
+.\obj\main.o: ..\..\Driver\inc\hyhwDma.h
+.\obj\main.o: ..\..\Driver\inc\hyhwSpi.h
+.\obj\main.o: ..\..\Driver\inc\hyhwWatchdog.h
+.\obj\main.o: ..\..\Driver\inc\hyhw_SpiFlash.h

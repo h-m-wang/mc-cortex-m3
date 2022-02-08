@@ -1,0 +1,7 @@
+IP mcu_inst
+  TYPE : alta_mcu_m3;
+  PARAMETER
+    FLASH_BIAS   : 24'h060000 BITS;
+    CLK_FREQ     : 8'hC8      BITS;
+  END_PARAMETER
+END_IP

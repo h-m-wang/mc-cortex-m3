@@ -1,0 +1,3204 @@
+L 1 "..\..\Driver\src\hyhwUart.c"
+N/*******************************************************************************
+N*   All rights reserved              
+N*
+N*  This source code and any compilation or derivative thereof is the sole      
+N*  property of xxxx Technology Co., Ltd and is provided pursuant 
+N*  to a Software License Agreement.  This code is the proprietary information of      
+N*  xxxx and is confidential in nature.  Its use and dissemination by    
+N*  any party other than xxxx is strictly limited by the confidential information 
+N*  provisions of the Agreement referenced above.      
+N*
+N*******************************************************************************
+N*
+N* Rev   Date    Author          Comments
+N*      (yymmdd)
+N* -------------------------------------------------------------
+N* 001   160506  ICE WANG		Primary version 
+N* -------------------------------------------------------------
+N*
+N*  This source file contains the basic definition about uart   
+N*
+N****************************************************************/
+N
+N
+N/*------------------------------------------------------------------------------
+NStandard include files:
+N------------------------------------------------------------------------------*/
+N#include "hyTypes.h"
+L 1 "..\..\Driver\inc\hyTypes.h" 1
+N/*******************************************************************************
+N*   All rights reserved              
+N*
+N*  This source code and any compilation or derivative thereof is the sole      
+N*  property of xxxx Technology Co., Ltd and is provided pursuant 
+N*  to a Software License Agreement.  This code is the proprietary information of      
+N*  xxxx and is confidential in nature.  Its use and dissemination by    
+N*  any party other than xxxx is strictly limited by the confidential information 
+N*  provisions of the Agreement referenced above.      
+N*
+N*******************************************************************************
+N*
+N* Rev   Date    Author          Comments
+N*      (yymmdd)
+N* -------------------------------------------------------------
+N* 001   160506  ICE WANG		Primary version 
+N* -------------------------------------------------------------
+N*
+N*  This source file contains the basic data type definition  
+N*
+N****************************************************************/
+N
+N#ifndef ARMTYPE_DEFINITION_H
+N#define ARMTYPE_DEFINITION_H
+N
+N// 用于PC simulation时
+N//#define PC_MP3_SIMULATION 
+N
+N/* Boolean values */
+N/* #ifndef TRUE switch introduced to avoid compilation problems in the Visual studio enviroment*/
+N#ifndef TRUE
+N#define TRUE  (1==1)
+N#endif
+N
+N/*#ifndef FALSE switch introduced to avoid compilation problems in the Visual studio enviroment*/
+N#ifndef FALSE
+N#define FALSE  (1==0)
+N#endif
+N
+N/* #ifndef TRUE switch introduced to avoid compilation problems in the Visual studio enviroment*/
+N#ifndef True
+N#define True	TRUE
+N#endif
+N
+N/*#ifndef FALSE switch introduced to avoid compilation problems in the Visual studio enviroment*/
+N#ifndef False
+N#define False   FALSE
+N#endif
+N
+N
+N#ifndef NULL	/* Null */
+N#define NULL  (0)
+N#endif 
+N
+N#ifndef Null	/* Null */
+N#define Null  (0)
+N#endif 
+N
+N
+N#ifndef CONST	/* Const */
+N#define CONST  const
+N#endif 
+N
+N#ifndef ASSERT
+N#define ASSERT(a,b)
+N#endif
+N
+N#ifndef ROM
+N#define ROM const
+N#endif
+N
+N
+N#ifndef DATA
+N#define DATA
+N#endif
+N
+N#ifndef BIT0
+N#define BIT0  (0x00000001)            
+N#define BIT1  (0x00000002)            
+N#define BIT2  (0x00000004)            
+N#define BIT3  (0x00000008)      
+N#define BIT4  (0x00000010)        
+N#define BIT5  (0x00000020)        
+N#define BIT6  (0x00000040)        
+N#define BIT7  (0x00000080)            
+N#define BIT8  (0x00000100)            
+N#define BIT9  (0x00000200)            
+N#define BIT10 (0x00000400)            
+N#define BIT11 (0x00000800)            
+N#define BIT12 (0x00001000)            
+N#define BIT13 (0x00002000)            
+N#define BIT14 (0x00004000)            
+N#define BIT15 (0x00008000)            
+N#define BIT16 (0x00010000)           
+N#define BIT17 (0x00020000)           
+N#define BIT18 (0x00040000)           
+N#define BIT19 (0x00080000)           
+N#define BIT20 (0x00100000)           
+N#define BIT21 (0x00200000)       
+N#define BIT22 (0x00400000)            
+N#define BIT23 (0x00800000)            
+N#define BIT24 (0x01000000)            
+N#define BIT25 (0x02000000)            
+N#define BIT26 (0x04000000)           
+N#define BIT27 (0x08000000)           
+N#define BIT28 (0x10000000)           
+N#define BIT29 (0x20000000)           
+N#define BIT30 (0x40000000)           
+N#define BIT31 (0x80000000)       
+N#endif //#ifndef BIT0
+N
+N
+N#ifndef MAX
+N/* The larger of __x and __y */
+N#define MAX( __x, __y ) \
+N    ((__x) > (__y) ? (__x) : (__y))
+X#define MAX( __x, __y )     ((__x) > (__y) ? (__x) : (__y))
+N#endif
+N
+N#ifndef MIN
+N/* The smaller of __x and __y */
+N#define MIN( __x, __y ) \
+N    ((__x) < (__y) ? (__x) : (__y))
+X#define MIN( __x, __y )     ((__x) < (__y) ? (__x) : (__y))
+N#endif
+N
+N#ifndef ABS
+N/* The absolute value of __x */
+N#define ABS( __x ) \
+N    (((__x) > 0) ? (__x) : -(__x))
+X#define ABS( __x )     (((__x) > 0) ? (__x) : -(__x))
+N#endif
+N
+N#ifndef LIMIT
+N/* The value __x or the bound __y or __z if outside them */
+N#define LIMIT( __x, __y, __z ) \
+N    MAX( MIN( (__x), MAX( (__y), (__z) )), MIN( (__y), (__z) ))
+X#define LIMIT( __x, __y, __z )     MAX( MIN( (__x), MAX( (__y), (__z) )), MIN( (__y), (__z) ))
+N#endif
+N
+N#ifndef LOW_BYTE
+N#define LOW_BYTE(word)      (   word & 0x00ff )
+N#endif
+N
+N#ifndef HIGH_BYTE
+N#define HIGH_BYTE(word)     ( ( word & 0xff00 ) >> 8 )
+N#endif
+N
+N
+N/* Primitive types */
+N#ifdef PC_MP3_SIMULATION
+S	typedef int BOOL;
+S	typedef unsigned char  BOOLEAN; 
+N#else
+N	#ifdef BOOL
+S	#undef BOOL
+N	#endif
+N	typedef unsigned char	BOOL;
+N#endif
+N
+N
+Ntypedef signed char			S8,		*pS8,    Int8,   *pInt8;     /*  8 bit   signed integer */
+Ntypedef unsigned char		U8,		*pU8,    UInt8,  *pUInt8;    /*  8 bit unsigned integer */
+Ntypedef short				S16,	*pS16,   Int16,  *pInt16;    /* 16 bit   signed integer */
+Ntypedef long				S32,	*pS32,   Int32,  *pInt32;    /* 32 bit   signed integer */
+Ntypedef unsigned short		U16,	*pU16,   UInt16, *pUInt16;   /* 16 bit unsigned integer */
+Ntypedef unsigned long		U32,	*pU32,   UInt32, *pUInt32;   /* 32 bit unsigned integer */
+Ntypedef void            	Void,   *pVoid;     /* Void (typeless) */
+Ntypedef float           	Float,  *pFloat;    /* 32 bit floating point */
+Ntypedef double          	Double, *pDouble;   /* 32/64 bit floating point */
+Ntypedef unsigned char   	Bool,   *pBool;     /* Boolean (True/False) */
+Ntypedef char            	Char,   *pChar;     /* character, character array ptr */
+Ntypedef char           		*String, **pString; /* Null terminated 8 bit char str, */
+Ntypedef char const     		*ConstString;		/* Null term 8 bit char str ptr */
+Ntypedef void 		  		(* PFN)(void);      /* PFN is pointer to function */
+N
+N//关于错误的定义，除了0以外，其余返回值均为错误。
+N#define HY_OK                     		0         	// Global success return status
+N#define HY_ERROR                   		0xFF      	// Global error return status
+N#define HY_ERR_COMPATIBILITY            0x01 /* SW Interface compatibility   */
+N#define HY_ERR_MAJOR_VERSION            0x02 /* SW Major Version error       */
+N#define HY_ERR_COMP_VERSION             0x03 /* SW component version error   */
+N#define HY_ERR_BAD_MODULE_ID            0x04 /* SW - HW module ID error      */
+N#define HY_ERR_BAD_UNIT_NUMBER          0x05 /* Invalid device unit number   */
+N#define HY_ERR_BAD_INSTANCE             0x06 /* Bad input instance value     */
+N#define HY_ERR_BAD_HANDLE               0x07 /* Bad input handle             */
+N#define HY_ERR_BAD_INDEX                0x08 /* Bad input index              */
+N#define HY_ERR_BAD_PARAMETER            0x09 /* Invalid input parameter      */
+N#define HY_ERR_NO_INSTANCES             0x0A /* No instances available       */
+N#define HY_ERR_NO_COMPONENT             0x0B /* Component is not present     */
+N#define HY_ERR_NO_RESOURCES             0x0C /* Resource is not available    */
+N#define HY_ERR_INSTANCE_IN_USE          0x0D /* Instance is already in use   */
+N#define HY_ERR_RESOURCE_OWNED           0x0E /* Resource is already in use   */
+N#define HY_ERR_RESOURCE_NOT_OWNED       0x0F /* Caller does not own resource */
+N#define HY_ERR_INCONSISTENT_PARAMS      0x10 /* Inconsistent input params    */
+N#define HY_ERR_NOT_INITIALIZED          0x11 /* Component is not initialized */
+N#define HY_ERR_NOT_ENABLED              0x12 /* Component is not enabled     */
+N#define HY_ERR_NOT_SUPPORTED            0x13 /* Function is not supported    */
+N#define HY_ERR_INIT_FAILED              0x14 /* Initialization failed        */
+N#define HY_ERR_BUSY                     0x15 /* Component is busy            */
+N#define HY_ERR_NOT_BUSY                 0x16 /* Component is not busy        */
+N#define HY_ERR_READ                     0x17 /* Read error                   */
+N#define HY_ERR_WRITE                    0x18 /* Write error                  */
+N#define HY_ERR_ERASE                    0x19 /* Erase error                  */
+N#define HY_ERR_LOCK                     0x1A /* Lock error                   */
+N#define HY_ERR_UNLOCK                   0x1B /* Unlock error                 */
+N#define HY_ERR_OUT_OF_MEMORY            0x1C /* Memory allocation failed     */
+N#define HY_ERR_BAD_VIRT_ADDRESS         0x1D /* Bad virtual address          */
+N#define HY_ERR_BAD_PHYS_ADDRESS         0x1E /* Bad physical address         */
+N#define HY_ERR_TIMEOUT                  0x1F /* Timeout error                */
+N#define HY_ERR_OVERFLOW                 0x20 /* Data overflow/overrun error  */
+N#define HY_ERR_FULL                     0x21 /* Queue (etc.) is full         */
+N#define HY_ERR_EMPTY                    0x22 /* Queue (etc.) is empty        */
+N#define HY_ERR_NOT_STARTED              0x23 /* Component stream not started */
+N#define HY_ERR_ALREADY_STARTED          0x24 /* Comp. stream already started */
+N#define HY_ERR_NOT_STOPPED              0x25 /* Component stream not stopped */
+N#define HY_ERR_ALREADY_STOPPED          0x26 /* Comp. stream already stopped */
+N#define HY_ERR_ALREADY_SETUP            0x27 /* Component already setup      */
+N#define HY_ERR_NULL_PARAMETER           0x28 /* Null input parameter         */
+N#define HY_ERR_NULL_DATAINFUNC          0x29 /* Null data input function     */
+N#define HY_ERR_NULL_DATAOUTFUNC         0x2A /* Null data output function    */
+N#define HY_ERR_NULL_CONTROLFUNC         0x2B /* Null control function        */
+N#define HY_ERR_NULL_COMPLETIONFUNC      0x2C /* Null completion function     */
+N#define HY_ERR_NULL_PROGRESSFUNC        0x2D /* Null progress function       */
+N#define HY_ERR_NULL_ERRORFUNC           0x2E /* Null error handler function  */
+N#define HY_ERR_NULL_MEMALLOCFUNC        0x2F /* Null memory alloc function   */
+N#define HY_ERR_NULL_MEMFREEFUNC         0x30 /* Null memory free  function   */
+N#define HY_ERR_NULL_CONFIGFUNC          0x31 /* Null configuration function  */
+N#define HY_ERR_NULL_PARENT              0x32 /* Null parent data             */
+N#define HY_ERR_NULL_IODESC              0x33 /* Null in/out descriptor       */
+N#define HY_ERR_NULL_CTRLDESC            0x34 /* Null control descriptor      */
+N#define HY_ERR_UNSUPPORTED_DATACLASS    0x35 /* Unsupported data class       */
+N#define HY_ERR_UNSUPPORTED_DATATYPE     0x36 /* Unsupported data type        */
+N#define HY_ERR_UNSUPPORTED_DATASUBTYPE  0x37 /* Unsupported data subtype     */
+N#define HY_ERR_FORMAT                   0x38 /* Invalid/unsupported format   */
+N#define HY_ERR_INPUT_DESC_FLAGS         0x39 /* Bad input  descriptor flags  */
+N#define HY_ERR_OUTPUT_DESC_FLAGS        0x3A /* Bad output descriptor flags  */
+N#define HY_ERR_CAP_REQUIRED             0x3B /* Capabilities required ???    */
+N#define HY_ERR_BAD_TMALFUNC_TABLE       0x3C /* Bad TMAL function table      */
+N#define HY_ERR_INVALID_CHANNEL_ID       0x3D /* Invalid channel identifier   */
+N#define HY_ERR_INVALID_COMMAND          0x3E /* Invalid command/request      */
+N#define HY_ERR_STREAM_MODE_CONFUSION    0x3F /* Stream mode config conflict  */
+N#define HY_ERR_UNDERRUN                 0x40 /* Data underflow/underrun      */
+N#define HY_ERR_EMPTY_PACKET_RECVD       0x41 /* Empty data packet received   */
+N#define HY_ERR_OTHER_DATAINOUT_ERR      0x42 /* Other data input/output err  */
+N#define HY_ERR_STOP_REQUESTED           0x43 /* Stop in progress             */
+N#define HY_ERR_PIN_NOT_STARTED          0x44 /* Pin not started              */
+N#define HY_ERR_PIN_ALREADY_STARTED      0x45 /* Pin already started          */
+N#define HY_ERR_PIN_NOT_STOPPED          0x46 /* Pin not stopped              */
+N#define HY_ERR_PIN_ALREADY_STOPPED      0x47 /* Pin already stopped          */
+N#define HY_ERR_PAUSE_PIN_REQUESTED      0x48 /* Pause of single pin in progrs*/
+N#define HY_ERR_ASSERTION                0x49 /* Assertion failure            */
+N#define HY_ERR_HIGHWAY_BANDWIDTH        0x4A /* Highway bandwidth bus error  */
+N#define HY_ERR_HW_RESET_FAILED          0x4B /* Hardware reset failed        */
+N#define HY_ERR_PIN_PAUSED               0x4C /* Pin paused                   */
+N#define HY_ERR_BAD_FLAGS                0x4D /* Bad flags                    */
+N#define HY_ERR_BAD_PRIORITY             0x4E /* Bad priority                 */
+N#define HY_ERR_BAD_REFERENCE_COUNT      0x4F /* Bad reference count          */
+N#define HY_ERR_BAD_SETUP                0x50 /* Bad setup                    */
+N#define HY_ERR_BAD_STACK_SIZE           0x51 /* Bad stack size               */
+N#define HY_ERR_BAD_TEE                  0x52 /* Bad tee                      */
+N#define HY_ERR_IN_PLACE                 0x53 /* In place                     */
+N#define HY_ERR_NOT_CACHE_ALIGNED        0x54 /* Not cache aligned            */
+N#define HY_ERR_NO_ROOT_TEE              0x55 /* No root tee                  */
+N#define HY_ERR_NO_TEE_ALLOWED           0x56 /* No tee allowed               */
+N#define HY_ERR_NO_TEE_EMPTY_PACKET      0x57 /* No tee empty packet          */
+N#define HY_ERR_NULL_PACKET              0x59 /* Null packet                  */
+N#define HY_ERR_FORMAT_FREED             0x5A /* Format freed                 */
+N#define HY_ERR_FORMAT_INTERNAL          0x5B /* Format internal              */
+N#define HY_ERR_BAD_FORMAT               0x5C /* Bad format                   */
+N#define HY_ERR_FORMAT_NEGOTIATE_SUBCLASS    0x5D /* Format negotiate subclass*/
+N#define HY_ERR_FORMAT_NEGOTIATE_DATASUBTYPE 0x5E /* Format negot. datasubtype*/
+N#define HY_ERR_FORMAT_NEGOTIATE_DATATYPE    0x5F /* Format negotiate datatype*/
+N#define HY_ERR_FORMAT_NEGOTIATE_DESCRIPTION 0x60 /* Format negot. description*/
+N#define HY_ERR_NULL_FORMAT              0x61 /* Null format                  */
+N#define HY_ERR_FORMAT_REFERENCE_COUNT   0x62 /* Format reference count       */
+N#define HY_ERR_FORMAT_NOT_UNIQUE        0x63 /* Format not unique            */
+N#define HY_ERR_NEW_FORMAT               0x64 /* New format                   */
+N
+Ntypedef U8 hyErrorCode_t;
+N
+Ntypedef enum {DISABLE = 0, ENABLE = !DISABLE} FunctionalState;
+N#define IS_FUNCTIONAL_STATE(STATE) (((STATE) == DISABLE) || ((STATE) == ENABLE))
+N#endif /* ARMTYPE_DEFINITION_H */
+L 28 "..\..\Driver\src\hyhwUart.c" 2
+N#include "BoardSupportPackage.h"
+L 1 "..\..\Driver\inc\BoardSupportPackage.h" 1
+N/*******************************************************************************
+N*   All rights reserved              
+N*
+N*  This source code and any compilation or derivative thereof is the sole      
+N*  property of xxxx Technology Co., Ltd and is provided pursuant 
+N*  to a Software License Agreement.  This code is the proprietary information of      
+N*  xxxx and is confidential in nature.  Its use and dissemination by    
+N*  any party other than xxxx is strictly limited by the confidential information 
+N*  provisions of the Agreement referenced above.      
+N*
+N*******************************************************************************
+N*
+N* Rev   Date    Author          Comments
+N*      (yymmdd)
+N* -------------------------------------------------------------
+N* 001   160506  ICE WANG		Primary version 
+N* -------------------------------------------------------------
+N*
+N*  This source file contains the basic definition of our own board  
+N*
+N****************************************************************/
+N
+N
+N#ifndef HY_HSA_BOARDSUPPORTPACKAGE_H_
+N#define HY_HSA_BOARDSUPPORTPACKAGE_H_
+N
+N
+N
+N/*---------------------------------------------------------------------------
+N   Project include files:
+N   --------------------------------------------------------------------------*/
+N
+N/*---------------------------------------------------------------------------
+N   Defines : APB BUS Clock
+N   --------------------------------------------------------------------------*/
+N#define HYHW_APB_CLOCK				80000000L
+N
+N/*******************************KEY INPUT*********************************/ 
+N//KEY 0 ,低电平有效
+N#define KEY0_PORT				GPIOB
+N#define KEY0_PIN				GPIO_2
+N//KEY 1 ,低电平有效
+N#define KEY1_PORT				GPIOB
+N#define KEY1_PIN				GPIO_4
+N//KEY 2 ,低电平有效
+N#define KEY2_PORT				GPIOA
+N#define KEY2_PIN				GPIO_1
+N//KEY 3 ,低电平有效
+N#define KEY3_PORT				GPIOA
+N#define KEY3_PIN				GPIO_4
+N/*******************************OUTPUT*********************************/ 
+N//OUT0 
+N#define OUT0_PORT				GPIOA
+N#define OUT0_PIN				GPIO_3
+N//OUT1 
+N#define OUT1_PORT				GPIOB
+N#define OUT1_PIN				GPIO_7
+N//OUT2 
+N#define OUT2_PORT				GPIOA
+N#define OUT2_PIN				GPIO_7
+N/***********************************************************************
+NGPIO C7 输入：触摸输入检测
+NGPIO C6 输出：触摸IC的SPI通讯时的片选。一路SPI通过多路片选来实现SPI通讯扩展。
+NGPIO C5 输入：触摸芯片busy检测
+NGPIO C4 输入：与FPGA spi通讯时的握手信号。FPGA busy：1； FPGA ready：0
+NGPIO C3 输入：SD检测，FPGA初始化好SD成功后，FPGA置0；没有SD或者初始化失败，置高。
+NGPIO C2 输出：与FPGA通讯时的spi片选
+NGPIO C1 输出： FPGA PIN151,测试用
+NGPIO C0 输出： FPGA PIN159，测试用
+N***********************************************************************/
+N
+N/*******************************OUTPUT, LED IO Define*********************************/ 
+N//LED 0 ,低电平点亮
+N#define LED0_PORT				GPIOC
+N#define LED0_PIN				GPIO_0
+N//LED 1 ,低电平点亮
+N#define LED1_PORT				GPIOC
+N#define LED1_PIN				GPIO_1
+N
+N
+N/*******************************TSC Define*********************************/ 
+N//时钟分频
+N#define TSC_CLK_DIV				SPIF_SCK_DIV_64
+N//SPI CS
+N#define TSC_CS_PORT				GPIOC
+N#define TSC_CS_PIN				GPIO_6
+N//PEN DET
+N#define TSC_PENDET_PORT		GPIOC
+N#define TSC_PENDET_PIN		GPIO_7
+N//触摸芯片busy检测
+N#define TSC_BUSY_PORT			GPIOC
+N#define TSC_BUSY_PIN			GPIO_5
+N/*******************************FPGA SPI Define*********************************/ 
+N//时钟分频
+N#define FPGA_CLK_DIV				SPIF_SCK_DIV_32
+N
+N//FPGA与M3的硬件握手信号
+N#define FPGA_SH_PORT				GPIOC
+N#define FPGA_SH_PIN					GPIO_4 
+N//SD DET
+N#define SD_READY_DET_PORT		GPIOC
+N#define SD_READY_DET_PIN		GPIO_3
+N//FPGA SPI CS
+N#define FPGA_CS_PORT				GPIOC
+N#define FPGA_CS_PIN					GPIO_2
+N/*******************************SPI flah Define*********************************/ 
+N//时钟分频
+N#define FLASH_CLK_DIV				SPIF_SCK_DIV_4
+N
+N
+N#endif /* HSA_BOARDSUPPORTPACKAGE_H_ */
+N
+N
+L 29 "..\..\Driver\src\hyhwUart.c" 2
+N
+N/*------------------------------------------------------------------------------
+N  Project include files:
+N------------------------------------------------------------------------------*/
+N#include "hyhwUart.h"
+L 1 "..\..\Driver\inc\hyhwUart.h" 1
+N/*******************************************************************************
+N*   All rights reserved              
+N*
+N*  This source code and any compilation or derivative thereof is the sole      
+N*  property of xxxx Technology Co., Ltd and is provided pursuant 
+N*  to a Software License Agreement.  This code is the proprietary information of      
+N*  xxxx and is confidential in nature.  Its use and dissemination by    
+N*  any party other than xxxx is strictly limited by the confidential information 
+N*  provisions of the Agreement referenced above.      
+N*
+N*******************************************************************************
+N*
+N* Rev   Date    Author          Comments
+N*      (yymmdd)
+N* -------------------------------------------------------------
+N* 001   160506  ICE WANG		Primary version 
+N* -------------------------------------------------------------
+N*
+N*  This source file contains the basic definition about uart   
+N*
+N****************************************************************/
+N
+N#ifndef HY_HW_UART_H_
+N#define HY_HW_UART_H_
+N
+N/*------------------------------------------------------------------------------
+NStandard include files:
+N------------------------------------------------------------------------------*/
+N
+N
+N/*------------------------------------------------------------------------------
+NProject include files:
+N------------------------------------------------------------------------------*/
+N#include "SCM3.h"
+L 1 "..\..\Source\inc\SCM3.h" 1
+N#ifndef __SCM3_H
+N#define __SCM3_H
+N
+N#ifdef __cplusplus
+S extern "C" {
+N#endif 
+N
+N
+N/**
+N * @brief Configuration of the Cortex-M3 Processor and Core Peripherals 
+N */
+N#define __MPU_PRESENT             0 /*!< STM32 does not provide an MPU */
+N#define __NVIC_PRIO_BITS          4 /*!< STM32 uses 4 Bits for the Priority Levels    */
+N#define __Vendor_SysTickConfig    0 /*!< Set to 1 if different SysTick Config is used */
+N
+N
+Ntypedef enum IRQn
+N{
+N/******  Cortex-M3 Processor Exceptions Numbers ***************************************************/
+N  NonMaskableInt_IRQn         = -14,    /*!< 2 Non Maskable Interrupt                             */
+N  MemoryManagement_IRQn       = -12,    /*!< 4 Cortex-M3 Memory Management Interrupt              */
+N  BusFault_IRQn               = -11,    /*!< 5 Cortex-M3 Bus Fault Interrupt                      */
+N  UsageFault_IRQn             = -10,    /*!< 6 Cortex-M3 Usage Fault Interrupt                    */
+N  SVCall_IRQn                 = -5,     /*!< 11 Cortex-M3 SV Call Interrupt                       */
+N  DebugMonitor_IRQn           = -4,     /*!< 12 Cortex-M3 Debug Monitor Interrupt                 */
+N  PendSV_IRQn                 = -2,     /*!< 14 Cortex-M3 Pend SV Interrupt                       */
+N  SysTick_IRQn                = -1,     /*!< 15 Cortex-M3 System Tick Interrupt                   */
+N
+N/******  Cortex-M3 specific Interrupt Numbers *********************************************************/
+N  DMAC_IRQn                   = 0,
+N  TIMERA_IRQn                 = 4,
+N  TIMERB_IRQn                 = 5,
+N  WWDG_IRQn                   = 6,
+N  DINTC_IRQn                  = 7,
+N  DINTE_IRQn                  = 8,
+N  GPIOC_IRQn                  = 9,
+N  UART_IRQn                   = 10,
+N  GPIOA_IRQn                  = 11,
+N  GPIOB_IRQn                  = 12,
+N  FLASH_IRQn                  = 13,
+N    
+N} IRQn_Type;
+N
+N/*------------------------------------------------------------------------------
+NStandard include files:
+N------------------------------------------------------------------------------*/
+N
+N#include "core_cm3.h"
+L 1 "..\..\Source\inc\core_cm3.h" 1
+N/******************************************************************************
+N * @file:    core_cm3.h
+N * @purpose: CMSIS Cortex-M3 Core Peripheral Access Layer Header File
+N * @version: V1.20
+N * @date:    22. May 2009
+N *----------------------------------------------------------------------------
+N *
+N * Copyright (C) 2009 ARM Limited. All rights reserved.
+N *
+N * ARM Limited (ARM) is supplying this software for use with Cortex-Mx 
+N * processor based microcontrollers.  This file can be freely distributed 
+N * within development tools that are supporting such ARM based processors. 
+N *
+N * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+N * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+N * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+N * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+N * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+N *
+N ******************************************************************************/
+N
+N#ifndef __CM3_CORE_H__
+N#define __CM3_CORE_H__
+N
+N#ifdef __cplusplus
+S extern "C" {
+N#endif 
+N
+N#define __CM3_CMSIS_VERSION_MAIN  (0x01)                                                       /*!< [31:16] CMSIS HAL main version */
+N#define __CM3_CMSIS_VERSION_SUB   (0x20)                                                       /*!< [15:0]  CMSIS HAL sub version  */
+N#define __CM3_CMSIS_VERSION       ((__CM3_CMSIS_VERSION_MAIN << 16) | __CM3_CMSIS_VERSION_SUB) /*!< CMSIS HAL version number       */
+N
+N#define __CORTEX_M                (0x03)                                                       /*!< Cortex core                    */
+N
+N/**
+N *  Lint configuration \n
+N *  ----------------------- \n
+N *
+N *  The following Lint messages will be suppressed and not shown: \n
+N *  \n
+N *    --- Error 10: --- \n
+N *    register uint32_t __regBasePri         __asm("basepri"); \n
+N *    Error 10: Expecting ';' \n
+N *     \n
+N *    --- Error 530: --- \n
+N *    return(__regBasePri); \n
+N *    Warning 530: Symbol '__regBasePri' (line 264) not initialized \n
+N *     \n
+N *    --- Error 550: --- \n
+N *      __regBasePri = (basePri & 0x1ff); \n
+N *    } \n
+N *    Warning 550: Symbol '__regBasePri' (line 271) not accessed \n
+N *     \n
+N *    --- Error 754: --- \n
+N *    uint32_t RESERVED0[24]; \n
+N *    Info 754: local structure member '<some, not used in the HAL>' (line 109, file ./cm3_core.h) not referenced \n
+N *     \n
+N *    --- Error 750: --- \n
+N *    #define __CM3_CORE_H__ \n
+N *    Info 750: local macro '__CM3_CORE_H__' (line 43, file./cm3_core.h) not referenced \n
+N *     \n
+N *    --- Error 528: --- \n
+N *    static __INLINE void NVIC_DisableIRQ(uint32_t IRQn) \n
+N *    Warning 528: Symbol 'NVIC_DisableIRQ(unsigned int)' (line 419, file ./cm3_core.h) not referenced \n
+N *     \n
+N *    --- Error 751: --- \n
+N *    } InterruptType_Type; \n
+N *    Info 751: local typedef 'InterruptType_Type' (line 170, file ./cm3_core.h) not referenced \n
+N * \n
+N * \n
+N *    Note:  To re-enable a Message, insert a space before 'lint' * \n
+N *
+N */
+N
+N/*lint -save */
+N/*lint -e10  */
+N/*lint -e530 */
+N/*lint -e550 */
+N/*lint -e754 */
+N/*lint -e750 */
+N/*lint -e528 */
+N/*lint -e751 */
+N
+N
+N#include <stdint.h>                           /* Include standard types */
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h" 1
+N/* Copyright (C) ARM Ltd., 1999,2014 */
+N/* All rights reserved */
+N
+N/*
+N * RCS $Revision: 185525 $
+N * Checkin $Date: 2014-05-29 12:44:48 +0100 (Thu, 29 May 2014) $
+N * Revising $Author: agrant $
+N */
+N
+N#ifndef __stdint_h
+N#define __stdint_h
+N#define __ARMCLIB_VERSION 5050106
+N
+N  #ifdef __INT64_TYPE__
+S    /* armclang predefines '__INT64_TYPE__' and '__INT64_C_SUFFIX__' */
+S    #define __INT64 __INT64_TYPE__
+N  #else
+N    /* armcc has builtin '__int64' which can be used in --strict mode */
+N    #define __INT64 __int64
+N    #define __INT64_C_SUFFIX__ ll
+N  #endif
+N  #define __PASTE2(x, y) x ## y
+N  #define __PASTE(x, y) __PASTE2(x, y)
+N  #define __INT64_C(x)  __ESCAPE__(__PASTE(x, __INT64_C_SUFFIX__))
+N  #define __UINT64_C(x)  __ESCAPE__(__PASTE(x ## u, __INT64_C_SUFFIX__))
+N  #if defined(__clang__) || (defined(__ARMCC_VERSION) && !defined(__STRICT_ANSI__))
+X  #if 0L || (1L && !0L)
+N    /* armclang and non-strict armcc allow 'long long' in system headers */
+N    #define __LONGLONG long long
+N  #else
+S    /* strict armcc has '__int64' */
+S    #define __LONGLONG __int64
+N  #endif
+N
+N  #ifndef __STDINT_DECLS
+N  #define __STDINT_DECLS
+N
+N    #undef __CLIBNS
+N
+N    #ifdef __cplusplus
+S      namespace std {
+S          #define __CLIBNS std::
+S          extern "C" {
+N    #else
+N      #define __CLIBNS
+N    #endif  /* __cplusplus */
+N
+N
+N/*
+N * 'signed' is redundant below, except for 'signed char' and if
+N * the typedef is used to declare a bitfield.
+N */
+N
+N    /* 7.18.1.1 */
+N
+N    /* exact-width signed integer types */
+Ntypedef   signed          char int8_t;
+Ntypedef   signed short     int int16_t;
+Ntypedef   signed           int int32_t;
+Ntypedef   signed       __INT64 int64_t;
+Xtypedef   signed       __int64 int64_t;
+N
+N    /* exact-width unsigned integer types */
+Ntypedef unsigned          char uint8_t;
+Ntypedef unsigned short     int uint16_t;
+Ntypedef unsigned           int uint32_t;
+Ntypedef unsigned       __INT64 uint64_t;
+Xtypedef unsigned       __int64 uint64_t;
+N
+N    /* 7.18.1.2 */
+N
+N    /* smallest type of at least n bits */
+N    /* minimum-width signed integer types */
+Ntypedef   signed          char int_least8_t;
+Ntypedef   signed short     int int_least16_t;
+Ntypedef   signed           int int_least32_t;
+Ntypedef   signed       __INT64 int_least64_t;
+Xtypedef   signed       __int64 int_least64_t;
+N
+N    /* minimum-width unsigned integer types */
+Ntypedef unsigned          char uint_least8_t;
+Ntypedef unsigned short     int uint_least16_t;
+Ntypedef unsigned           int uint_least32_t;
+Ntypedef unsigned       __INT64 uint_least64_t;
+Xtypedef unsigned       __int64 uint_least64_t;
+N
+N    /* 7.18.1.3 */
+N
+N    /* fastest minimum-width signed integer types */
+Ntypedef   signed           int int_fast8_t;
+Ntypedef   signed           int int_fast16_t;
+Ntypedef   signed           int int_fast32_t;
+Ntypedef   signed       __INT64 int_fast64_t;
+Xtypedef   signed       __int64 int_fast64_t;
+N
+N    /* fastest minimum-width unsigned integer types */
+Ntypedef unsigned           int uint_fast8_t;
+Ntypedef unsigned           int uint_fast16_t;
+Ntypedef unsigned           int uint_fast32_t;
+Ntypedef unsigned       __INT64 uint_fast64_t;
+Xtypedef unsigned       __int64 uint_fast64_t;
+N
+N    /* 7.18.1.4 integer types capable of holding object pointers */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+Stypedef   signed       __INT64 intptr_t;
+Stypedef unsigned       __INT64 uintptr_t;
+N#else
+Ntypedef   signed           int intptr_t;
+Ntypedef unsigned           int uintptr_t;
+N#endif
+N
+N    /* 7.18.1.5 greatest-width integer types */
+Ntypedef   signed     __LONGLONG intmax_t;
+Xtypedef   signed     long long intmax_t;
+Ntypedef unsigned     __LONGLONG uintmax_t;
+Xtypedef unsigned     long long uintmax_t;
+N
+N
+N#if !defined(__cplusplus) || defined(__STDC_LIMIT_MACROS)
+X#if !0L || 0L
+N
+N    /* 7.18.2.1 */
+N
+N    /* minimum values of exact-width signed integer types */
+N#define INT8_MIN                   -128
+N#define INT16_MIN                -32768
+N#define INT32_MIN          (~0x7fffffff)   /* -2147483648 is unsigned */
+N#define INT64_MIN  __INT64_C(~0x7fffffffffffffff) /* -9223372036854775808 is unsigned */
+N
+N    /* maximum values of exact-width signed integer types */
+N#define INT8_MAX                    127
+N#define INT16_MAX                 32767
+N#define INT32_MAX            2147483647
+N#define INT64_MAX  __INT64_C(9223372036854775807)
+N
+N    /* maximum values of exact-width unsigned integer types */
+N#define UINT8_MAX                   255
+N#define UINT16_MAX                65535
+N#define UINT32_MAX           4294967295u
+N#define UINT64_MAX __UINT64_C(18446744073709551615)
+N
+N    /* 7.18.2.2 */
+N
+N    /* minimum values of minimum-width signed integer types */
+N#define INT_LEAST8_MIN                   -128
+N#define INT_LEAST16_MIN                -32768
+N#define INT_LEAST32_MIN          (~0x7fffffff)
+N#define INT_LEAST64_MIN  __INT64_C(~0x7fffffffffffffff)
+N
+N    /* maximum values of minimum-width signed integer types */
+N#define INT_LEAST8_MAX                    127
+N#define INT_LEAST16_MAX                 32767
+N#define INT_LEAST32_MAX            2147483647
+N#define INT_LEAST64_MAX  __INT64_C(9223372036854775807)
+N
+N    /* maximum values of minimum-width unsigned integer types */
+N#define UINT_LEAST8_MAX                   255
+N#define UINT_LEAST16_MAX                65535
+N#define UINT_LEAST32_MAX           4294967295u
+N#define UINT_LEAST64_MAX __UINT64_C(18446744073709551615)
+N
+N    /* 7.18.2.3 */
+N
+N    /* minimum values of fastest minimum-width signed integer types */
+N#define INT_FAST8_MIN           (~0x7fffffff)
+N#define INT_FAST16_MIN          (~0x7fffffff)
+N#define INT_FAST32_MIN          (~0x7fffffff)
+N#define INT_FAST64_MIN  __INT64_C(~0x7fffffffffffffff)
+N
+N    /* maximum values of fastest minimum-width signed integer types */
+N#define INT_FAST8_MAX             2147483647
+N#define INT_FAST16_MAX            2147483647
+N#define INT_FAST32_MAX            2147483647
+N#define INT_FAST64_MAX  __INT64_C(9223372036854775807)
+N
+N    /* maximum values of fastest minimum-width unsigned integer types */
+N#define UINT_FAST8_MAX            4294967295u
+N#define UINT_FAST16_MAX           4294967295u
+N#define UINT_FAST32_MAX           4294967295u
+N#define UINT_FAST64_MAX __UINT64_C(18446744073709551615)
+N
+N    /* 7.18.2.4 */
+N
+N    /* minimum value of pointer-holding signed integer type */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define INTPTR_MIN INT64_MIN
+N#else
+N#define INTPTR_MIN INT32_MIN
+N#endif
+N
+N    /* maximum value of pointer-holding signed integer type */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define INTPTR_MAX INT64_MAX
+N#else
+N#define INTPTR_MAX INT32_MAX
+N#endif
+N
+N    /* maximum value of pointer-holding unsigned integer type */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define UINTPTR_MAX INT64_MAX
+N#else
+N#define UINTPTR_MAX INT32_MAX
+N#endif
+N
+N    /* 7.18.2.5 */
+N
+N    /* minimum value of greatest-width signed integer type */
+N#define INTMAX_MIN  __ESCAPE__(~0x7fffffffffffffffll)
+N
+N    /* maximum value of greatest-width signed integer type */
+N#define INTMAX_MAX  __ESCAPE__(9223372036854775807ll)
+N
+N    /* maximum value of greatest-width unsigned integer type */
+N#define UINTMAX_MAX __ESCAPE__(18446744073709551615ull)
+N
+N    /* 7.18.3 */
+N
+N    /* limits of ptrdiff_t */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define PTRDIFF_MIN INT64_MIN
+S#define PTRDIFF_MAX INT64_MAX
+N#else
+N#define PTRDIFF_MIN INT32_MIN
+N#define PTRDIFF_MAX INT32_MAX
+N#endif
+N
+N    /* limits of sig_atomic_t */
+N#define SIG_ATOMIC_MIN (~0x7fffffff)
+N#define SIG_ATOMIC_MAX   2147483647
+N
+N    /* limit of size_t */
+N#if __sizeof_ptr == 8
+X#if 4 == 8
+S#define SIZE_MAX UINT64_MAX
+N#else
+N#define SIZE_MAX UINT32_MAX
+N#endif
+N
+N    /* limits of wchar_t */
+N    /* NB we have to undef and redef because they're defined in both
+N     * stdint.h and wchar.h */
+N#undef WCHAR_MIN
+N#undef WCHAR_MAX
+N
+N#if defined(__WCHAR32) || (defined(__ARM_SIZEOF_WCHAR_T) && __ARM_SIZEOF_WCHAR_T == 4)
+X#if 0L || (0L && __ARM_SIZEOF_WCHAR_T == 4)
+S  #define WCHAR_MIN   0
+S  #define WCHAR_MAX   0xffffffffU
+N#else
+N  #define WCHAR_MIN   0
+N  #define WCHAR_MAX   65535
+N#endif
+N
+N    /* limits of wint_t */
+N#define WINT_MIN (~0x7fffffff)
+N#define WINT_MAX 2147483647
+N
+N#endif /* __STDC_LIMIT_MACROS */
+N
+N#if !defined(__cplusplus) || defined(__STDC_CONSTANT_MACROS)
+X#if !0L || 0L
+N
+N    /* 7.18.4.1 macros for minimum-width integer constants */
+N#define INT8_C(x)   (x)
+N#define INT16_C(x)  (x)
+N#define INT32_C(x)  (x)
+N#define INT64_C(x)  __INT64_C(x)
+N
+N#define UINT8_C(x)  (x ## u)
+N#define UINT16_C(x) (x ## u)
+N#define UINT32_C(x) (x ## u)
+N#define UINT64_C(x) __UINT64_C(x)
+N
+N    /* 7.18.4.2 macros for greatest-width integer constants */
+N#define INTMAX_C(x)  __ESCAPE__(x ## ll)
+N#define UINTMAX_C(x) __ESCAPE__(x ## ull)
+N
+N#endif /* __STDC_CONSTANT_MACROS */
+N
+N    #ifdef __cplusplus
+S         }  /* extern "C" */
+S      }  /* namespace std */
+N    #endif /* __cplusplus */
+N  #endif /* __STDINT_DECLS */
+N
+N  #ifdef __cplusplus
+S    #ifndef __STDINT_NO_EXPORTS
+S      using ::std::int8_t;
+S      using ::std::int16_t;
+S      using ::std::int32_t;
+S      using ::std::int64_t;
+S      using ::std::uint8_t;
+S      using ::std::uint16_t;
+S      using ::std::uint32_t;
+S      using ::std::uint64_t;
+S      using ::std::int_least8_t;
+S      using ::std::int_least16_t;
+S      using ::std::int_least32_t;
+S      using ::std::int_least64_t;
+S      using ::std::uint_least8_t;
+S      using ::std::uint_least16_t;
+S      using ::std::uint_least32_t;
+S      using ::std::uint_least64_t;
+S      using ::std::int_fast8_t;
+S      using ::std::int_fast16_t;
+S      using ::std::int_fast32_t;
+S      using ::std::int_fast64_t;
+S      using ::std::uint_fast8_t;
+S      using ::std::uint_fast16_t;
+S      using ::std::uint_fast32_t;
+S      using ::std::uint_fast64_t;
+S      using ::std::intptr_t;
+S      using ::std::uintptr_t;
+S      using ::std::intmax_t;
+S      using ::std::uintmax_t;
+S    #endif
+N  #endif /* __cplusplus */
+N
+N#undef __INT64
+N#undef __LONGLONG
+N
+N#endif /* __stdint_h */
+N
+N/* end of stdint.h */
+L 86 "..\..\Source\inc\core_cm3.h" 2
+N
+N#if defined (__ICCARM__)
+X#if 0L
+S  #include <intrinsics.h>                     /* IAR Intrinsics   */
+N#endif
+N
+N
+N#ifndef __NVIC_PRIO_BITS
+S  #define __NVIC_PRIO_BITS    4               /*!< standard definition for NVIC Priority Bits */
+N#endif
+N
+N
+N
+N
+N/**
+N * IO definitions
+N *
+N * define access restrictions to peripheral registers
+N */
+N
+N#ifdef __cplusplus
+S#define     __I     volatile                  /*!< defines 'read only' permissions      */
+N#else
+N#define     __I     volatile const            /*!< defines 'read only' permissions      */
+N#endif
+N#define     __O     volatile                  /*!< defines 'write only' permissions     */
+N#define     __IO    volatile                  /*!< defines 'read / write' permissions   */
+N
+N
+N
+N/*******************************************************************************
+N *                 Register Abstraction
+N ******************************************************************************/
+N
+N
+N/* System Reset */
+N#define NVIC_VECTRESET              0         /*!< Vector Reset Bit             */
+N#define NVIC_SYSRESETREQ            2         /*!< System Reset Request         */
+N#define NVIC_AIRCR_VECTKEY    (0x5FA << 16)   /*!< AIRCR Key for write access   */
+N#define NVIC_AIRCR_ENDIANESS        15        /*!< Endianess                    */
+N
+N/* Core Debug */
+N#define CoreDebug_DEMCR_TRCENA (1 << 24)      /*!< DEMCR TRCENA enable          */
+N#define ITM_TCR_ITMENA              1         /*!< ITM enable                   */
+N
+N
+N
+N
+N/* memory mapping struct for Nested Vectored Interrupt Controller (NVIC) */
+Ntypedef struct
+N{
+N  __IO uint32_t ISER[8];                      /*!< Interrupt Set Enable Register            */
+X  volatile uint32_t ISER[8];                       
+N       uint32_t RESERVED0[24];
+N  __IO uint32_t ICER[8];                      /*!< Interrupt Clear Enable Register          */
+X  volatile uint32_t ICER[8];                       
+N       uint32_t RSERVED1[24];
+N  __IO uint32_t ISPR[8];                      /*!< Interrupt Set Pending Register           */
+X  volatile uint32_t ISPR[8];                       
+N       uint32_t RESERVED2[24];
+N  __IO uint32_t ICPR[8];                      /*!< Interrupt Clear Pending Register         */
+X  volatile uint32_t ICPR[8];                       
+N       uint32_t RESERVED3[24];
+N  __IO uint32_t IABR[8];                      /*!< Interrupt Active bit Register            */
+X  volatile uint32_t IABR[8];                       
+N       uint32_t RESERVED4[56];
+N  __IO uint8_t  IP[240];                      /*!< Interrupt Priority Register, 8Bit wide   */
+X  volatile uint8_t  IP[240];                       
+N       uint32_t RESERVED5[644];
+N  __O  uint32_t STIR;                         /*!< Software Trigger Interrupt Register      */
+X  volatile  uint32_t STIR;                          
+N}  NVIC_Type;
+N
+N
+N/* memory mapping struct for System Control Block */
+Ntypedef struct
+N{
+N  __I  uint32_t CPUID;                        /*!< CPU ID Base Register                                     */
+X  volatile const  uint32_t CPUID;                         
+N  __IO uint32_t ICSR;                         /*!< Interrupt Control State Register                         */
+X  volatile uint32_t ICSR;                          
+N  __IO uint32_t VTOR;                         /*!< Vector Table Offset Register                             */
+X  volatile uint32_t VTOR;                          
+N  __IO uint32_t AIRCR;                        /*!< Application Interrupt / Reset Control Register           */
+X  volatile uint32_t AIRCR;                         
+N  __IO uint32_t SCR;                          /*!< System Control Register                                  */
+X  volatile uint32_t SCR;                           
+N  __IO uint32_t CCR;                          /*!< Configuration Control Register                           */
+X  volatile uint32_t CCR;                           
+N  __IO uint8_t  SHP[12];                      /*!< System Handlers Priority Registers (4-7, 8-11, 12-15)    */
+X  volatile uint8_t  SHP[12];                       
+N  __IO uint32_t SHCSR;                        /*!< System Handler Control and State Register                */
+X  volatile uint32_t SHCSR;                         
+N  __IO uint32_t CFSR;                         /*!< Configurable Fault Status Register                       */
+X  volatile uint32_t CFSR;                          
+N  __IO uint32_t HFSR;                         /*!< Hard Fault Status Register                               */
+X  volatile uint32_t HFSR;                          
+N  __IO uint32_t DFSR;                         /*!< Debug Fault Status Register                              */
+X  volatile uint32_t DFSR;                          
+N  __IO uint32_t MMFAR;                        /*!< Mem Manage Address Register                              */
+X  volatile uint32_t MMFAR;                         
+N  __IO uint32_t BFAR;                         /*!< Bus Fault Address Register                               */
+X  volatile uint32_t BFAR;                          
+N  __IO uint32_t AFSR;                         /*!< Auxiliary Fault Status Register                          */
+X  volatile uint32_t AFSR;                          
+N  __I  uint32_t PFR[2];                       /*!< Processor Feature Register                               */
+X  volatile const  uint32_t PFR[2];                        
+N  __I  uint32_t DFR;                          /*!< Debug Feature Register                                   */
+X  volatile const  uint32_t DFR;                           
+N  __I  uint32_t ADR;                          /*!< Auxiliary Feature Register                               */
+X  volatile const  uint32_t ADR;                           
+N  __I  uint32_t MMFR[4];                      /*!< Memory Model Feature Register                            */
+X  volatile const  uint32_t MMFR[4];                       
+N  __I  uint32_t ISAR[5];                      /*!< ISA Feature Register                                     */
+X  volatile const  uint32_t ISAR[5];                       
+N} SCB_Type;
+N
+N
+N/* memory mapping struct for SysTick */
+Ntypedef struct
+N{
+N  __IO uint32_t CTRL;                         /*!< SysTick Control and Status Register */
+X  volatile uint32_t CTRL;                          
+N  __IO uint32_t LOAD;                         /*!< SysTick Reload Value Register       */
+X  volatile uint32_t LOAD;                          
+N  __IO uint32_t VAL;                          /*!< SysTick Current Value Register      */
+X  volatile uint32_t VAL;                           
+N  __I  uint32_t CALIB;                        /*!< SysTick Calibration Register        */
+X  volatile const  uint32_t CALIB;                         
+N} SysTick_Type;
+N
+N
+N/* memory mapping structur for ITM */
+Ntypedef struct
+N{
+N  __O  union  
+X  volatile  union  
+N  {
+N    __O  uint8_t    u8;                       /*!< ITM Stimulus Port 8-bit               */
+X    volatile  uint8_t    u8;                        
+N    __O  uint16_t   u16;                      /*!< ITM Stimulus Port 16-bit              */
+X    volatile  uint16_t   u16;                       
+N    __O  uint32_t   u32;                      /*!< ITM Stimulus Port 32-bit              */
+X    volatile  uint32_t   u32;                       
+N  }  PORT [32];                               /*!< ITM Stimulus Port Registers           */
+N       uint32_t RESERVED0[864];
+N  __IO uint32_t TER;                          /*!< ITM Trace Enable Register             */
+X  volatile uint32_t TER;                           
+N       uint32_t RESERVED1[15];
+N  __IO uint32_t TPR;                          /*!< ITM Trace Privilege Register          */
+X  volatile uint32_t TPR;                           
+N       uint32_t RESERVED2[15];
+N  __IO uint32_t TCR;                          /*!< ITM Trace Control Register            */
+X  volatile uint32_t TCR;                           
+N       uint32_t RESERVED3[29];
+N  __IO uint32_t IWR;                          /*!< ITM Integration Write Register        */
+X  volatile uint32_t IWR;                           
+N  __IO uint32_t IRR;                          /*!< ITM Integration Read Register         */
+X  volatile uint32_t IRR;                           
+N  __IO uint32_t IMCR;                         /*!< ITM Integration Mode Control Register */
+X  volatile uint32_t IMCR;                          
+N       uint32_t RESERVED4[43];
+N  __IO uint32_t LAR;                          /*!< ITM Lock Access Register              */
+X  volatile uint32_t LAR;                           
+N  __IO uint32_t LSR;                          /*!< ITM Lock Status Register              */
+X  volatile uint32_t LSR;                           
+N       uint32_t RESERVED5[6];
+N  __I  uint32_t PID4;                         /*!< ITM Product ID Registers              */
+X  volatile const  uint32_t PID4;                          
+N  __I  uint32_t PID5;
+X  volatile const  uint32_t PID5;
+N  __I  uint32_t PID6;
+X  volatile const  uint32_t PID6;
+N  __I  uint32_t PID7;
+X  volatile const  uint32_t PID7;
+N  __I  uint32_t PID0;
+X  volatile const  uint32_t PID0;
+N  __I  uint32_t PID1;
+X  volatile const  uint32_t PID1;
+N  __I  uint32_t PID2;
+X  volatile const  uint32_t PID2;
+N  __I  uint32_t PID3;
+X  volatile const  uint32_t PID3;
+N  __I  uint32_t CID0;
+X  volatile const  uint32_t CID0;
+N  __I  uint32_t CID1;
+X  volatile const  uint32_t CID1;
+N  __I  uint32_t CID2;
+X  volatile const  uint32_t CID2;
+N  __I  uint32_t CID3;
+X  volatile const  uint32_t CID3;
+N} ITM_Type;
+N
+N
+N/* memory mapped struct for Interrupt Type */
+Ntypedef struct
+N{
+N       uint32_t RESERVED0;
+N  __I  uint32_t ICTR;                         /*!< Interrupt Control Type Register  */
+X  volatile const  uint32_t ICTR;                          
+N#if ((defined __CM3_REV) && (__CM3_REV >= 0x200))
+X#if ((0L) && (__CM3_REV >= 0x200))
+S  __IO uint32_t ACTLR;                        /*!< Auxiliary Control Register       */
+N#else
+N       uint32_t RESERVED1;
+N#endif
+N} InterruptType_Type;
+N
+N
+N/* Memory Protection Unit */
+N#if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1)
+X#if 1L && (0 == 1)
+Stypedef struct
+S{
+S  __I  uint32_t TYPE;                         /*!< MPU Type Register                               */
+S  __IO uint32_t CTRL;                         /*!< MPU Control Register                            */
+S  __IO uint32_t RNR;                          /*!< MPU Region RNRber Register                      */
+S  __IO uint32_t RBAR;                         /*!< MPU Region Base Address Register                */
+S  __IO uint32_t RASR;                         /*!< MPU Region Attribute and Size Register          */
+S  __IO uint32_t RBAR_A1;                      /*!< MPU Alias 1 Region Base Address Register        */
+S  __IO uint32_t RASR_A1;                      /*!< MPU Alias 1 Region Attribute and Size Register  */
+S  __IO uint32_t RBAR_A2;                      /*!< MPU Alias 2 Region Base Address Register        */
+S  __IO uint32_t RASR_A2;                      /*!< MPU Alias 2 Region Attribute and Size Register  */
+S  __IO uint32_t RBAR_A3;                      /*!< MPU Alias 3 Region Base Address Register        */
+S  __IO uint32_t RASR_A3;                      /*!< MPU Alias 3 Region Attribute and Size Register  */
+S} MPU_Type;
+N#endif
+N
+N
+N/* Core Debug Register */
+Ntypedef struct
+N{
+N  __IO uint32_t DHCSR;                        /*!< Debug Halting Control and Status Register       */
+X  volatile uint32_t DHCSR;                         
+N  __O  uint32_t DCRSR;                        /*!< Debug Core Register Selector Register           */
+X  volatile  uint32_t DCRSR;                         
+N  __IO uint32_t DCRDR;                        /*!< Debug Core Register Data Register               */
+X  volatile uint32_t DCRDR;                         
+N  __IO uint32_t DEMCR;                        /*!< Debug Exception and Monitor Control Register    */
+X  volatile uint32_t DEMCR;                         
+N} CoreDebug_Type;
+N
+N
+N/* Memory mapping of Cortex-M3 Hardware */
+N#define SCS_BASE            (0xE000E000)                              /*!< System Control Space Base Address    */
+N#define ITM_BASE            (0xE0000000)                              /*!< ITM Base Address                     */
+N#define CoreDebug_BASE      (0xE000EDF0)                              /*!< Core Debug Base Address              */
+N#define SysTick_BASE        (SCS_BASE +  0x0010)                      /*!< SysTick Base Address                 */
+N#define NVIC_BASE           (SCS_BASE +  0x0100)                      /*!< NVIC Base Address                    */
+N#define SCB_BASE            (SCS_BASE +  0x0D00)                      /*!< System Control Block Base Address    */
+N
+N#define InterruptType       ((InterruptType_Type *) SCS_BASE)         /*!< Interrupt Type Register              */
+N#define SCB                 ((SCB_Type *)           SCB_BASE)         /*!< SCB configuration struct             */
+N#define SysTick             ((SysTick_Type *)       SysTick_BASE)     /*!< SysTick configuration struct         */
+N#define NVIC                ((NVIC_Type *)          NVIC_BASE)        /*!< NVIC configuration struct            */
+N#define ITM                 ((ITM_Type *)           ITM_BASE)         /*!< ITM configuration struct             */
+N#define CoreDebug           ((CoreDebug_Type *)     CoreDebug_BASE)   /*!< Core Debug configuration struct      */
+N
+N#if defined (__MPU_PRESENT) && (__MPU_PRESENT == 1)
+X#if 1L && (0 == 1)
+S  #define MPU_BASE          (SCS_BASE +  0x0D90)                      /*!< Memory Protection Unit               */
+S  #define MPU               ((MPU_Type*)            MPU_BASE)         /*!< Memory Protection Unit               */
+N#endif
+N
+N
+N
+N/*******************************************************************************
+N *                Hardware Abstraction Layer
+N ******************************************************************************/
+N
+N
+N#if defined ( __CC_ARM   )
+X#if 1L
+N  #define __ASM            __asm                                      /*!< asm keyword for ARM Compiler          */
+N  #define __INLINE         __inline                                   /*!< inline keyword for ARM Compiler       */
+N
+N#elif defined ( __ICCARM__ )
+S  #define __ASM           __asm                                       /*!< asm keyword for IAR Compiler           */
+S  #define __INLINE        inline                                      /*!< inline keyword for IAR Compiler. Only avaiable in High optimization mode! */
+S
+S#elif defined   (  __GNUC__  )
+S  #define __ASM            __asm                                      /*!< asm keyword for GNU Compiler          */
+S  #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
+S
+S#elif defined   (  __TASKING__  )
+S  #define __ASM            __asm                                      /*!< asm keyword for TASKING Compiler          */
+S  #define __INLINE         inline                                     /*!< inline keyword for TASKING Compiler       */
+S
+N#endif
+N
+N
+N/* ###################  Compiler specific Intrinsics  ########################### */
+N
+N#if defined ( __CC_ARM   ) /*------------------RealView Compiler -----------------*/
+X#if 1L  
+N/* ARM armcc specific functions */
+N
+N#define __enable_fault_irq                __enable_fiq
+N#define __disable_fault_irq               __disable_fiq
+N
+N#define __NOP                             __nop
+N#define __WFI                             __wfi
+N#define __WFE                             __wfe
+N#define __SEV                             __sev
+N#define __ISB()                           __isb(0)
+N#define __DSB()                           __dsb(0)
+N#define __DMB()                           __dmb(0)
+N#define __REV                             __rev
+N#define __RBIT                            __rbit
+N#define __LDREXB(ptr)                     ((unsigned char ) __ldrex(ptr))
+N#define __LDREXH(ptr)                     ((unsigned short) __ldrex(ptr))
+N#define __LDREXW(ptr)                     ((unsigned int  ) __ldrex(ptr))
+N#define __STREXB(value, ptr)              __strex(value, ptr)
+N#define __STREXH(value, ptr)              __strex(value, ptr)
+N#define __STREXW(value, ptr)              __strex(value, ptr)
+N
+N
+N/* intrinsic unsigned long long __ldrexd(volatile void *ptr) */
+N/* intrinsic int __strexd(unsigned long long val, volatile void *ptr) */
+N/* intrinsic void __enable_irq();     */
+N/* intrinsic void __disable_irq();    */
+N
+N
+N/**
+N * @brief  Return the Process Stack Pointer
+N *
+N * @param  none
+N * @return uint32_t ProcessStackPointer
+N *
+N * Return the actual process stack pointer
+N */
+Nextern uint32_t __get_PSP(void);
+N
+N/**
+N * @brief  Set the Process Stack Pointer
+N *
+N * @param  uint32_t Process Stack Pointer
+N * @return none
+N *
+N * Assign the value ProcessStackPointer to the MSP 
+N * (process stack pointer) Cortex processor register
+N */
+Nextern void __set_PSP(uint32_t topOfProcStack);
+N
+N/**
+N * @brief  Return the Main Stack Pointer
+N *
+N * @param  none
+N * @return uint32_t Main Stack Pointer
+N *
+N * Return the current value of the MSP (main stack pointer)
+N * Cortex processor register
+N */
+Nextern uint32_t __get_MSP(void);
+N
+N/**
+N * @brief  Set the Main Stack Pointer
+N *
+N * @param  uint32_t Main Stack Pointer
+N * @return none
+N *
+N * Assign the value mainStackPointer to the MSP 
+N * (main stack pointer) Cortex processor register
+N */
+Nextern void __set_MSP(uint32_t topOfMainStack);
+N
+N/**
+N * @brief  Reverse byte order in unsigned short value
+N *
+N * @param  uint16_t value to reverse
+N * @return uint32_t reversed value
+N *
+N * Reverse byte order in unsigned short value
+N */
+Nextern uint32_t __REV16(uint16_t value);
+N
+N/*
+N * @brief  Reverse byte order in signed short value with sign extension to integer
+N *
+N * @param  int16_t value to reverse
+N * @return int32_t reversed value
+N *
+N * Reverse byte order in signed short value with sign extension to integer
+N */
+Nextern int32_t __REVSH(int16_t value);
+N
+N
+N#if (__ARMCC_VERSION < 400000)
+X#if (5050106 < 400000)
+S
+S/**
+S * @brief  Remove the exclusive lock created by ldrex
+S *
+S * @param  none
+S * @return none
+S *
+S * Removes the exclusive lock which is created by ldrex.
+S */
+Sextern void __CLREX(void);
+S
+S/**
+S * @brief  Return the Base Priority value
+S *
+S * @param  none
+S * @return uint32_t BasePriority
+S *
+S * Return the content of the base priority register
+S */
+Sextern uint32_t __get_BASEPRI(void);
+S
+S/**
+S * @brief  Set the Base Priority value
+S *
+S * @param  uint32_t BasePriority
+S * @return none
+S *
+S * Set the base priority register
+S */
+Sextern void __set_BASEPRI(uint32_t basePri);
+S
+S/**
+S * @brief  Return the Priority Mask value
+S *
+S * @param  none
+S * @return uint32_t PriMask
+S *
+S * Return the state of the priority mask bit from the priority mask
+S * register
+S */
+Sextern uint32_t __get_PRIMASK(void);
+S
+S/**
+S * @brief  Set the Priority Mask value
+S *
+S * @param  uint32_t PriMask
+S * @return none
+S *
+S * Set the priority mask bit in the priority mask register
+S */
+Sextern void __set_PRIMASK(uint32_t priMask);
+S
+S/**
+S * @brief  Return the Fault Mask value
+S *
+S * @param  none
+S * @return uint32_t FaultMask
+S *
+S * Return the content of the fault mask register
+S */
+Sextern uint32_t __get_FAULTMASK(void);
+S
+S/**
+S * @brief  Set the Fault Mask value
+S *
+S * @param  uint32_t faultMask value
+S * @return none
+S *
+S * Set the fault mask register
+S */
+Sextern void __set_FAULTMASK(uint32_t faultMask);
+S
+S/**
+S * @brief  Return the Control Register value
+S * 
+S * @param  none
+S * @return uint32_t Control value
+S *
+S * Return the content of the control register
+S */
+Sextern uint32_t __get_CONTROL(void);
+S
+S/**
+S * @brief  Set the Control Register value
+S *
+S * @param  uint32_t Control value
+S * @return none
+S *
+S * Set the control register
+S */
+Sextern void __set_CONTROL(uint32_t control);
+S
+N#else  /* (__ARMCC_VERSION >= 400000)  */
+N
+N
+N/**
+N * @brief  Remove the exclusive lock created by ldrex
+N *
+N * @param  none
+N * @return none
+N *
+N * Removes the exclusive lock which is created by ldrex.
+N */
+N#define __CLREX                           __clrex
+N
+N/**
+N * @brief  Return the Base Priority value
+N *
+N * @param  none
+N * @return uint32_t BasePriority
+N *
+N * Return the content of the base priority register
+N */
+Nstatic __INLINE uint32_t  __get_BASEPRI(void)
+Xstatic __inline uint32_t  __get_BASEPRI(void)
+N{
+N  register uint32_t __regBasePri         __ASM("basepri");
+X  register uint32_t __regBasePri         __asm("basepri");
+N  return(__regBasePri);
+N}
+N
+N/**
+N * @brief  Set the Base Priority value
+N *
+N * @param  uint32_t BasePriority
+N * @return none
+N *
+N * Set the base priority register
+N */
+Nstatic __INLINE void __set_BASEPRI(uint32_t basePri)
+Xstatic __inline void __set_BASEPRI(uint32_t basePri)
+N{
+N  register uint32_t __regBasePri         __ASM("basepri");
+X  register uint32_t __regBasePri         __asm("basepri");
+N  __regBasePri = (basePri & 0x1ff);
+N}
+N
+N/**
+N * @brief  Return the Priority Mask value
+N *
+N * @param  none
+N * @return uint32_t PriMask
+N *
+N * Return the state of the priority mask bit from the priority mask
+N * register
+N */
+Nstatic __INLINE uint32_t __get_PRIMASK(void)
+Xstatic __inline uint32_t __get_PRIMASK(void)
+N{
+N  register uint32_t __regPriMask         __ASM("primask");
+X  register uint32_t __regPriMask         __asm("primask");
+N  return(__regPriMask);
+N}
+N
+N/**
+N * @brief  Set the Priority Mask value
+N *
+N * @param  uint32_t PriMask
+N * @return none
+N *
+N * Set the priority mask bit in the priority mask register
+N */
+Nstatic __INLINE void __set_PRIMASK(uint32_t priMask)
+Xstatic __inline void __set_PRIMASK(uint32_t priMask)
+N{
+N  register uint32_t __regPriMask         __ASM("primask");
+X  register uint32_t __regPriMask         __asm("primask");
+N  __regPriMask = (priMask);
+N}
+N
+N/**
+N * @brief  Return the Fault Mask value
+N *
+N * @param  none
+N * @return uint32_t FaultMask
+N *
+N * Return the content of the fault mask register
+N */
+Nstatic __INLINE uint32_t __get_FAULTMASK(void)
+Xstatic __inline uint32_t __get_FAULTMASK(void)
+N{
+N  register uint32_t __regFaultMask       __ASM("faultmask");
+X  register uint32_t __regFaultMask       __asm("faultmask");
+N  return(__regFaultMask);
+N}
+N
+N/**
+N * @brief  Set the Fault Mask value
+N *
+N * @param  uint32_t faultMask value
+N * @return none
+N *
+N * Set the fault mask register
+N */
+Nstatic __INLINE void __set_FAULTMASK(uint32_t faultMask)
+Xstatic __inline void __set_FAULTMASK(uint32_t faultMask)
+N{
+N  register uint32_t __regFaultMask       __ASM("faultmask");
+X  register uint32_t __regFaultMask       __asm("faultmask");
+N  __regFaultMask = (faultMask & 1);
+N}
+N
+N/**
+N * @brief  Return the Control Register value
+N * 
+N * @param  none
+N * @return uint32_t Control value
+N *
+N * Return the content of the control register
+N */
+Nstatic __INLINE uint32_t __get_CONTROL(void)
+Xstatic __inline uint32_t __get_CONTROL(void)
+N{
+N  register uint32_t __regControl         __ASM("control");
+X  register uint32_t __regControl         __asm("control");
+N  return(__regControl);
+N}
+N
+N/**
+N * @brief  Set the Control Register value
+N *
+N * @param  uint32_t Control value
+N * @return none
+N *
+N * Set the control register
+N */
+Nstatic __INLINE void __set_CONTROL(uint32_t control)
+Xstatic __inline void __set_CONTROL(uint32_t control)
+N{
+N  register uint32_t __regControl         __ASM("control");
+X  register uint32_t __regControl         __asm("control");
+N  __regControl = control;
+N}
+N
+N#endif /* __ARMCC_VERSION  */ 
+N
+N
+N
+N#elif (defined (__ICCARM__)) /*------------------ ICC Compiler -------------------*/
+S/* IAR iccarm specific functions */
+S
+S#define __enable_irq                              __enable_interrupt        /*!< global Interrupt enable */
+S#define __disable_irq                             __disable_interrupt       /*!< global Interrupt disable */
+S
+Sstatic __INLINE void __enable_fault_irq()         { __ASM ("cpsie f"); }
+Sstatic __INLINE void __disable_fault_irq()        { __ASM ("cpsid f"); }
+S
+S#define __NOP                                     __no_operation()          /*!< no operation intrinsic in IAR Compiler */ 
+Sstatic __INLINE  void __WFI()                     { __ASM ("wfi"); }
+Sstatic __INLINE  void __WFE()                     { __ASM ("wfe"); }
+Sstatic __INLINE  void __SEV()                     { __ASM ("sev"); }
+Sstatic __INLINE  void __CLREX()                   { __ASM ("clrex"); }
+S
+S/* intrinsic void __ISB(void)                                     */
+S/* intrinsic void __DSB(void)                                     */
+S/* intrinsic void __DMB(void)                                     */
+S/* intrinsic void __set_PRIMASK();                                */
+S/* intrinsic void __get_PRIMASK();                                */
+S/* intrinsic void __set_FAULTMASK();                              */
+S/* intrinsic void __get_FAULTMASK();                              */
+S/* intrinsic uint32_t __REV(uint32_t value);                      */
+S/* intrinsic uint32_t __REVSH(uint32_t value);                    */
+S/* intrinsic unsigned long __STREX(unsigned long, unsigned long); */
+S/* intrinsic unsigned long __LDREX(unsigned long *);              */
+S
+S
+S/**
+S * @brief  Return the Process Stack Pointer
+S *
+S * @param  none
+S * @return uint32_t ProcessStackPointer
+S *
+S * Return the actual process stack pointer
+S */
+Sextern uint32_t __get_PSP(void);
+S
+S/**
+S * @brief  Set the Process Stack Pointer
+S *
+S * @param  uint32_t Process Stack Pointer
+S * @return none
+S *
+S * Assign the value ProcessStackPointer to the MSP 
+S * (process stack pointer) Cortex processor register
+S */
+Sextern void __set_PSP(uint32_t topOfProcStack);
+S
+S/**
+S * @brief  Return the Main Stack Pointer
+S *
+S * @param  none
+S * @return uint32_t Main Stack Pointer
+S *
+S * Return the current value of the MSP (main stack pointer)
+S * Cortex processor register
+S */
+Sextern uint32_t __get_MSP(void);
+S
+S/**
+S * @brief  Set the Main Stack Pointer
+S *
+S * @param  uint32_t Main Stack Pointer
+S * @return none
+S *
+S * Assign the value mainStackPointer to the MSP 
+S * (main stack pointer) Cortex processor register
+S */
+Sextern void __set_MSP(uint32_t topOfMainStack);
+S
+S/**
+S * @brief  Reverse byte order in unsigned short value
+S *
+S * @param  uint16_t value to reverse
+S * @return uint32_t reversed value
+S *
+S * Reverse byte order in unsigned short value
+S */
+Sextern uint32_t __REV16(uint16_t value);
+S
+S/**
+S * @brief  Reverse bit order of value
+S *
+S * @param  uint32_t value to reverse
+S * @return uint32_t reversed value
+S *
+S * Reverse bit order of value
+S */
+Sextern uint32_t __RBIT(uint32_t value);
+S
+S/**
+S * @brief  LDR Exclusive
+S *
+S * @param  uint8_t* address
+S * @return uint8_t value of (*address)
+S *
+S * Exclusive LDR command
+S */
+Sextern uint8_t __LDREXB(uint8_t *addr);
+S
+S/**
+S * @brief  LDR Exclusive
+S *
+S * @param  uint16_t* address
+S * @return uint16_t value of (*address)
+S *
+S * Exclusive LDR command
+S */
+Sextern uint16_t __LDREXH(uint16_t *addr);
+S
+S/**
+S * @brief  LDR Exclusive
+S *
+S * @param  uint32_t* address
+S * @return uint32_t value of (*address)
+S *
+S * Exclusive LDR command
+S */
+Sextern uint32_t __LDREXW(uint32_t *addr);
+S
+S/**
+S * @brief  STR Exclusive
+S *
+S * @param  uint8_t *address
+S * @param  uint8_t value to store
+S * @return uint32_t successful / failed
+S *
+S * Exclusive STR command
+S */
+Sextern uint32_t __STREXB(uint8_t value, uint8_t *addr);
+S
+S/**
+S * @brief  STR Exclusive
+S *
+S * @param  uint16_t *address
+S * @param  uint16_t value to store
+S * @return uint32_t successful / failed
+S *
+S * Exclusive STR command
+S */
+Sextern uint32_t __STREXH(uint16_t value, uint16_t *addr);
+S
+S/**
+S * @brief  STR Exclusive
+S *
+S * @param  uint32_t *address
+S * @param  uint32_t value to store
+S * @return uint32_t successful / failed
+S *
+S * Exclusive STR command
+S */
+Sextern uint32_t __STREXW(uint32_t value, uint32_t *addr);
+S
+S
+S
+S#elif (defined (__GNUC__)) /*------------------ GNU Compiler ---------------------*/
+S/* GNU gcc specific functions */
+S
+Sstatic __INLINE void __enable_irq()               { __ASM volatile ("cpsie i"); }
+Sstatic __INLINE void __disable_irq()              { __ASM volatile ("cpsid i"); }
+S
+Sstatic __INLINE void __enable_fault_irq()         { __ASM volatile ("cpsie f"); }
+Sstatic __INLINE void __disable_fault_irq()        { __ASM volatile ("cpsid f"); }
+S
+Sstatic __INLINE void __NOP()                      { __ASM volatile ("nop"); }
+Sstatic __INLINE void __WFI()                      { __ASM volatile ("wfi"); }
+Sstatic __INLINE void __WFE()                      { __ASM volatile ("wfe"); }
+Sstatic __INLINE void __SEV()                      { __ASM volatile ("sev"); }
+Sstatic __INLINE void __ISB()                      { __ASM volatile ("isb"); }
+Sstatic __INLINE void __DSB()                      { __ASM volatile ("dsb"); }
+Sstatic __INLINE void __DMB()                      { __ASM volatile ("dmb"); }
+Sstatic __INLINE void __CLREX()                    { __ASM volatile ("clrex"); }
+S
+S
+S/**
+S * @brief  Return the Process Stack Pointer
+S *
+S * @param  none
+S * @return uint32_t ProcessStackPointer
+S *
+S * Return the actual process stack pointer
+S */
+Sextern uint32_t __get_PSP(void);
+S
+S/**
+S * @brief  Set the Process Stack Pointer
+S *
+S * @param  uint32_t Process Stack Pointer
+S * @return none
+S *
+S * Assign the value ProcessStackPointer to the MSP 
+S * (process stack pointer) Cortex processor register
+S */
+Sextern void __set_PSP(uint32_t topOfProcStack);
+S
+S/**
+S * @brief  Return the Main Stack Pointer
+S *
+S * @param  none
+S * @return uint32_t Main Stack Pointer
+S *
+S * Return the current value of the MSP (main stack pointer)
+S * Cortex processor register
+S */
+Sextern uint32_t __get_MSP(void);
+S
+S/**
+S * @brief  Set the Main Stack Pointer
+S *
+S * @param  uint32_t Main Stack Pointer
+S * @return none
+S *
+S * Assign the value mainStackPointer to the MSP 
+S * (main stack pointer) Cortex processor register
+S */
+Sextern void __set_MSP(uint32_t topOfMainStack);
+S
+S/**
+S * @brief  Return the Base Priority value
+S *
+S * @param  none
+S * @return uint32_t BasePriority
+S *
+S * Return the content of the base priority register
+S */
+Sextern uint32_t __get_BASEPRI(void);
+S
+S/**
+S * @brief  Set the Base Priority value
+S *
+S * @param  uint32_t BasePriority
+S * @return none
+S *
+S * Set the base priority register
+S */
+Sextern void __set_BASEPRI(uint32_t basePri);
+S
+S/**
+S * @brief  Return the Priority Mask value
+S *
+S * @param  none
+S * @return uint32_t PriMask
+S *
+S * Return the state of the priority mask bit from the priority mask
+S * register
+S */
+Sextern uint32_t  __get_PRIMASK(void);
+S
+S/**
+S * @brief  Set the Priority Mask value
+S *
+S * @param  uint32_t PriMask
+S * @return none
+S *
+S * Set the priority mask bit in the priority mask register
+S */
+Sextern void __set_PRIMASK(uint32_t priMask);
+S
+S/**
+S * @brief  Return the Fault Mask value
+S *
+S * @param  none
+S * @return uint32_t FaultMask
+S *
+S * Return the content of the fault mask register
+S */
+Sextern uint32_t __get_FAULTMASK(void);
+S
+S/**
+S * @brief  Set the Fault Mask value
+S *
+S * @param  uint32_t faultMask value
+S * @return none
+S *
+S * Set the fault mask register
+S */
+Sextern void __set_FAULTMASK(uint32_t faultMask);
+S
+S/**
+S * @brief  Return the Control Register value
+S* 
+S*  @param  none
+S*  @return uint32_t Control value
+S *
+S * Return the content of the control register
+S */
+Sextern uint32_t __get_CONTROL(void);
+S
+S/**
+S * @brief  Set the Control Register value
+S *
+S * @param  uint32_t Control value
+S * @return none
+S *
+S * Set the control register
+S */
+Sextern void __set_CONTROL(uint32_t control);
+S
+S/**
+S * @brief  Reverse byte order in integer value
+S *
+S * @param  uint32_t value to reverse
+S * @return uint32_t reversed value
+S *
+S * Reverse byte order in integer value
+S */
+Sextern uint32_t __REV(uint32_t value);
+S
+S/**
+S * @brief  Reverse byte order in unsigned short value
+S *
+S * @param  uint16_t value to reverse
+S * @return uint32_t reversed value
+S *
+S * Reverse byte order in unsigned short value
+S */
+Sextern uint32_t __REV16(uint16_t value);
+S
+S/*
+S * Reverse byte order in signed short value with sign extension to integer
+S *
+S * @param  int16_t value to reverse
+S * @return int32_t reversed value
+S *
+S * @brief  Reverse byte order in signed short value with sign extension to integer
+S */
+Sextern int32_t __REVSH(int16_t value);
+S
+S/**
+S * @brief  Reverse bit order of value
+S *
+S * @param  uint32_t value to reverse
+S * @return uint32_t reversed value
+S *
+S * Reverse bit order of value
+S */
+Sextern uint32_t __RBIT(uint32_t value);
+S
+S/**
+S * @brief  LDR Exclusive
+S *
+S * @param  uint8_t* address
+S * @return uint8_t value of (*address)
+S *
+S * Exclusive LDR command
+S */
+Sextern uint8_t __LDREXB(uint8_t *addr);
+S
+S/**
+S * @brief  LDR Exclusive
+S *
+S * @param  uint16_t* address
+S * @return uint16_t value of (*address)
+S *
+S * Exclusive LDR command
+S */
+Sextern uint16_t __LDREXH(uint16_t *addr);
+S
+S/**
+S * @brief  LDR Exclusive
+S *
+S * @param  uint32_t* address
+S * @return uint32_t value of (*address)
+S *
+S * Exclusive LDR command
+S */
+Sextern uint32_t __LDREXW(uint32_t *addr);
+S
+S/**
+S * @brief  STR Exclusive
+S *
+S * @param  uint8_t *address
+S * @param  uint8_t value to store
+S * @return uint32_t successful / failed
+S *
+S * Exclusive STR command
+S */
+Sextern uint32_t __STREXB(uint8_t value, uint8_t *addr);
+S
+S/**
+S * @brief  STR Exclusive
+S *
+S * @param  uint16_t *address
+S * @param  uint16_t value to store
+S * @return uint32_t successful / failed
+S *
+S * Exclusive STR command
+S */
+Sextern uint32_t __STREXH(uint16_t value, uint16_t *addr);
+S
+S/**
+S * @brief  STR Exclusive
+S *
+S * @param  uint32_t *address
+S * @param  uint32_t value to store
+S * @return uint32_t successful / failed
+S *
+S * Exclusive STR command
+S */
+Sextern uint32_t __STREXW(uint32_t value, uint32_t *addr);
+S
+S
+S#elif (defined (__TASKING__)) /*------------------ TASKING Compiler ---------------------*/
+S/* TASKING carm specific functions */
+S
+S/*
+S * The CMSIS functions have been implemented as intrinsics in the compiler.
+S * Please use "carm -?i" to get an up to date list of all instrinsics,
+S * Including the CMSIS ones.
+S */
+S
+N#endif
+N
+N
+N
+N/* ##########################   NVIC functions  #################################### */
+N
+N
+N/**
+N * @brief  Set the Priority Grouping in NVIC Interrupt Controller
+N *
+N * @param  uint32_t priority_grouping is priority grouping field
+N * @return none 
+N *
+N * Set the priority grouping field using the required unlock sequence.
+N * The parameter priority_grouping is assigned to the field 
+N * SCB->AIRCR [10:8] PRIGROUP field. Only values from 0..7 are used.
+N * In case of a conflict between priority grouping and available
+N * priority bits (__NVIC_PRIO_BITS) the smallest possible priority group is set.
+N */
+Nstatic __INLINE void NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
+Xstatic __inline void NVIC_SetPriorityGrouping(uint32_t PriorityGroup)
+N{
+N  uint32_t reg_value;
+N  uint32_t PriorityGroupTmp = (PriorityGroup & 0x07);                         /* only values 0..7 are used          */
+N  
+N  reg_value  = SCB->AIRCR;                                                    /* read old register configuration    */
+X  reg_value  = ((SCB_Type *) ((0xE000E000) + 0x0D00))->AIRCR;                                                     
+N  reg_value &= ~((0xFFFFU << 16) | (0x0F << 8));                              /* clear bits to change               */
+N  reg_value  = ((reg_value | NVIC_AIRCR_VECTKEY | (PriorityGroupTmp << 8)));  /* Insert write key and priorty group */
+X  reg_value  = ((reg_value | (0x5FA << 16) | (PriorityGroupTmp << 8)));   
+N  SCB->AIRCR = reg_value;
+X  ((SCB_Type *) ((0xE000E000) + 0x0D00))->AIRCR = reg_value;
+N}
+N
+N/**
+N * @brief  Get the Priority Grouping from NVIC Interrupt Controller
+N *
+N * @param  none
+N * @return uint32_t   priority grouping field 
+N *
+N * Get the priority grouping from NVIC Interrupt Controller.
+N * priority grouping is SCB->AIRCR [10:8] PRIGROUP field.
+N */
+Nstatic __INLINE uint32_t NVIC_GetPriorityGrouping(void)
+Xstatic __inline uint32_t NVIC_GetPriorityGrouping(void)
+N{
+N  return ((SCB->AIRCR >> 8) & 0x07);                                          /* read priority grouping field */
+X  return ((((SCB_Type *) ((0xE000E000) + 0x0D00))->AIRCR >> 8) & 0x07);                                           
+N}
+N
+N/**
+N * @brief  Enable Interrupt in NVIC Interrupt Controller
+N *
+N * @param  IRQn_Type IRQn specifies the interrupt number
+N * @return none 
+N *
+N * Enable a device specific interupt in the NVIC interrupt controller.
+N * The interrupt number cannot be a negative value.
+N */
+Nstatic __INLINE void NVIC_EnableIRQ(IRQn_Type IRQn)
+Xstatic __inline void NVIC_EnableIRQ(IRQn_Type IRQn)
+N{
+N  NVIC->ISER[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F)); /* enable interrupt */
+X  ((NVIC_Type *) ((0xE000E000) + 0x0100))->ISER[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F));  
+N}
+N
+N/**
+N * @brief  Disable the interrupt line for external interrupt specified
+N * 
+N * @param  IRQn_Type IRQn is the positive number of the external interrupt
+N * @return none
+N * 
+N * Disable a device specific interupt in the NVIC interrupt controller.
+N * The interrupt number cannot be a negative value.
+N */
+Nstatic __INLINE void NVIC_DisableIRQ(IRQn_Type IRQn)
+Xstatic __inline void NVIC_DisableIRQ(IRQn_Type IRQn)
+N{
+N  NVIC->ICER[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F)); /* disable interrupt */
+X  ((NVIC_Type *) ((0xE000E000) + 0x0100))->ICER[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F));  
+N}
+N
+N/**
+N * @brief  Read the interrupt pending bit for a device specific interrupt source
+N * 
+N * @param  IRQn_Type IRQn is the number of the device specifc interrupt
+N * @return uint32_t 1 if pending interrupt else 0
+N *
+N * Read the pending register in NVIC and return 1 if its status is pending, 
+N * otherwise it returns 0
+N */
+Nstatic __INLINE uint32_t NVIC_GetPendingIRQ(IRQn_Type IRQn)
+Xstatic __inline uint32_t NVIC_GetPendingIRQ(IRQn_Type IRQn)
+N{
+N  return((uint32_t) ((NVIC->ISPR[(uint32_t)(IRQn) >> 5] & (1 << ((uint32_t)(IRQn) & 0x1F)))?1:0)); /* Return 1 if pending else 0 */
+X  return((uint32_t) ((((NVIC_Type *) ((0xE000E000) + 0x0100))->ISPR[(uint32_t)(IRQn) >> 5] & (1 << ((uint32_t)(IRQn) & 0x1F)))?1:0));  
+N}
+N
+N/**
+N * @brief  Set the pending bit for an external interrupt
+N * 
+N * @param  IRQn_Type IRQn is the Number of the interrupt
+N * @return none
+N *
+N * Set the pending bit for the specified interrupt.
+N * The interrupt number cannot be a negative value.
+N */
+Nstatic __INLINE void NVIC_SetPendingIRQ(IRQn_Type IRQn)
+Xstatic __inline void NVIC_SetPendingIRQ(IRQn_Type IRQn)
+N{
+N  NVIC->ISPR[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F)); /* set interrupt pending */
+X  ((NVIC_Type *) ((0xE000E000) + 0x0100))->ISPR[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F));  
+N}
+N
+N/**
+N * @brief  Clear the pending bit for an external interrupt
+N *
+N * @param  IRQn_Type IRQn is the Number of the interrupt
+N * @return none
+N *
+N * Clear the pending bit for the specified interrupt. 
+N * The interrupt number cannot be a negative value.
+N */
+Nstatic __INLINE void NVIC_ClearPendingIRQ(IRQn_Type IRQn)
+Xstatic __inline void NVIC_ClearPendingIRQ(IRQn_Type IRQn)
+N{
+N  NVIC->ICPR[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F)); /* Clear pending interrupt */
+X  ((NVIC_Type *) ((0xE000E000) + 0x0100))->ICPR[((uint32_t)(IRQn) >> 5)] = (1 << ((uint32_t)(IRQn) & 0x1F));  
+N}
+N
+N/**
+N * @brief  Read the active bit for an external interrupt
+N *
+N * @param  IRQn_Type  IRQn is the Number of the interrupt
+N * @return uint32_t   1 if active else 0
+N *
+N * Read the active register in NVIC and returns 1 if its status is active, 
+N * otherwise it returns 0.
+N */
+Nstatic __INLINE uint32_t NVIC_GetActive(IRQn_Type IRQn)
+Xstatic __inline uint32_t NVIC_GetActive(IRQn_Type IRQn)
+N{
+N  return((uint32_t)((NVIC->IABR[(uint32_t)(IRQn) >> 5] & (1 << ((uint32_t)(IRQn) & 0x1F)))?1:0)); /* Return 1 if active else 0 */
+X  return((uint32_t)((((NVIC_Type *) ((0xE000E000) + 0x0100))->IABR[(uint32_t)(IRQn) >> 5] & (1 << ((uint32_t)(IRQn) & 0x1F)))?1:0));  
+N}
+N
+N/**
+N * @brief  Set the priority for an interrupt
+N *
+N * @param  IRQn_Type IRQn is the Number of the interrupt
+N * @param  priority is the priority for the interrupt
+N * @return none
+N *
+N * Set the priority for the specified interrupt. The interrupt 
+N * number can be positive to specify an external (device specific) 
+N * interrupt, or negative to specify an internal (core) interrupt. \n
+N *
+N * Note: The priority cannot be set for every core interrupt.
+N */
+Nstatic __INLINE void NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+Xstatic __inline void NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+N{
+N  if(IRQn < 0) {
+N    SCB->SHP[((uint32_t)(IRQn) & 0xF)-4] = ((priority << (8 - __NVIC_PRIO_BITS)) & 0xff); } /* set Priority for Cortex-M3 System Interrupts */
+X    ((SCB_Type *) ((0xE000E000) + 0x0D00))->SHP[((uint32_t)(IRQn) & 0xF)-4] = ((priority << (8 - 4)) & 0xff); }  
+N  else {
+N    NVIC->IP[(uint32_t)(IRQn)] = ((priority << (8 - __NVIC_PRIO_BITS)) & 0xff);    }        /* set Priority for device specific Interrupts      */
+X    ((NVIC_Type *) ((0xE000E000) + 0x0100))->IP[(uint32_t)(IRQn)] = ((priority << (8 - 4)) & 0xff);    }         
+N}
+N
+N/**
+N * @brief  Read the priority for an interrupt
+N *
+N * @param  IRQn_Type IRQn is the Number of the interrupt
+N * @return uint32_t  priority is the priority for the interrupt
+N *
+N * Read the priority for the specified interrupt. The interrupt 
+N * number can be positive to specify an external (device specific) 
+N * interrupt, or negative to specify an internal (core) interrupt.
+N *
+N * The returned priority value is automatically aligned to the implemented
+N * priority bits of the microcontroller.
+N *
+N * Note: The priority cannot be set for every core interrupt.
+N */
+Nstatic __INLINE uint32_t NVIC_GetPriority(IRQn_Type IRQn)
+Xstatic __inline uint32_t NVIC_GetPriority(IRQn_Type IRQn)
+N{
+N
+N  if(IRQn < 0) {
+N    return((uint32_t)(SCB->SHP[((uint32_t)(IRQn) & 0xF)-4] >> (8 - __NVIC_PRIO_BITS)));  } /* get priority for Cortex-M3 system interrupts */
+X    return((uint32_t)(((SCB_Type *) ((0xE000E000) + 0x0D00))->SHP[((uint32_t)(IRQn) & 0xF)-4] >> (8 - 4)));  }  
+N  else {
+N    return((uint32_t)(NVIC->IP[(uint32_t)(IRQn)]           >> (8 - __NVIC_PRIO_BITS)));  } /* get priority for device specific interrupts  */
+X    return((uint32_t)(((NVIC_Type *) ((0xE000E000) + 0x0100))->IP[(uint32_t)(IRQn)]           >> (8 - 4)));  }  
+N}
+N
+N
+N/**
+N * @brief  Encode the priority for an interrupt
+N *
+N * @param  uint32_t PriorityGroup   is the used priority group
+N * @param  uint32_t PreemptPriority is the preemptive priority value (starting from 0)
+N * @param  uint32_t SubPriority     is the sub priority value (starting from 0)
+N * @return uint32_t                    the priority for the interrupt
+N *
+N * Encode the priority for an interrupt with the given priority group,
+N * preemptive priority value and sub priority value.
+N * In case of a conflict between priority grouping and available
+N * priority bits (__NVIC_PRIO_BITS) the samllest possible priority group is set.
+N *
+N * The returned priority value can be used for NVIC_SetPriority(...) function
+N */
+Nstatic __INLINE uint32_t NVIC_EncodePriority (uint32_t PriorityGroup, uint32_t PreemptPriority, uint32_t SubPriority)
+Xstatic __inline uint32_t NVIC_EncodePriority (uint32_t PriorityGroup, uint32_t PreemptPriority, uint32_t SubPriority)
+N{
+N  uint32_t PriorityGroupTmp = (PriorityGroup & 0x07);                         /* only values 0..7 are used          */
+N  uint32_t PreemptPriorityBits;
+N  uint32_t SubPriorityBits;
+N
+N  PreemptPriorityBits = ((7 - PriorityGroupTmp) > __NVIC_PRIO_BITS) ? __NVIC_PRIO_BITS : 7 - PriorityGroupTmp;
+X  PreemptPriorityBits = ((7 - PriorityGroupTmp) > 4) ? 4 : 7 - PriorityGroupTmp;
+N  SubPriorityBits     = ((PriorityGroupTmp + __NVIC_PRIO_BITS) < 7) ? 0 : PriorityGroupTmp - 7 + __NVIC_PRIO_BITS;
+X  SubPriorityBits     = ((PriorityGroupTmp + 4) < 7) ? 0 : PriorityGroupTmp - 7 + 4;
+N 
+N  return (
+N           ((PreemptPriority & ((1 << (PreemptPriorityBits)) - 1)) << SubPriorityBits) |
+N           ((SubPriority     & ((1 << (SubPriorityBits    )) - 1)))
+N         );
+N}
+N
+N
+N/**
+N * @brief  Decode the priority of an interrupt
+N *
+N * @param  uint32_t   Priority       the priority for the interrupt
+N * @param  uint32_t   PrioGroup   is the used priority group
+N * @param  uint32_t* pPreemptPrio is the preemptive priority value (starting from 0)
+N * @param  uint32_t* pSubPrio     is the sub priority value (starting from 0)
+N * @return none
+N *
+N * Decode an interrupt priority value with the given priority group to 
+N * preemptive priority value and sub priority value.
+N * In case of a conflict between priority grouping and available
+N * priority bits (__NVIC_PRIO_BITS) the samllest possible priority group is set.
+N *
+N * The priority value can be retrieved with NVIC_GetPriority(...) function
+N */
+Nstatic __INLINE void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGroup, uint32_t* pPreemptPriority, uint32_t* pSubPriority)
+Xstatic __inline void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGroup, uint32_t* pPreemptPriority, uint32_t* pSubPriority)
+N{
+N  uint32_t PriorityGroupTmp = (PriorityGroup & 0x07);                         /* only values 0..7 are used          */
+N  uint32_t PreemptPriorityBits;
+N  uint32_t SubPriorityBits;
+N
+N  PreemptPriorityBits = ((7 - PriorityGroupTmp) > __NVIC_PRIO_BITS) ? __NVIC_PRIO_BITS : 7 - PriorityGroupTmp;
+X  PreemptPriorityBits = ((7 - PriorityGroupTmp) > 4) ? 4 : 7 - PriorityGroupTmp;
+N  SubPriorityBits     = ((PriorityGroupTmp + __NVIC_PRIO_BITS) < 7) ? 0 : PriorityGroupTmp - 7 + __NVIC_PRIO_BITS;
+X  SubPriorityBits     = ((PriorityGroupTmp + 4) < 7) ? 0 : PriorityGroupTmp - 7 + 4;
+N  
+N  *pPreemptPriority = (Priority >> SubPriorityBits) & ((1 << (PreemptPriorityBits)) - 1);
+N  *pSubPriority     = (Priority                   ) & ((1 << (SubPriorityBits    )) - 1);
+N}
+N
+N
+N
+N/* ##################################    SysTick function  ############################################ */
+N
+N#if (!defined (__Vendor_SysTickConfig)) || (__Vendor_SysTickConfig == 0)
+X#if (!1L) || (0 == 0)
+N
+N/* SysTick constants */
+N#define SYSTICK_ENABLE              0                                          /* Config-Bit to start or stop the SysTick Timer                         */
+N#define SYSTICK_TICKINT             1                                          /* Config-Bit to enable or disable the SysTick interrupt                 */
+N#define SYSTICK_CLKSOURCE           2                                          /* Clocksource has the offset 2 in SysTick Control and Status Register   */
+N#define SYSTICK_MAXCOUNT       ((1<<24) -1)                                    /* SysTick MaxCount                                                      */
+N
+N/**
+N * @brief  Initialize and start the SysTick counter and its interrupt.
+N *
+N * @param  uint32_t ticks is the number of ticks between two interrupts
+N * @return  none
+N *
+N * Initialise the system tick timer and its interrupt and start the
+N * system tick timer / counter in free running mode to generate 
+N * periodical interrupts.
+N */
+Nstatic __INLINE uint32_t SysTick_Config(uint32_t ticks)
+Xstatic __inline uint32_t SysTick_Config(uint32_t ticks)
+N{ 
+N  if (ticks > SYSTICK_MAXCOUNT)  return (1);                                             /* Reload value impossible */
+X  if (ticks > ((1<<24) -1))  return (1);                                              
+N
+N  SysTick->LOAD  =  (ticks & SYSTICK_MAXCOUNT) - 1;                                      /* set reload register */
+X  ((SysTick_Type *) ((0xE000E000) + 0x0010))->LOAD  =  (ticks & ((1<<24) -1)) - 1;                                       
+N  NVIC_SetPriority (SysTick_IRQn, (1<<__NVIC_PRIO_BITS) - 1);                            /* set Priority for Cortex-M0 System Interrupts */
+X  NVIC_SetPriority (SysTick_IRQn, (1<<4) - 1);                             
+N  SysTick->VAL   =  (0x00);                                                              /* Load the SysTick Counter Value */
+X  ((SysTick_Type *) ((0xE000E000) + 0x0010))->VAL   =  (0x00);                                                               
+N  SysTick->CTRL = (1 << SYSTICK_CLKSOURCE) | (1<<SYSTICK_ENABLE) | (1<<SYSTICK_TICKINT); /* Enable SysTick IRQ and SysTick Timer */
+X  ((SysTick_Type *) ((0xE000E000) + 0x0010))->CTRL = (1 << 2) | (1<<0) | (1<<1);  
+N  return (0);                                                                            /* Function successful */
+N}
+N
+N#endif
+N
+N
+N
+N
+N
+N/* ##################################    Reset function  ############################################ */
+N
+N/**
+N * @brief  Initiate a system reset request.
+N *
+N * @param   none
+N * @return  none
+N *
+N * Initialize a system reset request to reset the MCU
+N */
+Nstatic __INLINE void NVIC_SystemReset(void)
+Xstatic __inline void NVIC_SystemReset(void)
+N{
+N  SCB->AIRCR  = (NVIC_AIRCR_VECTKEY | (SCB->AIRCR & (0x700)) | (1<<NVIC_SYSRESETREQ)); /* Keep priority group unchanged */
+X  ((SCB_Type *) ((0xE000E000) + 0x0D00))->AIRCR  = ((0x5FA << 16) | (((SCB_Type *) ((0xE000E000) + 0x0D00))->AIRCR & (0x700)) | (1<<2));  
+N  __DSB();                                                                             /* Ensure completion of memory access */              
+X  __dsb(0);                                                                                            
+N  while(1);                                                                            /* wait until reset */
+N}
+N
+N
+N/* ##################################    Debug Output  function  ############################################ */
+N
+N
+N/**
+N * @brief  Outputs a character via the ITM channel 0
+N *
+N * @param   uint32_t character to output
+N * @return  uint32_t input character
+N *
+N * The function outputs a character via the ITM channel 0. 
+N * The function returns when no debugger is connected that has booked the output.  
+N * It is blocking when a debugger is connected, but the previous character send is not transmitted. 
+N */
+Nstatic __INLINE uint32_t ITM_SendChar (uint32_t ch)
+Xstatic __inline uint32_t ITM_SendChar (uint32_t ch)
+N{
+N  if (ch == '\n') ITM_SendChar('\r');
+N  
+N  if ((CoreDebug->DEMCR & CoreDebug_DEMCR_TRCENA)  &&
+X  if ((((CoreDebug_Type *) (0xE000EDF0))->DEMCR & (1 << 24))  &&
+N      (ITM->TCR & ITM_TCR_ITMENA)                  &&
+X      (((ITM_Type *) (0xE0000000))->TCR & 1)                  &&
+N      (ITM->TER & (1UL << 0))  ) 
+X      (((ITM_Type *) (0xE0000000))->TER & (1UL << 0))  ) 
+N  {
+N    while (ITM->PORT[0].u32 == 0);
+X    while (((ITM_Type *) (0xE0000000))->PORT[0].u32 == 0);
+N    ITM->PORT[0].u8 = (uint8_t) ch;
+X    ((ITM_Type *) (0xE0000000))->PORT[0].u8 = (uint8_t) ch;
+N  }  
+N  return (ch);
+N}
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif /* __CM3_CORE_H__ */
+N
+N/*lint -restore */
+L 49 "..\..\Source\inc\SCM3.h" 2
+N#include <stdint.h>
+N
+N
+N
+N/** 
+N  * @brief System Control
+N  */
+N
+Ntypedef struct 
+N{
+N     __IO uint32_t  BOOTSEL;            //no use
+X     volatile uint32_t  BOOTSEL;            
+N     __IO uint32_t  fill1[4];
+X     volatile uint32_t  fill1[4];
+N     __IO uint32_t  REMAPPER;           //remapper && FLASH Data base
+X     volatile uint32_t  REMAPPER;           
+N     __IO uint32_t  GLBRESET;           // reset mcu
+X     volatile uint32_t  GLBRESET;           
+N     
+N} SYSCTL_TypeDef;
+N
+N
+N
+N/**
+N  * @}
+N  */
+N  
+N/** @addtogroup Peripheral_memory_map
+N  * @{
+N  */
+N#define BOOT_ROM_BASE        	((uint32_t)0x00000000)
+N//#define SDRAM_BASE        		((uint32_t)0x10000000) /*!< Peripheral base address in the alias region */
+N
+N#define SRAM_BB_BASE          ((uint32_t)0x1ffe0000) /*!< SRAM base address in the alias region */
+N#define SRAM_BASE             ((uint32_t)0x20000000) /*!< Peripheral base address in the bit-band region */
+N#define DMAC_BASE       			((uint32_t)0x40000000) /*!< SRAM base address in the bit-band region */
+N#define SDR_CTRL_BASE       	((uint32_t)0x40001000)
+N
+N/*!< Peripheral memory map */
+N#define PERIPH_BASE       		((uint32_t)0x40010000)
+N#define APBPERIPH_BASE       		PERIPH_BASE
+N
+N#define TIMA_BASE             (APBPERIPH_BASE + 0x0000)
+N#define TIMB_BASE             (APBPERIPH_BASE + 0x1000)
+N
+N#define GPIOA_BASE            (APBPERIPH_BASE + 0x2000)
+N#define GPIOB_BASE            (APBPERIPH_BASE + 0x3000)
+N#define GPIOC_BASE            (APBPERIPH_BASE + 0x4000)
+N
+N#define WCDG_BASE							(APBPERIPH_BASE + 0x5000)
+N#define Sysctrl_BASE					(APBPERIPH_BASE + 0x6000)
+N#define USART_BASE						(APBPERIPH_BASE + 0x7000)
+N#define SPI_FLASH_BASE				(APBPERIPH_BASE + 0x8000)
+N
+N#define SDRAM_USER_BASE       ((uint32_t)0x60000000)
+N
+N/**
+N  * @}
+N  */
+N  
+N/** @addtogroup Peripheral_declaration
+N  * @{
+N  */  
+N	
+N	
+N#define	SYSCTRL							((SYSCTL_TypeDef*)      Sysctrl_BASE)
+N#define SPI_FLASH 					((SPI_FLASH_TypeDef *)  SPI_FLASH_BASE)
+N#define	DMAC 							  ((DMAC_TypeDef *)       DMAC_BASE)
+N#define TIMA                ((TIM_TypeDef *) 	    	TIMA_BASE)
+N#define TIMB                ((TIM_TypeDef *) 	    	TIMB_BASE)
+N#define WWDG 							  ((WWDG_TypeDef *)       WCDG_BASE)
+N#define GPIOA               ((GPIO_TypeDef *)       GPIOA_BASE)
+N#define GPIOB               ((GPIO_TypeDef *)       GPIOB_BASE)
+N#define GPIOC               ((GPIO_TypeDef *)       GPIOC_BASE)
+N#define USART              	((USART_TypeDef *) 			USART_BASE)
+N
+N
+N
+N
+N
+N/******************************************************************************/
+N/*                                                                            */
+N/*                               SystemTick                                   */
+N/*                                                                            */
+N/******************************************************************************/
+N
+N/*****************  Bit definition for SysTick_CTRL register  *****************/
+N#define  SysTick_CTRL_ENABLE                 ((uint32_t)0x00000001)        /*!< Counter enable */
+N#define  SysTick_CTRL_TICKINT                ((uint32_t)0x00000002)        /*!< Counting down to 0 pends the SysTick handler */
+N#define  SysTick_CTRL_CLKSOURCE              ((uint32_t)0x00000004)        /*!< Clock source */
+N#define  SysTick_CTRL_COUNTFLAG              ((uint32_t)0x00010000)        /*!< Count Flag */
+N
+N/*****************  Bit definition for SysTick_LOAD register  *****************/
+N#define  SysTick_LOAD_RELOAD                 ((uint32_t)0x00FFFFFF)        /*!< Value to load into the SysTick Current Value Register when the counter reaches 0 */
+N
+N/*****************  Bit definition for SysTick_VAL register  ******************/
+N#define  SysTick_VAL_CURRENT                 ((uint32_t)0x00FFFFFF)        /*!< Current value at the time the register is accessed */
+N
+N/*****************  Bit definition for SysTick_CALIB register  ****************/
+N#define  SysTick_CALIB_TENMS                 ((uint32_t)0x00FFFFFF)        /*!< Reload value to use for 10ms timing */
+N#define  SysTick_CALIB_SKEW                  ((uint32_t)0x40000000)        /*!< Calibration value is not exactly 10 ms */
+N#define  SysTick_CALIB_NOREF                 ((uint32_t)0x80000000)        /*!< The reference clock is not provided */
+N
+N/******************************************************************************/
+N/*                                                                            */
+N/*                  Nested Vectored Interrupt Controller                      */
+N/*                                                                            */
+N/******************************************************************************/
+N
+N/******************  Bit definition for NVIC_ISER register  *******************/
+N#define  NVIC_ISER_SETENA                    ((uint32_t)0xFFFFFFFF)        /*!< Interrupt set enable bits */
+N#define  NVIC_ISER_SETENA_0                  ((uint32_t)0x00000001)        /*!< bit 0 */
+N#define  NVIC_ISER_SETENA_1                  ((uint32_t)0x00000002)        /*!< bit 1 */
+N#define  NVIC_ISER_SETENA_2                  ((uint32_t)0x00000004)        /*!< bit 2 */
+N#define  NVIC_ISER_SETENA_3                  ((uint32_t)0x00000008)        /*!< bit 3 */
+N#define  NVIC_ISER_SETENA_4                  ((uint32_t)0x00000010)        /*!< bit 4 */
+N#define  NVIC_ISER_SETENA_5                  ((uint32_t)0x00000020)        /*!< bit 5 */
+N#define  NVIC_ISER_SETENA_6                  ((uint32_t)0x00000040)        /*!< bit 6 */
+N#define  NVIC_ISER_SETENA_7                  ((uint32_t)0x00000080)        /*!< bit 7 */
+N#define  NVIC_ISER_SETENA_8                  ((uint32_t)0x00000100)        /*!< bit 8 */
+N#define  NVIC_ISER_SETENA_9                  ((uint32_t)0x00000200)        /*!< bit 9 */
+N#define  NVIC_ISER_SETENA_10                 ((uint32_t)0x00000400)        /*!< bit 10 */
+N#define  NVIC_ISER_SETENA_11                 ((uint32_t)0x00000800)        /*!< bit 11 */
+N#define  NVIC_ISER_SETENA_12                 ((uint32_t)0x00001000)        /*!< bit 12 */
+N#define  NVIC_ISER_SETENA_13                 ((uint32_t)0x00002000)        /*!< bit 13 */
+N#define  NVIC_ISER_SETENA_14                 ((uint32_t)0x00004000)        /*!< bit 14 */
+N#define  NVIC_ISER_SETENA_15                 ((uint32_t)0x00008000)        /*!< bit 15 */
+N#define  NVIC_ISER_SETENA_16                 ((uint32_t)0x00010000)        /*!< bit 16 */
+N#define  NVIC_ISER_SETENA_17                 ((uint32_t)0x00020000)        /*!< bit 17 */
+N#define  NVIC_ISER_SETENA_18                 ((uint32_t)0x00040000)        /*!< bit 18 */
+N#define  NVIC_ISER_SETENA_19                 ((uint32_t)0x00080000)        /*!< bit 19 */
+N#define  NVIC_ISER_SETENA_20                 ((uint32_t)0x00100000)        /*!< bit 20 */
+N#define  NVIC_ISER_SETENA_21                 ((uint32_t)0x00200000)        /*!< bit 21 */
+N#define  NVIC_ISER_SETENA_22                 ((uint32_t)0x00400000)        /*!< bit 22 */
+N#define  NVIC_ISER_SETENA_23                 ((uint32_t)0x00800000)        /*!< bit 23 */
+N#define  NVIC_ISER_SETENA_24                 ((uint32_t)0x01000000)        /*!< bit 24 */
+N#define  NVIC_ISER_SETENA_25                 ((uint32_t)0x02000000)        /*!< bit 25 */
+N#define  NVIC_ISER_SETENA_26                 ((uint32_t)0x04000000)        /*!< bit 26 */
+N#define  NVIC_ISER_SETENA_27                 ((uint32_t)0x08000000)        /*!< bit 27 */
+N#define  NVIC_ISER_SETENA_28                 ((uint32_t)0x10000000)        /*!< bit 28 */
+N#define  NVIC_ISER_SETENA_29                 ((uint32_t)0x20000000)        /*!< bit 29 */
+N#define  NVIC_ISER_SETENA_30                 ((uint32_t)0x40000000)        /*!< bit 30 */
+N#define  NVIC_ISER_SETENA_31                 ((uint32_t)0x80000000)        /*!< bit 31 */
+N
+N/******************  Bit definition for NVIC_ICER register  *******************/
+N#define  NVIC_ICER_CLRENA                   ((uint32_t)0xFFFFFFFF)        /*!< Interrupt clear-enable bits */
+N#define  NVIC_ICER_CLRENA_0                  ((uint32_t)0x00000001)        /*!< bit 0 */
+N#define  NVIC_ICER_CLRENA_1                  ((uint32_t)0x00000002)        /*!< bit 1 */
+N#define  NVIC_ICER_CLRENA_2                  ((uint32_t)0x00000004)        /*!< bit 2 */
+N#define  NVIC_ICER_CLRENA_3                  ((uint32_t)0x00000008)        /*!< bit 3 */
+N#define  NVIC_ICER_CLRENA_4                  ((uint32_t)0x00000010)        /*!< bit 4 */
+N#define  NVIC_ICER_CLRENA_5                  ((uint32_t)0x00000020)        /*!< bit 5 */
+N#define  NVIC_ICER_CLRENA_6                  ((uint32_t)0x00000040)        /*!< bit 6 */
+N#define  NVIC_ICER_CLRENA_7                  ((uint32_t)0x00000080)        /*!< bit 7 */
+N#define  NVIC_ICER_CLRENA_8                  ((uint32_t)0x00000100)        /*!< bit 8 */
+N#define  NVIC_ICER_CLRENA_9                  ((uint32_t)0x00000200)        /*!< bit 9 */
+N#define  NVIC_ICER_CLRENA_10                 ((uint32_t)0x00000400)        /*!< bit 10 */
+N#define  NVIC_ICER_CLRENA_11                 ((uint32_t)0x00000800)        /*!< bit 11 */
+N#define  NVIC_ICER_CLRENA_12                 ((uint32_t)0x00001000)        /*!< bit 12 */
+N#define  NVIC_ICER_CLRENA_13                 ((uint32_t)0x00002000)        /*!< bit 13 */
+N#define  NVIC_ICER_CLRENA_14                 ((uint32_t)0x00004000)        /*!< bit 14 */
+N#define  NVIC_ICER_CLRENA_15                 ((uint32_t)0x00008000)        /*!< bit 15 */
+N#define  NVIC_ICER_CLRENA_16                 ((uint32_t)0x00010000)        /*!< bit 16 */
+N#define  NVIC_ICER_CLRENA_17                 ((uint32_t)0x00020000)        /*!< bit 17 */
+N#define  NVIC_ICER_CLRENA_18                 ((uint32_t)0x00040000)        /*!< bit 18 */
+N#define  NVIC_ICER_CLRENA_19                 ((uint32_t)0x00080000)        /*!< bit 19 */
+N#define  NVIC_ICER_CLRENA_20                 ((uint32_t)0x00100000)        /*!< bit 20 */
+N#define  NVIC_ICER_CLRENA_21                 ((uint32_t)0x00200000)        /*!< bit 21 */
+N#define  NVIC_ICER_CLRENA_22                 ((uint32_t)0x00400000)        /*!< bit 22 */
+N#define  NVIC_ICER_CLRENA_23                 ((uint32_t)0x00800000)        /*!< bit 23 */
+N#define  NVIC_ICER_CLRENA_24                 ((uint32_t)0x01000000)        /*!< bit 24 */
+N#define  NVIC_ICER_CLRENA_25                 ((uint32_t)0x02000000)        /*!< bit 25 */
+N#define  NVIC_ICER_CLRENA_26                 ((uint32_t)0x04000000)        /*!< bit 26 */
+N#define  NVIC_ICER_CLRENA_27                 ((uint32_t)0x08000000)        /*!< bit 27 */
+N#define  NVIC_ICER_CLRENA_28                 ((uint32_t)0x10000000)        /*!< bit 28 */
+N#define  NVIC_ICER_CLRENA_29                 ((uint32_t)0x20000000)        /*!< bit 29 */
+N#define  NVIC_ICER_CLRENA_30                 ((uint32_t)0x40000000)        /*!< bit 30 */
+N#define  NVIC_ICER_CLRENA_31                 ((uint32_t)0x80000000)        /*!< bit 31 */
+N
+N/******************  Bit definition for NVIC_ISPR register  *******************/
+N#define  NVIC_ISPR_SETPEND                   ((uint32_t)0xFFFFFFFF)        /*!< Interrupt set-pending bits */
+N#define  NVIC_ISPR_SETPEND_0                 ((uint32_t)0x00000001)        /*!< bit 0 */
+N#define  NVIC_ISPR_SETPEND_1                 ((uint32_t)0x00000002)        /*!< bit 1 */
+N#define  NVIC_ISPR_SETPEND_2                 ((uint32_t)0x00000004)        /*!< bit 2 */
+N#define  NVIC_ISPR_SETPEND_3                 ((uint32_t)0x00000008)        /*!< bit 3 */
+N#define  NVIC_ISPR_SETPEND_4                 ((uint32_t)0x00000010)        /*!< bit 4 */
+N#define  NVIC_ISPR_SETPEND_5                 ((uint32_t)0x00000020)        /*!< bit 5 */
+N#define  NVIC_ISPR_SETPEND_6                 ((uint32_t)0x00000040)        /*!< bit 6 */
+N#define  NVIC_ISPR_SETPEND_7                 ((uint32_t)0x00000080)        /*!< bit 7 */
+N#define  NVIC_ISPR_SETPEND_8                 ((uint32_t)0x00000100)        /*!< bit 8 */
+N#define  NVIC_ISPR_SETPEND_9                 ((uint32_t)0x00000200)        /*!< bit 9 */
+N#define  NVIC_ISPR_SETPEND_10                ((uint32_t)0x00000400)        /*!< bit 10 */
+N#define  NVIC_ISPR_SETPEND_11                ((uint32_t)0x00000800)        /*!< bit 11 */
+N#define  NVIC_ISPR_SETPEND_12                ((uint32_t)0x00001000)        /*!< bit 12 */
+N#define  NVIC_ISPR_SETPEND_13                ((uint32_t)0x00002000)        /*!< bit 13 */
+N#define  NVIC_ISPR_SETPEND_14                ((uint32_t)0x00004000)        /*!< bit 14 */
+N#define  NVIC_ISPR_SETPEND_15                ((uint32_t)0x00008000)        /*!< bit 15 */
+N#define  NVIC_ISPR_SETPEND_16                ((uint32_t)0x00010000)        /*!< bit 16 */
+N#define  NVIC_ISPR_SETPEND_17                ((uint32_t)0x00020000)        /*!< bit 17 */
+N#define  NVIC_ISPR_SETPEND_18                ((uint32_t)0x00040000)        /*!< bit 18 */
+N#define  NVIC_ISPR_SETPEND_19                ((uint32_t)0x00080000)        /*!< bit 19 */
+N#define  NVIC_ISPR_SETPEND_20                ((uint32_t)0x00100000)        /*!< bit 20 */
+N#define  NVIC_ISPR_SETPEND_21                ((uint32_t)0x00200000)        /*!< bit 21 */
+N#define  NVIC_ISPR_SETPEND_22                ((uint32_t)0x00400000)        /*!< bit 22 */
+N#define  NVIC_ISPR_SETPEND_23                ((uint32_t)0x00800000)        /*!< bit 23 */
+N#define  NVIC_ISPR_SETPEND_24                ((uint32_t)0x01000000)        /*!< bit 24 */
+N#define  NVIC_ISPR_SETPEND_25                ((uint32_t)0x02000000)        /*!< bit 25 */
+N#define  NVIC_ISPR_SETPEND_26                ((uint32_t)0x04000000)        /*!< bit 26 */
+N#define  NVIC_ISPR_SETPEND_27                ((uint32_t)0x08000000)        /*!< bit 27 */
+N#define  NVIC_ISPR_SETPEND_28                ((uint32_t)0x10000000)        /*!< bit 28 */
+N#define  NVIC_ISPR_SETPEND_29                ((uint32_t)0x20000000)        /*!< bit 29 */
+N#define  NVIC_ISPR_SETPEND_30                ((uint32_t)0x40000000)        /*!< bit 30 */
+N#define  NVIC_ISPR_SETPEND_31                ((uint32_t)0x80000000)        /*!< bit 31 */
+N
+N/******************  Bit definition for NVIC_ICPR register  *******************/
+N#define  NVIC_ICPR_CLRPEND                   ((uint32_t)0xFFFFFFFF)        /*!< Interrupt clear-pending bits */
+N#define  NVIC_ICPR_CLRPEND_0                 ((uint32_t)0x00000001)        /*!< bit 0 */
+N#define  NVIC_ICPR_CLRPEND_1                 ((uint32_t)0x00000002)        /*!< bit 1 */
+N#define  NVIC_ICPR_CLRPEND_2                 ((uint32_t)0x00000004)        /*!< bit 2 */
+N#define  NVIC_ICPR_CLRPEND_3                 ((uint32_t)0x00000008)        /*!< bit 3 */
+N#define  NVIC_ICPR_CLRPEND_4                 ((uint32_t)0x00000010)        /*!< bit 4 */
+N#define  NVIC_ICPR_CLRPEND_5                 ((uint32_t)0x00000020)        /*!< bit 5 */
+N#define  NVIC_ICPR_CLRPEND_6                 ((uint32_t)0x00000040)        /*!< bit 6 */
+N#define  NVIC_ICPR_CLRPEND_7                 ((uint32_t)0x00000080)        /*!< bit 7 */
+N#define  NVIC_ICPR_CLRPEND_8                 ((uint32_t)0x00000100)        /*!< bit 8 */
+N#define  NVIC_ICPR_CLRPEND_9                 ((uint32_t)0x00000200)        /*!< bit 9 */
+N#define  NVIC_ICPR_CLRPEND_10                ((uint32_t)0x00000400)        /*!< bit 10 */
+N#define  NVIC_ICPR_CLRPEND_11                ((uint32_t)0x00000800)        /*!< bit 11 */
+N#define  NVIC_ICPR_CLRPEND_12                ((uint32_t)0x00001000)        /*!< bit 12 */
+N#define  NVIC_ICPR_CLRPEND_13                ((uint32_t)0x00002000)        /*!< bit 13 */
+N#define  NVIC_ICPR_CLRPEND_14                ((uint32_t)0x00004000)        /*!< bit 14 */
+N#define  NVIC_ICPR_CLRPEND_15                ((uint32_t)0x00008000)        /*!< bit 15 */
+N#define  NVIC_ICPR_CLRPEND_16                ((uint32_t)0x00010000)        /*!< bit 16 */
+N#define  NVIC_ICPR_CLRPEND_17                ((uint32_t)0x00020000)        /*!< bit 17 */
+N#define  NVIC_ICPR_CLRPEND_18                ((uint32_t)0x00040000)        /*!< bit 18 */
+N#define  NVIC_ICPR_CLRPEND_19                ((uint32_t)0x00080000)        /*!< bit 19 */
+N#define  NVIC_ICPR_CLRPEND_20                ((uint32_t)0x00100000)        /*!< bit 20 */
+N#define  NVIC_ICPR_CLRPEND_21                ((uint32_t)0x00200000)        /*!< bit 21 */
+N#define  NVIC_ICPR_CLRPEND_22                ((uint32_t)0x00400000)        /*!< bit 22 */
+N#define  NVIC_ICPR_CLRPEND_23                ((uint32_t)0x00800000)        /*!< bit 23 */
+N#define  NVIC_ICPR_CLRPEND_24                ((uint32_t)0x01000000)        /*!< bit 24 */
+N#define  NVIC_ICPR_CLRPEND_25                ((uint32_t)0x02000000)        /*!< bit 25 */
+N#define  NVIC_ICPR_CLRPEND_26                ((uint32_t)0x04000000)        /*!< bit 26 */
+N#define  NVIC_ICPR_CLRPEND_27                ((uint32_t)0x08000000)        /*!< bit 27 */
+N#define  NVIC_ICPR_CLRPEND_28                ((uint32_t)0x10000000)        /*!< bit 28 */
+N#define  NVIC_ICPR_CLRPEND_29                ((uint32_t)0x20000000)        /*!< bit 29 */
+N#define  NVIC_ICPR_CLRPEND_30                ((uint32_t)0x40000000)        /*!< bit 30 */
+N#define  NVIC_ICPR_CLRPEND_31                ((uint32_t)0x80000000)        /*!< bit 31 */
+N
+N/******************  Bit definition for NVIC_IABR register  *******************/
+N#define  NVIC_IABR_ACTIVE                    ((uint32_t)0xFFFFFFFF)        /*!< Interrupt active flags */
+N#define  NVIC_IABR_ACTIVE_0                  ((uint32_t)0x00000001)        /*!< bit 0 */
+N#define  NVIC_IABR_ACTIVE_1                  ((uint32_t)0x00000002)        /*!< bit 1 */
+N#define  NVIC_IABR_ACTIVE_2                  ((uint32_t)0x00000004)        /*!< bit 2 */
+N#define  NVIC_IABR_ACTIVE_3                  ((uint32_t)0x00000008)        /*!< bit 3 */
+N#define  NVIC_IABR_ACTIVE_4                  ((uint32_t)0x00000010)        /*!< bit 4 */
+N#define  NVIC_IABR_ACTIVE_5                  ((uint32_t)0x00000020)        /*!< bit 5 */
+N#define  NVIC_IABR_ACTIVE_6                  ((uint32_t)0x00000040)        /*!< bit 6 */
+N#define  NVIC_IABR_ACTIVE_7                  ((uint32_t)0x00000080)        /*!< bit 7 */
+N#define  NVIC_IABR_ACTIVE_8                  ((uint32_t)0x00000100)        /*!< bit 8 */
+N#define  NVIC_IABR_ACTIVE_9                  ((uint32_t)0x00000200)        /*!< bit 9 */
+N#define  NVIC_IABR_ACTIVE_10                 ((uint32_t)0x00000400)        /*!< bit 10 */
+N#define  NVIC_IABR_ACTIVE_11                 ((uint32_t)0x00000800)        /*!< bit 11 */
+N#define  NVIC_IABR_ACTIVE_12                 ((uint32_t)0x00001000)        /*!< bit 12 */
+N#define  NVIC_IABR_ACTIVE_13                 ((uint32_t)0x00002000)        /*!< bit 13 */
+N#define  NVIC_IABR_ACTIVE_14                 ((uint32_t)0x00004000)        /*!< bit 14 */
+N#define  NVIC_IABR_ACTIVE_15                 ((uint32_t)0x00008000)        /*!< bit 15 */
+N#define  NVIC_IABR_ACTIVE_16                 ((uint32_t)0x00010000)        /*!< bit 16 */
+N#define  NVIC_IABR_ACTIVE_17                 ((uint32_t)0x00020000)        /*!< bit 17 */
+N#define  NVIC_IABR_ACTIVE_18                 ((uint32_t)0x00040000)        /*!< bit 18 */
+N#define  NVIC_IABR_ACTIVE_19                 ((uint32_t)0x00080000)        /*!< bit 19 */
+N#define  NVIC_IABR_ACTIVE_20                 ((uint32_t)0x00100000)        /*!< bit 20 */
+N#define  NVIC_IABR_ACTIVE_21                 ((uint32_t)0x00200000)        /*!< bit 21 */
+N#define  NVIC_IABR_ACTIVE_22                 ((uint32_t)0x00400000)        /*!< bit 22 */
+N#define  NVIC_IABR_ACTIVE_23                 ((uint32_t)0x00800000)        /*!< bit 23 */
+N#define  NVIC_IABR_ACTIVE_24                 ((uint32_t)0x01000000)        /*!< bit 24 */
+N#define  NVIC_IABR_ACTIVE_25                 ((uint32_t)0x02000000)        /*!< bit 25 */
+N#define  NVIC_IABR_ACTIVE_26                 ((uint32_t)0x04000000)        /*!< bit 26 */
+N#define  NVIC_IABR_ACTIVE_27                 ((uint32_t)0x08000000)        /*!< bit 27 */
+N#define  NVIC_IABR_ACTIVE_28                 ((uint32_t)0x10000000)        /*!< bit 28 */
+N#define  NVIC_IABR_ACTIVE_29                 ((uint32_t)0x20000000)        /*!< bit 29 */
+N#define  NVIC_IABR_ACTIVE_30                 ((uint32_t)0x40000000)        /*!< bit 30 */
+N#define  NVIC_IABR_ACTIVE_31                 ((uint32_t)0x80000000)        /*!< bit 31 */
+N
+N/******************  Bit definition for NVIC_PRI0 register  *******************/
+N#define  NVIC_IPR0_PRI_0                     ((uint32_t)0x000000FF)        /*!< Priority of interrupt 0 */
+N#define  NVIC_IPR0_PRI_1                     ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 1 */
+N#define  NVIC_IPR0_PRI_2                     ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 2 */
+N#define  NVIC_IPR0_PRI_3                     ((uint32_t)0xFF000000)        /*!< Priority of interrupt 3 */
+N
+N/******************  Bit definition for NVIC_PRI1 register  *******************/
+N#define  NVIC_IPR1_PRI_4                     ((uint32_t)0x000000FF)        /*!< Priority of interrupt 4 */
+N#define  NVIC_IPR1_PRI_5                     ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 5 */
+N#define  NVIC_IPR1_PRI_6                     ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 6 */
+N#define  NVIC_IPR1_PRI_7                     ((uint32_t)0xFF000000)        /*!< Priority of interrupt 7 */
+N
+N/******************  Bit definition for NVIC_PRI2 register  *******************/
+N#define  NVIC_IPR2_PRI_8                     ((uint32_t)0x000000FF)        /*!< Priority of interrupt 8 */
+N#define  NVIC_IPR2_PRI_9                     ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 9 */
+N#define  NVIC_IPR2_PRI_10                    ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 10 */
+N#define  NVIC_IPR2_PRI_11                    ((uint32_t)0xFF000000)        /*!< Priority of interrupt 11 */
+N
+N/******************  Bit definition for NVIC_PRI3 register  *******************/
+N#define  NVIC_IPR3_PRI_12                    ((uint32_t)0x000000FF)        /*!< Priority of interrupt 12 */
+N#define  NVIC_IPR3_PRI_13                    ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 13 */
+N#define  NVIC_IPR3_PRI_14                    ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 14 */
+N#define  NVIC_IPR3_PRI_15                    ((uint32_t)0xFF000000)        /*!< Priority of interrupt 15 */
+N
+N/******************  Bit definition for NVIC_PRI4 register  *******************/
+N#define  NVIC_IPR4_PRI_16                    ((uint32_t)0x000000FF)        /*!< Priority of interrupt 16 */
+N#define  NVIC_IPR4_PRI_17                    ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 17 */
+N#define  NVIC_IPR4_PRI_18                    ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 18 */
+N#define  NVIC_IPR4_PRI_19                    ((uint32_t)0xFF000000)        /*!< Priority of interrupt 19 */
+N
+N/******************  Bit definition for NVIC_PRI5 register  *******************/
+N#define  NVIC_IPR5_PRI_20                    ((uint32_t)0x000000FF)        /*!< Priority of interrupt 20 */
+N#define  NVIC_IPR5_PRI_21                    ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 21 */
+N#define  NVIC_IPR5_PRI_22                    ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 22 */
+N#define  NVIC_IPR5_PRI_23                    ((uint32_t)0xFF000000)        /*!< Priority of interrupt 23 */
+N
+N/******************  Bit definition for NVIC_PRI6 register  *******************/
+N#define  NVIC_IPR6_PRI_24                    ((uint32_t)0x000000FF)        /*!< Priority of interrupt 24 */
+N#define  NVIC_IPR6_PRI_25                    ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 25 */
+N#define  NVIC_IPR6_PRI_26                    ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 26 */
+N#define  NVIC_IPR6_PRI_27                    ((uint32_t)0xFF000000)        /*!< Priority of interrupt 27 */
+N
+N/******************  Bit definition for NVIC_PRI7 register  *******************/
+N#define  NVIC_IPR7_PRI_28                    ((uint32_t)0x000000FF)        /*!< Priority of interrupt 28 */
+N#define  NVIC_IPR7_PRI_29                    ((uint32_t)0x0000FF00)        /*!< Priority of interrupt 29 */
+N#define  NVIC_IPR7_PRI_30                    ((uint32_t)0x00FF0000)        /*!< Priority of interrupt 30 */
+N#define  NVIC_IPR7_PRI_31                    ((uint32_t)0xFF000000)        /*!< Priority of interrupt 31 */
+N
+N/******************  Bit definition for SCB_CPUID register  *******************/
+N#define  SCB_CPUID_REVISION                  ((uint32_t)0x0000000F)        /*!< Implementation defined revision number */
+N#define  SCB_CPUID_PARTNO                    ((uint32_t)0x0000FFF0)        /*!< Number of processor within family */
+N#define  SCB_CPUID_Constant                  ((uint32_t)0x000F0000)        /*!< Reads as 0x0F */
+N#define  SCB_CPUID_VARIANT                   ((uint32_t)0x00F00000)        /*!< Implementation defined variant number */
+N#define  SCB_CPUID_IMPLEMENTER               ((uint32_t)0xFF000000)        /*!< Implementer code. ARM is 0x41 */
+N
+N/*******************  Bit definition for SCB_ICSR register  *******************/
+N#define  SCB_ICSR_VECTACTIVE                 ((uint32_t)0x000001FF)        /*!< Active ISR number field */
+N#define  SCB_ICSR_RETTOBASE                  ((uint32_t)0x00000800)        /*!< All active exceptions minus the IPSR_current_exception yields the empty set */
+N#define  SCB_ICSR_VECTPENDING                ((uint32_t)0x003FF000)        /*!< Pending ISR number field */
+N#define  SCB_ICSR_ISRPENDING                 ((uint32_t)0x00400000)        /*!< Interrupt pending flag */
+N#define  SCB_ICSR_ISRPREEMPT                 ((uint32_t)0x00800000)        /*!< It indicates that a pending interrupt becomes active in the next running cycle */
+N#define  SCB_ICSR_PENDSTCLR                  ((uint32_t)0x02000000)        /*!< Clear pending SysTick bit */
+N#define  SCB_ICSR_PENDSTSET                  ((uint32_t)0x04000000)        /*!< Set pending SysTick bit */
+N#define  SCB_ICSR_PENDSVCLR                  ((uint32_t)0x08000000)        /*!< Clear pending pendSV bit */
+N#define  SCB_ICSR_PENDSVSET                  ((uint32_t)0x10000000)        /*!< Set pending pendSV bit */
+N#define  SCB_ICSR_NMIPENDSET                 ((uint32_t)0x80000000)        /*!< Set pending NMI bit */
+N
+N/*******************  Bit definition for SCB_VTOR register  *******************/
+N#define  SCB_VTOR_TBLOFF                     ((uint32_t)0x1FFFFF80)        /*!< Vector table base offset field */
+N#define  SCB_VTOR_TBLBASE                    ((uint32_t)0x20000000)        /*!< Table base in code(0) or RAM(1) */
+N
+N/*!<*****************  Bit definition for SCB_AIRCR register  *******************/
+N#define  SCB_AIRCR_VECTRESET                 ((uint32_t)0x00000001)        /*!< System Reset bit */
+N#define  SCB_AIRCR_VECTCLRACTIVE             ((uint32_t)0x00000002)        /*!< Clear active vector bit */
+N#define  SCB_AIRCR_SYSRESETREQ               ((uint32_t)0x00000004)        /*!< Requests chip control logic to generate a reset */
+N
+N#define  SCB_AIRCR_PRIGROUP                  ((uint32_t)0x00000700)        /*!< PRIGROUP[2:0] bits (Priority group) */
+N#define  SCB_AIRCR_PRIGROUP_0                ((uint32_t)0x00000100)        /*!< Bit 0 */
+N#define  SCB_AIRCR_PRIGROUP_1                ((uint32_t)0x00000200)        /*!< Bit 1 */
+N#define  SCB_AIRCR_PRIGROUP_2                ((uint32_t)0x00000400)        /*!< Bit 2  */
+N
+N/* prority group configuration */
+N#define  SCB_AIRCR_PRIGROUP0                 ((uint32_t)0x00000000)        /*!< Priority group=0 (7 bits of pre-emption priority, 1 bit of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP1                 ((uint32_t)0x00000100)        /*!< Priority group=1 (6 bits of pre-emption priority, 2 bits of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP2                 ((uint32_t)0x00000200)        /*!< Priority group=2 (5 bits of pre-emption priority, 3 bits of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP3                 ((uint32_t)0x00000300)        /*!< Priority group=3 (4 bits of pre-emption priority, 4 bits of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP4                 ((uint32_t)0x00000400)        /*!< Priority group=4 (3 bits of pre-emption priority, 5 bits of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP5                 ((uint32_t)0x00000500)        /*!< Priority group=5 (2 bits of pre-emption priority, 6 bits of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP6                 ((uint32_t)0x00000600)        /*!< Priority group=6 (1 bit of pre-emption priority, 7 bits of subpriority) */
+N#define  SCB_AIRCR_PRIGROUP7                 ((uint32_t)0x00000700)        /*!< Priority group=7 (no pre-emption priority, 8 bits of subpriority) */
+N
+N#define  SCB_AIRCR_ENDIANESS                 ((uint32_t)0x00008000)        /*!< Data endianness bit */
+N#define  SCB_AIRCR_VECTKEY                   ((uint32_t)0xFFFF0000)        /*!< Register key (VECTKEY) - Reads as 0xFA05 (VECTKEYSTAT) */
+N
+N/*******************  Bit definition for SCB_SCR register  ********************/
+N#define  SCB_SCR_SLEEPONEXIT                 ((uint8_t)0x02)               /*!< Sleep on exit bit */
+N#define  SCB_SCR_SLEEPDEEP                   ((uint8_t)0x04)               /*!< Sleep deep bit */
+N#define  SCB_SCR_SEVONPEND                   ((uint8_t)0x10)               /*!< Wake up from WFE */
+N
+N/********************  Bit definition for SCB_CCR register  *******************/
+N#define  SCB_CCR_NONBASETHRDENA              ((uint16_t)0x0001)            /*!< Thread mode can be entered from any level in Handler mode by controlled return value */
+N#define  SCB_CCR_USERSETMPEND                ((uint16_t)0x0002)            /*!< Enables user code to write the Software Trigger Interrupt register to trigger (pend) a Main exception */
+N#define  SCB_CCR_UNALIGN_TRP                 ((uint16_t)0x0008)            /*!< Trap for unaligned access */
+N#define  SCB_CCR_DIV_0_TRP                   ((uint16_t)0x0010)            /*!< Trap on Divide by 0 */
+N#define  SCB_CCR_BFHFNMIGN                   ((uint16_t)0x0100)            /*!< Handlers running at priority -1 and -2 */
+N#define  SCB_CCR_STKALIGN                    ((uint16_t)0x0200)            /*!< On exception entry, the SP used prior to the exception is adjusted to be 8-byte aligned */
+N
+N/*******************  Bit definition for SCB_SHPR register ********************/
+N#define  SCB_SHPR_PRI_N                      ((uint32_t)0x000000FF)        /*!< Priority of system handler 4,8, and 12. Mem Manage, reserved and Debug Monitor */
+N#define  SCB_SHPR_PRI_N1                     ((uint32_t)0x0000FF00)        /*!< Priority of system handler 5,9, and 13. Bus Fault, reserved and reserved */
+N#define  SCB_SHPR_PRI_N2                     ((uint32_t)0x00FF0000)        /*!< Priority of system handler 6,10, and 14. Usage Fault, reserved and PendSV */
+N#define  SCB_SHPR_PRI_N3                     ((uint32_t)0xFF000000)        /*!< Priority of system handler 7,11, and 15. Reserved, SVCall and SysTick */
+N
+N/******************  Bit definition for SCB_SHCSR register  *******************/
+N#define  SCB_SHCSR_MEMFAULTACT               ((uint32_t)0x00000001)        /*!< MemManage is active */
+N#define  SCB_SHCSR_BUSFAULTACT               ((uint32_t)0x00000002)        /*!< BusFault is active */
+N#define  SCB_SHCSR_USGFAULTACT               ((uint32_t)0x00000008)        /*!< UsageFault is active */
+N#define  SCB_SHCSR_SVCALLACT                 ((uint32_t)0x00000080)        /*!< SVCall is active */
+N#define  SCB_SHCSR_MONITORACT                ((uint32_t)0x00000100)        /*!< Monitor is active */
+N#define  SCB_SHCSR_PENDSVACT                 ((uint32_t)0x00000400)        /*!< PendSV is active */
+N#define  SCB_SHCSR_SYSTICKACT                ((uint32_t)0x00000800)        /*!< SysTick is active */
+N#define  SCB_SHCSR_USGFAULTPENDED            ((uint32_t)0x00001000)        /*!< Usage Fault is pended */
+N#define  SCB_SHCSR_MEMFAULTPENDED            ((uint32_t)0x00002000)        /*!< MemManage is pended */
+N#define  SCB_SHCSR_BUSFAULTPENDED            ((uint32_t)0x00004000)        /*!< Bus Fault is pended */
+N#define  SCB_SHCSR_SVCALLPENDED              ((uint32_t)0x00008000)        /*!< SVCall is pended */
+N#define  SCB_SHCSR_MEMFAULTENA               ((uint32_t)0x00010000)        /*!< MemManage enable */
+N#define  SCB_SHCSR_BUSFAULTENA               ((uint32_t)0x00020000)        /*!< Bus Fault enable */
+N#define  SCB_SHCSR_USGFAULTENA               ((uint32_t)0x00040000)        /*!< UsageFault enable */
+N
+N/*******************  Bit definition for SCB_CFSR register  *******************/
+N/*!< MFSR */
+N#define  SCB_CFSR_IACCVIOL                   ((uint32_t)0x00000001)        /*!< Instruction access violation */
+N#define  SCB_CFSR_DACCVIOL                   ((uint32_t)0x00000002)        /*!< Data access violation */
+N#define  SCB_CFSR_MUNSTKERR                  ((uint32_t)0x00000008)        /*!< Unstacking error */
+N#define  SCB_CFSR_MSTKERR                    ((uint32_t)0x00000010)        /*!< Stacking error */
+N#define  SCB_CFSR_MMARVALID                  ((uint32_t)0x00000080)        /*!< Memory Manage Address Register address valid flag */
+N/*!< BFSR */
+N#define  SCB_CFSR_IBUSERR                    ((uint32_t)0x00000100)        /*!< Instruction bus error flag */
+N#define  SCB_CFSR_PRECISERR                  ((uint32_t)0x00000200)        /*!< Precise data bus error */
+N#define  SCB_CFSR_IMPRECISERR                ((uint32_t)0x00000400)        /*!< Imprecise data bus error */
+N#define  SCB_CFSR_UNSTKERR                   ((uint32_t)0x00000800)        /*!< Unstacking error */
+N#define  SCB_CFSR_STKERR                     ((uint32_t)0x00001000)        /*!< Stacking error */
+N#define  SCB_CFSR_BFARVALID                  ((uint32_t)0x00008000)        /*!< Bus Fault Address Register address valid flag */
+N/*!< UFSR */
+N#define  SCB_CFSR_UNDEFINSTR                 ((uint32_t)0x00010000)        /*!< The processor attempt to excecute an undefined instruction */
+N#define  SCB_CFSR_INVSTATE                   ((uint32_t)0x00020000)        /*!< Invalid combination of EPSR and instruction */
+N#define  SCB_CFSR_INVPC                      ((uint32_t)0x00040000)        /*!< Attempt to load EXC_RETURN into pc illegally */
+N#define  SCB_CFSR_NOCP                       ((uint32_t)0x00080000)        /*!< Attempt to use a coprocessor instruction */
+N#define  SCB_CFSR_UNALIGNED                  ((uint32_t)0x01000000)        /*!< Fault occurs when there is an attempt to make an unaligned memory access */
+N#define  SCB_CFSR_DIVBYZERO                  ((uint32_t)0x02000000)        /*!< Fault occurs when SDIV or DIV instruction is used with a divisor of 0 */
+N
+N/*******************  Bit definition for SCB_HFSR register  *******************/
+N#define  SCB_HFSR_VECTTBL                    ((uint32_t)0x00000002)        /*!< Fault occures because of vector table read on exception processing */
+N#define  SCB_HFSR_FORCED                     ((uint32_t)0x40000000)        /*!< Hard Fault activated when a configurable Fault was received and cannot activate */
+N#define  SCB_HFSR_DEBUGEVT                   ((uint32_t)0x80000000)        /*!< Fault related to debug */
+N
+N/*******************  Bit definition for SCB_DFSR register  *******************/
+N#define  SCB_DFSR_HALTED                     ((uint8_t)0x01)               /*!< Halt request flag */
+N#define  SCB_DFSR_BKPT                       ((uint8_t)0x02)               /*!< BKPT flag */
+N#define  SCB_DFSR_DWTTRAP                    ((uint8_t)0x04)               /*!< Data Watchpoint and Trace (DWT) flag */
+N#define  SCB_DFSR_VCATCH                     ((uint8_t)0x08)               /*!< Vector catch flag */
+N#define  SCB_DFSR_EXTERNAL                   ((uint8_t)0x10)               /*!< External debug request flag */
+N
+N/*******************  Bit definition for SCB_MMFAR register  ******************/
+N#define  SCB_MMFAR_ADDRESS                   ((uint32_t)0xFFFFFFFF)        /*!< Mem Manage fault address field */
+N
+N/*******************  Bit definition for SCB_BFAR register  *******************/
+N#define  SCB_BFAR_ADDRESS                    ((uint32_t)0xFFFFFFFF)        /*!< Bus fault address field */
+N
+N/*******************  Bit definition for SCB_afsr register  *******************/
+N#define  SCB_AFSR_IMPDEF                     ((uint32_t)0xFFFFFFFF)        /*!< Implementation defined */
+N
+N
+N
+N/***************** Sys control Register ***************************************/
+N#define SYSCTRL_RESET                   ((uint32_t)0x00000001)              /*!< SYSCTRL_RESET */
+N#define SYSCTRL_REMAP                   ((uint32_t)0x00000001)              /*!< SYSCTRL_RESET */
+N
+N
+N
+N /**
+N  * @}
+N  */ 
+N
+N/** @addtogroup Exported_macro
+N  * @{
+N  */
+N
+N#define SET_BIT(REG, BIT)     ((REG) |= (BIT))
+N
+N#define CLEAR_BIT(REG, BIT)   ((REG) &= ~(BIT))
+N
+N#define READ_BIT(REG, BIT)    ((REG) & (BIT))
+N
+N#define CLEAR_REG(REG)        ((REG) = (0x0))
+N
+N#define WRITE_REG(REG, VAL)   ((REG) = (VAL))
+N
+N#define READ_REG(REG)         ((REG))
+N
+N#define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
+N
+N/**
+N  * @}
+N  */
+N
+N#ifdef __cplusplus
+S}
+N#endif
+N
+N#endif 
+L 35 "..\..\Driver\inc\hyhwUart.h" 2
+N#include "hyTypes.h"
+N/*------------------------------------------------------------------------------
+NTypes and defines:
+N------------------------------------------------------------------------------*/
+N/**
+N * @brief UART IP3106 baud rate enumeration
+N *
+N * The UART IP3106 can be configured for different baud rates.
+N */
+Ntypedef enum hyhwUart_Baudrate_en
+N{
+N  hyhwUart_Baudrate_115200 = 115200,
+N  hyhwUart_Baudrate_57600  = 57600,
+N  hyhwUart_Baudrate_38400  = 38400,
+N  hyhwUart_Baudrate_19200  = 19200,
+N  hyhwUart_Baudrate_9600   = 9600,
+N  hyhwUart_Baudrate_4800   = 4800,
+N  hyhwUart_Baudrate_3600   = 3600,
+N  hyhwUart_Baudrate_2400   = 2400
+N 
+N} hyhwUart_Baudrate_en;
+N
+N/**
+N * @brief UART IP3106 data bits enumeration
+N *
+N * The UART IP3106 can be configured for different data bits length.
+N */
+Ntypedef enum hyhwUart_DataBits_en
+N{
+N  hyhwUart_DataBits_5 = 0x00, 
+N  hyhwUart_DataBits_6 = 0x20, 
+N  hyhwUart_DataBits_7 = 0x40, 
+N  hyhwUart_DataBits_8 = 0x60
+N} hyhwUart_DataBits_en;
+N
+N/**
+N * @brief UART IP3106 stop bits enumeration
+N *
+N * The UART IP3106 can be configured for different stop bit length.
+N */
+Ntypedef enum hyhwUart_StopBits_en
+N{
+N  hyhwUart_StopBits_1 = 0x00, 
+N  hyhwUart_StopBits_2 = 0x08 
+N} hyhwUart_StopBits_en;
+N
+N/**
+N * @brief UART IP3106 parity enumeration
+N *
+N * The UART IP3106 has the ability to configure parity checking.
+N */
+Ntypedef enum hyhwUart_Parity_en
+N{
+N  hyhwUart_Parity_Non      = 0x00, /* parity checking disabled */
+N  hyhwUart_Parity_Odd      = 0x02, /* data+parity bit will have and odd  numer of 1s.*/
+N  hyhwUart_Parity_Even     = 0x06, /* data+parity bit will have and even numer of 1s.*/
+N} hyhwUart_Parity_en;
+N
+N
+N/** @defgroup USART_Interrupt_definition 
+N  * @{
+N  */
+N
+N#define USART_IT_RIM                          ((U16)0x0001)
+N#define USART_IT_CTSM                         ((U16)0x0002)
+N#define USART_IT_DCDM                         ((U16)0x0004)
+N#define USART_IT_DSRM                         ((U16)0x0008)
+N#define USART_IT_RX                           ((U16)0x0010)
+N#define USART_IT_TX                           ((U16)0x0020)
+N#define USART_IT_RT                           ((U16)0x0040)
+N#define USART_IT_FE                           ((U16)0x0080)
+N#define USART_IT_PE                           ((U16)0x0100)
+N#define USART_IT_BE                           ((U16)0x0200)
+N#define USART_IT_OE                           ((U16)0x0400)
+N
+N/** @defgroup USART_CR 
+N  * @{
+N  */
+N#define USART_CR_CTS_EN						  ((U16)0x8000)
+N#define USART_CR_RTS_EN                       ((U16)0x4000)
+N#define USART_CR_RECEIVE_EN                   ((U16)0x0200)
+N#define USART_CR_TRANSMIT_EN                  ((U16)0x0100)
+N#define USART_CR_UART_EN                  	  ((U16)0x0001)
+N
+N/** @defgroup USART_FR  FLAG Register
+N  * @{
+N  */
+N
+N#define USART_FR_TRANSMIT_FIFO_EMPTY          ((U16)0x0080)
+N#define USART_FR_RECEIVE_FIFO_FULL            ((U16)0x0040)
+N#define USART_FR_TRANSMIT_FIFO_FULL        		((U16)0x0020)
+N#define USART_FR_RECEIVE_FIFO_EMPTY           ((U16)0x0010)
+N
+N
+N/** 
+N  * @brief Universal Synchronous Asynchronous Receiver Transmitter
+N  */
+Ntypedef  struct 
+N{
+N	__IO uint32_t     DR;
+X	volatile uint32_t     DR;
+N	__IO uint32_t     RSR_ECR;
+X	volatile uint32_t     RSR_ECR;
+N	__IO uint32_t     RESERVED[(0x018-0x08)/4];
+X	volatile uint32_t     RESERVED[(0x018-0x08)/4];
+N	__IO uint32_t     FR;
+X	volatile uint32_t     FR;
+N	__IO uint32_t     RESERVED1;
+X	volatile uint32_t     RESERVED1;
+N	__IO uint32_t     ILPR;
+X	volatile uint32_t     ILPR;
+N	__IO uint32_t     IBRD;
+X	volatile uint32_t     IBRD;
+N	__IO uint32_t     FBRD;
+X	volatile uint32_t     FBRD;
+N	__IO uint32_t     LCR_H;
+X	volatile uint32_t     LCR_H;
+N	__IO uint32_t     CR;
+X	volatile uint32_t     CR;
+N	__IO uint32_t     IFLS;
+X	volatile uint32_t     IFLS;
+N	__IO uint32_t     IMSC;
+X	volatile uint32_t     IMSC;
+N	__IO uint32_t     RIS;
+X	volatile uint32_t     RIS;
+N	__IO uint32_t     MIS;
+X	volatile uint32_t     MIS;
+N	__IO uint32_t     ICR;
+X	volatile uint32_t     ICR;
+N	__IO uint32_t     DMACR;
+X	volatile uint32_t     DMACR;
+N}  USART_TypeDef ;
+N/*------------------------------------------------------------------------------
+NExported Function protoypes:
+N------------------------------------------------------------------------------*/
+N
+N/**
+N* @brief The UART hyhwUart_Init service function. (IC driver layer)
+N*
+N* This function is used to initialise the UART IP3106. The application
+N* programmer has the ability to setup the UART IP3106 for different
+N* configurations.
+N*
+N* @see                   hyhwUart_Baudrate_en_t
+N* @see                   hyhwUart_DataBits_en_t
+N* @see                   hyhwUart_StopBits_en_t
+N* @see                   hyhwUart_Parity_en_t
+N* @param 	               baudrate : baud rate parameter
+N* @param 	               databits : the number of data bits
+N* @param 	               stopbits : the number of stop bits
+N* @param 	               parity : parity type
+N* @returns               Returns an error status code
+N* @retval                TM_OK : in case of success
+N* @retval                TM_ERR_RESOURCE_OWNED : resource already owned
+N* @retval                TM_LLIC_UART_ERR_OSAL : OSAL error
+N*/
+NU32 hyhwUart_Init(hyhwUart_Baudrate_en baudrate,
+N                                    hyhwUart_DataBits_en databits,
+N                                    hyhwUart_StopBits_en stopbits,
+N                                    hyhwUart_Parity_en   parity);
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart__IntConfig
+N* 功能:	使能或者关闭串口中的某些中断
+N* 参数:	none
+N* 返回:	none
+N*----------------------------------------------------------------------------*/
+Nvoid hyhwUart__IntConfig(U16 USART_IT, FunctionalState NewState);
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_WriteFifo
+N* 功能:	向UART的fifo写入一个字节
+N* 参数:	写入的字节
+N* 返回:	HY_OK		-- 成功
+N*		HY_ERROR	-- 超时
+N*----------------------------------------------------------------------------*/
+NU32 hyhwUart_SendCh(unsigned char ch);
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_IRQ
+N* 功能:	串口中断函数
+N* 参数:	无
+N* 返回:	无
+N*----------------------------------------------------------------------------*/
+Nvoid hyhwUart_IRQ(void);
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_DeInit
+N* 功能:	disable RX and TX
+N* 
+N*----------------------------------------------------------------------------*/
+Nvoid hyhwUart_DeInit(void);
+N
+N
+N#endif /* TM_LLIC_API_UART_H_ */
+N
+N
+N
+N
+L 34 "..\..\Driver\src\hyhwUart.c" 2
+N
+N/*------------------------------------------------------------------------------
+N  Local Types and defines:
+N------------------------------------------------------------------------------*/
+N
+N
+N/*------------------------------------------------------------------------------
+N  Global variables:
+N------------------------------------------------------------------------------*/
+N
+N
+N/*------------------------------------------------------------------------------
+NStatic Variables:
+N------------------------------------------------------------------------------*/
+N
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_Init
+N* 功能:	初始化UART, 应用层可以配置不同的UART参数
+N* 参数:	baudrate	-- UART的波特率
+N*		databits	-- 数据位数
+N*		stopbits	-- 停止位数
+N*		parity		-- 奇偶校验类型
+N* 返回:	HY_OK		-- 成功
+N*		HY_ERROR	-- 超时
+N*----------------------------------------------------------------------------*/
+NU32 hyhwUart_Init(hyhwUart_Baudrate_en baudrate,
+N                                  hyhwUart_DataBits_en databits,
+N                                  hyhwUart_StopBits_en stopbits,
+N                                  hyhwUart_Parity_en   parity)
+N{
+N	U32 div;
+N
+N  USART->CR = 0x0;                                        /* disable UART */
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->CR = 0x0;                                         
+N  div = (int)((HYHW_APB_CLOCK/baudrate) * 1000) / 16;
+X  div = (int)((80000000L/baudrate) * 1000) / 16;
+N	USART->IBRD = div/1000;                                 /* configure baud rate UARTFBRD */
+X	((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->IBRD = div/1000;                                  
+N	USART->FBRD = ((div%1000)*64+500)/1000;                 /* configure baud rate UARTFBRD */
+X	((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->FBRD = ((div%1000)*64+500)/1000;                  
+N	
+N	USART->LCR_H = databits|stopbits|parity;                /*这里把fifo  disable了 */
+X	((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->LCR_H = databits|stopbits|parity;                 
+N	
+N	USART->ICR = 0x0;                                       /* clear IRQ */
+X	((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->ICR = 0x0;                                        
+N  
+N  USART->IMSC = 0 ;                            					 /* 默认关闭所有中断*/
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->IMSC = 0 ;                            					  
+N  
+N  USART->CR = USART_CR_RECEIVE_EN|USART_CR_TRANSMIT_EN|USART_CR_UART_EN|USART_CR_CTS_EN|USART_CR_RTS_EN;                                      /* enable UART */	 
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->CR = ((U16)0x0200)|((U16)0x0100)|((U16)0x0001)|((U16)0x8000)|((U16)0x4000);                                       	 
+N	//USART->CR = USART_CR_RECEIVE_EN|USART_CR_TRANSMIT_EN|USART_CR_UART_EN;                                      /* enable UART */	 
+N  USART->DMACR = 0x02; //DMA RX,TX enable.
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->DMACR = 0x02; 
+N  //hyhwUart__IntConfig(USART_IT_RX, ENABLE);								/* 只打开接收中断 */
+N  
+N	return(HY_OK);  
+X	return(0);  
+N}
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_DeInit
+N* 功能:	disable RX and TX
+N* 
+N*----------------------------------------------------------------------------*/
+Nvoid hyhwUart_DeInit(void)
+N{
+N	
+N  USART->CR = 0x0;                                        /* disable UART */
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->CR = 0x0;                                         
+N 	
+N	USART->ICR = 0x0;                                       /* clear IRQ */
+X	((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->ICR = 0x0;                                        
+N  
+N  USART->IMSC = 0 ;                            					 /* 默认关闭所有中断*/
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->IMSC = 0 ;                            					  
+N  
+N  USART->CR = 0;//USART_CR_RECEIVE_EN|USART_CR_TRANSMIT_EN|USART_CR_UART_EN;                                      /* enable UART */	 
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->CR = 0;
+N  USART->DMACR = 0x02; //DMA RX,TX enable.
+X  ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->DMACR = 0x02; 
+N  //hyhwUart__IntConfig(USART_IT_RX, ENABLE);								/* 只打开接收中断 */
+N  
+N	
+N}
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart__IntConfig
+N* 功能:	使能或者关闭串口中的某些中断
+N* 参数:	none
+N* 返回:	none
+N*----------------------------------------------------------------------------*/
+Nvoid hyhwUart__IntConfig(U16 USART_IT, FunctionalState NewState)
+N{
+N  if (NewState == ENABLE)
+N    USART->IMSC |= USART_IT;
+X    ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->IMSC |= USART_IT;
+N  else
+N    USART->IMSC &= ~USART_IT;
+X    ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->IMSC &= ~USART_IT;
+N}
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_WriteFifo
+N* 功能:	向UART的fifo写入一个字节
+N* 参数:	写入的字节
+N* 返回:	HY_OK		-- 成功
+N*		HY_ERROR	-- 超时
+N*----------------------------------------------------------------------------*/
+NU32 hyhwUart_SendCh(unsigned char ch)
+N{
+N	
+N	while (!((USART->FR)&USART_FR_TRANSMIT_FIFO_EMPTY));                          // wait until the transmit FIFO is empty
+X	while (!((((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->FR)&((U16)0x0080)));                          
+N	USART->DR = ch;	
+X	((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->DR = ch;	
+N	return(HY_OK);
+X	return(0);
+N}	
+N
+N/*-----------------------------------------------------------------------------
+N* 函数:	hyhwUart_IRQ
+N* 功能:	串口中断函数
+N* 参数:	无
+N* 返回:	无
+N*----------------------------------------------------------------------------*/
+Nvoid hyhwUart_IRQ(void)
+N{
+N	U8 ch;
+N	U16 reg_mis;
+N	reg_mis = USART->MIS;
+X	reg_mis = ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->MIS;
+N	if (reg_mis & USART_IT_RX) 
+X	if (reg_mis & ((U16)0x0010)) 
+N  	{
+N    	ch = USART->DR;
+X    	ch = ((USART_TypeDef *) (((uint32_t)0x40010000) + 0x7000))->DR;
+N    	hyhwUart_SendCh(ch);
+N    }
+N}	
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N

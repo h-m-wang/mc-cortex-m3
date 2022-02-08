@@ -1,0 +1,10 @@
+.\obj\hyhw_spiflash.o: ..\..\Driver\src\hyhw_SpiFlash.c
+.\obj\hyhw_spiflash.o: ..\..\Driver\inc\hyTypes.h
+.\obj\hyhw_spiflash.o: ..\..\Driver\inc\BoardSupportPackage.h
+.\obj\hyhw_spiflash.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\hyhw_spiflash.o: ..\..\Driver\inc\hyhw_SpiFlash.h
+.\obj\hyhw_spiflash.o: ..\..\Driver\inc\hyhwSpi.h
+.\obj\hyhw_spiflash.o: ..\..\Source\inc\SCM3.h
+.\obj\hyhw_spiflash.o: ..\..\Source\inc\core_cm3.h
+.\obj\hyhw_spiflash.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\hyhw_spiflash.o: ..\..\Driver\inc\hyhwDma.h

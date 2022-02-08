@@ -1,0 +1,11 @@
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION "ON"
+set_global_assignment -name DEVICE_IO_STANDARD "3.3-V LVCMOS"
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR "ON" -to SWITCH
+read_qip "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./../src/remote_reconf.qip"
+read_qip "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./../src/ram_two_port.qip"
+read_qip "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./../src/pll.qip"

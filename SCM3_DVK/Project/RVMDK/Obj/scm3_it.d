@@ -1,0 +1,11 @@
+.\obj\scm3_it.o: ..\..\Source\src\SCM3_it.c
+.\obj\scm3_it.o: ..\..\Source\inc\SCM3_it.h
+.\obj\scm3_it.o: ..\..\Source\inc\SCM3.h
+.\obj\scm3_it.o: ..\..\Source\inc\core_cm3.h
+.\obj\scm3_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\scm3_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\scm3_it.o: ..\..\Driver\inc\hyhwUart.h
+.\obj\scm3_it.o: ..\..\Driver\inc\hyTypes.h
+.\obj\scm3_it.o: ..\..\Driver\inc\hyhwTimer.h
+.\obj\scm3_it.o: ..\..\Driver\inc\hyhwGpio.h
+.\obj\scm3_it.o: ..\..\Driver\inc\hyhwWatchdog.h

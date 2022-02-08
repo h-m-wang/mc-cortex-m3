@@ -1,0 +1,1208 @@
+> alta::tcl_whisper "Cmd : [alta::prog_path] [alta::prog_version]([alta::prog_subversion])\n"
+Cmd : E:/program/Supra-2021.12/bin/af.exe 2021.12.b0(e71e4ef2)
+> alta::tcl_whisper "Args : [string map {\{ \" \} \"} $tcl_cmd_args]\n"
+Args : -X "set QUARTUS_SDC true" -X "set FITTING timing_more" -X "set FITTER hybrid" -X "set EFFORT highest" -X "set HOLDX default" -X "set SKEW   basic" -X "set MODE QUARTUS" -X "set FLOW ALL" -F ./af_run.tcl
+> 
+> set_seed_rand $SEED
+> set ar_timing_derate ${TIMING_DERATE}
+> 
+> date_time
+Thu Feb 03 16:08:29 2022
+> if { [file exists "./${DESIGN}.pre.asf"] } {
+  alta::tcl_highlight "Using pre-ASF file ${DESIGN}.pre.asf.\n"
+  source "./${DESIGN}.pre.asf"
+}
+Using pre-ASF file top.pre.asf.
+> 
+> eval "load_architect ${no_route} -type ${DEVICE} 1 1 1000 1000"
+Total IO  : 498
+Total Pin : 251/33
+Top array is built.
+Loading architect libraries...
+## CPU time: 0:0:0, REAL time: 0:0:0
+## Memory Usage: 52MB (52MB)
+Loading route table...
+## CPU time: 0:0:34, REAL time: 0:0:36
+## Memory Usage: 830MB (830MB)
+> foreach ip_file $IP_FILES { read_ip $ip_file; }
+> 
+> set LOAD_DB    false
+> set LOAD_PLACE false
+> set LOAD_ROUTE false
+> if { $FLOW == "LOAD" || $FLOW == "CHECK" || $FLOW == "PROBE" } {
+  set LOAD_DB    true
+  set LOAD_PLACE true
+  set LOAD_ROUTE true
+} elseif { $FLOW == "R" || $FLOW == "ROUTE" } {
+  set LOAD_DB    true
+  set LOAD_PLACE true
+}
+> 
+> set ORIGINAL_QSF "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./top.qsf"
+> set ORIGINAL_PIN "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/output_files/top.pin"
+> 
+> #################################################################################
+> 
+> if { $FLOW == "GEN" } {
+  if { ! [info exists CONFIG_BITS] } {
+    set CONFIG_BITS "${RESULT_DIR}/${DESIGN}.bin"
+  }
+  if { [llength $CONFIG_BITS] > 1 } {
+    if { ! [info exists BOOT_BINARY] } {
+      set BOOT_BINARY "${RESULT_DIR}/${DESIGN}_boot.bin"
+    }
+    if { ! [info exists CONFIG_ADDRESSES] } {
+      set CONFIG_ADDRESSES ""
+    }
+    generate_binary -master $BOOT_BINARY -inputs $CONFIG_BITS -address $CONFIG_ADDRESSES
+  } else {
+    set CONFIG_ROOT   [file rootname [lindex $CONFIG_BITS 0]]
+    set SLAVE_RBF     "${CONFIG_ROOT}_slave.rbf"
+    set MASTER_BINARY "${CONFIG_ROOT}_master.bin"
+    if { [file exists [lindex $CONFIG_BITS 0]] } {
+      generate_binary -slave  $SLAVE_RBF     -inputs [lindex $CONFIG_BITS 0] -reverse
+      generate_binary -master $MASTER_BINARY -inputs [lindex $CONFIG_BITS 0]
+    }
+    if { ! [info exists BOOT_BINARY] } {
+      set BOOT_BINARY $MASTER_BINARY
+    }
+  }
+  set PRG_FILE [file rootname $BOOT_BINARY].prg
+  set AS_FILE  [file rootname $BOOT_BINARY]_as.prg
+  generate_programming_file $BOOT_BINARY -erase $ERASE \
+                            -program $PROGRAM -verify $VERIFY -offset $OFFSET \
+                            -prg $PRG_FILE -as $AS_FILE
+  exit
+}
+> 
+> if { $LOAD_DB } {
+  load_db -top ${TOP_MODULE}
+  set sdc "./${DESIGN}.adc"
+  if { ! [file exists $sdc] } { set sdc "./${DESIGN}.sdc"; }
+  if { [file exists $sdc] } { read_sdc $sdc; }
+
+} elseif { $MODE == "QUARTUS" } {
+  set verilog ${DESIGN}.vo
+  set is_migrated false
+  if { ! [file exists $verilog] } {
+    set verilog "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/simulation/modelsim/${DESIGN}.vo"
+    set is_migrated true
+  }
+  if { ! [file exists $verilog] } {
+    error "Can not find design verilog file $verilog"
+  }
+  alta::tcl_highlight "Using design verilog file $verilog.\n"
+  set ret [read_design -top ${TOP_MODULE} -ve $VE_FILE -qsf $ORIGINAL_QSF $verilog -hierachy 1]
+  if { !$ret } { exit -1; }
+
+  set sdc "./${DESIGN}.adc"
+  if { ! [file exists $sdc] } { set sdc "./${DESIGN}.sdc"; }
+  if { ! [file exists $sdc] } {
+    alta::tcl_warn "Can not find design SDC file $sdc"
+  } else {
+    alta::tcl_highlight "Using design SDC file $sdc.\n"
+    read_sdc $sdc
+  }
+
+} elseif { $MODE == "SYNPLICITY" || $MODE == "NATIVE" } {
+  set db_gclk_assignment_level 2
+  set verilog ${DESIGN}.vqm
+  set is_migrated false
+  if { ! [file exists $verilog] } {
+    error "Can not find design verilog file $verilog"
+  }
+
+  set sdc "./${DESIGN}.adc"
+  if { ! [file exists $sdc] } { set sdc "./${DESIGN}.sdc"; }
+  alta::tcl_highlight "Using design verilog file $verilog.\n"
+  if { ! [file exists $sdc] } {
+    alta::tcl_warn "Can not find design SDC file $sdc"
+    set ret [read_design_and_pack -sdc $sdc  -top ${TOP_MODULE} $verilog]
+  } else {
+    alta::tcl_highlight "Using design SDC file $sdc.\n"
+    set ret [read_design_and_pack -top ${TOP_MODULE} $verilog]
+  }
+  if { !$ret } { exit -1; }
+
+} else {
+  error "Unsupported mode $MODE"
+}
+Using design verilog file E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/simulation/modelsim/top.vo.
+Preparing design...
+Info: Rename duplicated module cell alta_mcu_m3 to alta_mcu_m3_duplicated at ./alta_db/flatten.vx:1.
+Info: Connecting auto_signaltap_0|acq_trigger_in[1] to counter[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[2] to counter[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[3] to counter[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[4] to counter[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[5] to data_in[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[6] to data_in[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[7] to data_in[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[8] to data_in[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[9] to data_in[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[10] to data_in[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[11] to data_in[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[12] to data_in[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[13] to data_in[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[14] to data_in[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[15] to data_in[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[16] to data_in[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[17] to data_in[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[18] to data_in[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[19] to data_in[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[20] to data_in[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[21] to data_in[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[22] to data_in[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[23] to data_in[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[24] to data_in[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[25] to data_in[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[26] to data_in[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[27] to data_out[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[28] to data_out[10].
+Info: Connecting auto_signaltap_0|acq_trigger_in[29] to data_out[11].
+Info: Connecting auto_signaltap_0|acq_trigger_in[30] to data_out[12].
+Info: Connecting auto_signaltap_0|acq_trigger_in[31] to data_out[13].
+Info: Connecting auto_signaltap_0|acq_trigger_in[32] to data_out[14].
+Info: Connecting auto_signaltap_0|acq_trigger_in[33] to data_out[15].
+Info: Connecting auto_signaltap_0|acq_trigger_in[34] to data_out[16].
+Info: Connecting auto_signaltap_0|acq_trigger_in[35] to data_out[17].
+Info: Connecting auto_signaltap_0|acq_trigger_in[36] to data_out[18].
+Info: Connecting auto_signaltap_0|acq_trigger_in[37] to data_out[19].
+Info: Connecting auto_signaltap_0|acq_trigger_in[38] to data_out[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[39] to data_out[20].
+Info: Connecting auto_signaltap_0|acq_trigger_in[40] to data_out[21].
+Info: Connecting auto_signaltap_0|acq_trigger_in[41] to data_out[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[42] to data_out[3].
+Info: Connecting auto_signaltap_0|acq_trigger_in[43] to data_out[4].
+Info: Connecting auto_signaltap_0|acq_trigger_in[44] to data_out[5].
+Info: Connecting auto_signaltap_0|acq_trigger_in[45] to data_out[6].
+Info: Connecting auto_signaltap_0|acq_trigger_in[46] to data_out[7].
+Info: Connecting auto_signaltap_0|acq_trigger_in[47] to data_out[8].
+Info: Connecting auto_signaltap_0|acq_trigger_in[48] to data_out[9].
+Info: Connecting auto_signaltap_0|acq_trigger_in[49] to param[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[50] to param[1].
+Info: Connecting auto_signaltap_0|acq_trigger_in[51] to param[2].
+Info: Connecting auto_signaltap_0|acq_data_in[1] to counter[0].
+Info: Connecting auto_signaltap_0|acq_data_in[2] to counter[1].
+Info: Connecting auto_signaltap_0|acq_data_in[3] to counter[2].
+Info: Connecting auto_signaltap_0|acq_data_in[4] to counter[3].
+Info: Connecting auto_signaltap_0|acq_data_in[5] to data_in[0].
+Info: Connecting auto_signaltap_0|acq_data_in[6] to data_in[10].
+Info: Connecting auto_signaltap_0|acq_data_in[7] to data_in[11].
+Info: Connecting auto_signaltap_0|acq_data_in[8] to data_in[12].
+Info: Connecting auto_signaltap_0|acq_data_in[9] to data_in[13].
+Info: Connecting auto_signaltap_0|acq_data_in[10] to data_in[14].
+Info: Connecting auto_signaltap_0|acq_data_in[11] to data_in[15].
+Info: Connecting auto_signaltap_0|acq_data_in[12] to data_in[16].
+Info: Connecting auto_signaltap_0|acq_data_in[13] to data_in[17].
+Info: Connecting auto_signaltap_0|acq_data_in[14] to data_in[18].
+Info: Connecting auto_signaltap_0|acq_data_in[15] to data_in[19].
+Info: Connecting auto_signaltap_0|acq_data_in[16] to data_in[1].
+Info: Connecting auto_signaltap_0|acq_data_in[17] to data_in[20].
+Info: Connecting auto_signaltap_0|acq_data_in[18] to data_in[21].
+Info: Connecting auto_signaltap_0|acq_data_in[19] to data_in[2].
+Info: Connecting auto_signaltap_0|acq_data_in[20] to data_in[3].
+Info: Connecting auto_signaltap_0|acq_data_in[21] to data_in[4].
+Info: Connecting auto_signaltap_0|acq_data_in[22] to data_in[5].
+Info: Connecting auto_signaltap_0|acq_data_in[23] to data_in[6].
+Info: Connecting auto_signaltap_0|acq_data_in[24] to data_in[7].
+Info: Connecting auto_signaltap_0|acq_data_in[25] to data_in[8].
+Info: Connecting auto_signaltap_0|acq_data_in[26] to data_in[9].
+Info: Connecting auto_signaltap_0|acq_data_in[27] to data_out[0].
+Info: Connecting auto_signaltap_0|acq_data_in[28] to data_out[10].
+Info: Connecting auto_signaltap_0|acq_data_in[29] to data_out[11].
+Info: Connecting auto_signaltap_0|acq_data_in[30] to data_out[12].
+Info: Connecting auto_signaltap_0|acq_data_in[31] to data_out[13].
+Info: Connecting auto_signaltap_0|acq_data_in[32] to data_out[14].
+Info: Connecting auto_signaltap_0|acq_data_in[33] to data_out[15].
+Info: Connecting auto_signaltap_0|acq_data_in[34] to data_out[16].
+Info: Connecting auto_signaltap_0|acq_data_in[35] to data_out[17].
+Info: Connecting auto_signaltap_0|acq_data_in[36] to data_out[18].
+Info: Connecting auto_signaltap_0|acq_data_in[37] to data_out[19].
+Info: Connecting auto_signaltap_0|acq_data_in[38] to data_out[1].
+Info: Connecting auto_signaltap_0|acq_data_in[39] to data_out[20].
+Info: Connecting auto_signaltap_0|acq_data_in[40] to data_out[21].
+Info: Connecting auto_signaltap_0|acq_data_in[41] to data_out[2].
+Info: Connecting auto_signaltap_0|acq_data_in[42] to data_out[3].
+Info: Connecting auto_signaltap_0|acq_data_in[43] to data_out[4].
+Info: Connecting auto_signaltap_0|acq_data_in[44] to data_out[5].
+Info: Connecting auto_signaltap_0|acq_data_in[45] to data_out[6].
+Info: Connecting auto_signaltap_0|acq_data_in[46] to data_out[7].
+Info: Connecting auto_signaltap_0|acq_data_in[47] to data_out[8].
+Info: Connecting auto_signaltap_0|acq_data_in[48] to data_out[9].
+Info: Connecting auto_signaltap_0|acq_data_in[49] to param[0].
+Info: Connecting auto_signaltap_0|acq_data_in[50] to param[1].
+Info: Connecting auto_signaltap_0|acq_data_in[51] to param[2].
+Info: Connecting auto_signaltap_0|acq_trigger_in[64] to read_source[0].
+Info: Connecting auto_signaltap_0|acq_trigger_in[65] to read_source[1].
+Info: Connecting auto_signaltap_0|acq_data_in[64] to read_source[0].
+Info: Connecting auto_signaltap_0|acq_data_in[65] to read_source[1].
+## CPU time: 0:0:1, REAL time: 0:0:2
+## Memory Usage: 850MB (850MB)
+Pseudo pack design...
+Using location file E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/src/top.ve
+Info: Ignored dedicate pin altera_reserved_tdo.
+Info: Ignored dedicate pin altera_reserved_tms.
+Info: Ignored dedicate pin altera_reserved_tck.
+Info: Ignored dedicate pin altera_reserved_tdi.
+VCO frequency: 1000.000 Mhz
+  clkout0: Enabled , 200.000 Mhz
+  clkout1: Disabled, 1.953 Mhz
+  clkout2: Disabled, 1.953 Mhz
+  clkout3: Enabled , 25.000 Mhz
+  clkout4: Disabled, 1.953 Mhz
+Packing Statistics
+ Total      Logics : 1771/16624 ( 10%)
+ Total        LUTs : 1553/16624 (  9%)
+ Total   Registers : 1498/16624 (  9%)
+ Total  Block Rams :   16/   56 ( 28%)
+ Total Multipliers :    0/   56 (  0%)
+ Total        PLLs :    1/    4 ( 25%)
+ Total        Pins :   65/  251 ( 25%)
+ Global    Signals :    6/   10 ( 60%)
+                                                              CLK~inputclkctrl_outclk (from:                                                          CLK~input_o)
+                                           altera_internal_jtag~TCKUTAPclkctrl_outclk (from:                                         altera_internal_jtag~TCKUTAP)
+             pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk (from:                       auto_generated_inst.hbo_22_a632587f90865e69_bp)
+             pll_inst|altpll_component|auto_generated|wire_pll1_clk[3]~clkctrl_outclk (from:                       auto_generated_inst.hbo_22_fdfd88c1f279a59d_bp)
+      auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~clkctrl_outclk (from:   auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~q)
+                                                         rst_mod|rst_n~clkctrl_outclk (from:                                                      rst_mod|rst_n~q)
+ Total Lonely   Datain   : 0
+ Total Lonely   Register : 218
+ Total LUT-FF   Pairs    : 1167
+ Total Register Packings : 113
+ Registers with synchronous    reset : 44
+ Registers with asynchronous   reset : 637
+ Registers with sync and async reset : 30
+## CPU time: 0:0:0, REAL time: 0:0:1
+## Memory Usage: 850MB (850MB)
+Filter verilog...
+## CPU time: 0:0:0, REAL time: 0:0:1
+## Memory Usage: 850MB (850MB)
+Read DB design...
+## CPU time: 0:0:0, REAL time: 0:0:0
+## Memory Usage: 853MB (853MB)
+Process design...
+Info: Pin altera_internal_jtag|tdouser is inversely assigned to net auto_hub|jtag_hub_gen:sld_jtag_hub_inst|tdo~q.
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[2].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[3].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[0].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8|ByteEnA[1] is inversely assigned to net u_ahb2ram|byteena[1].
+Info: Pin u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8|ByteEnA[0] is inversely assigned to net u_ahb2ram|byteena[1].
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[13]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[0]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[9]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[30]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[24]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[14]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to BEEP~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[7]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[25]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[5]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[1]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[11]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[3]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[0]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[2]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_MISO~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to JTDO~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_MOSI~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[23]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[2]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[29]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to JTMS~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_SCK~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to SPI1_CS_N~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to UART0_TXD~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[31]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[5]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[1]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[10]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[6]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[3]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[6]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[15]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[12]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[26]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[20]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[19]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_KEYOUT[4]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[28]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[21]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[27]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[7]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[18]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[17]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[16]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[4]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[22]~output false
+> set_instance_assignment -name ENABLE_OPEN_DRAIN -to IO_PRINT[8]~output false
+> set_instance_assignment -name CLKIN_FREQ -extension -to pll_inst|altpll_component|auto_generated|pll1 50
+> set_location_assignment -to BEEP PIN_14
+> set_instance_assignment -to BEEP -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to CLK PIN_25
+> set_instance_assignment -to CLK -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN PIN_3
+> set_location_assignment -to IO_KEYIN[0] PIN_3
+> set_instance_assignment -to IO_KEYIN[0] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[1] PIN_146
+> set_instance_assignment -to IO_KEYIN[1] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[2] PIN_143
+> set_instance_assignment -to IO_KEYIN[2] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[3] PIN_140
+> set_instance_assignment -to IO_KEYIN[3] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[4] PIN_137
+> set_instance_assignment -to IO_KEYIN[4] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[5] PIN_135
+> set_instance_assignment -to IO_KEYIN[5] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[6] PIN_130
+> set_instance_assignment -to IO_KEYIN[6] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYIN[7] PIN_128
+> set_instance_assignment -to IO_KEYIN[7] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT PIN_148
+> set_location_assignment -to IO_KEYOUT[0] PIN_148
+> set_instance_assignment -to IO_KEYOUT[0] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[1] PIN_144
+> set_instance_assignment -to IO_KEYOUT[1] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[2] PIN_142
+> set_instance_assignment -to IO_KEYOUT[2] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[3] PIN_139
+> set_instance_assignment -to IO_KEYOUT[3] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[4] PIN_136
+> set_instance_assignment -to IO_KEYOUT[4] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[5] PIN_134
+> set_instance_assignment -to IO_KEYOUT[5] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[6] PIN_129
+> set_instance_assignment -to IO_KEYOUT[6] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_KEYOUT[7] PIN_126
+> set_instance_assignment -to IO_KEYOUT[7] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT PIN_79
+> set_location_assignment -to IO_PRINT[0] PIN_79
+> set_instance_assignment -to IO_PRINT[0] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[10] PIN_63
+> set_instance_assignment -to IO_PRINT[10] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[11] PIN_62
+> set_instance_assignment -to IO_PRINT[11] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[12] PIN_61
+> set_instance_assignment -to IO_PRINT[12] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[13] PIN_60
+> set_instance_assignment -to IO_PRINT[13] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[14] PIN_59
+> set_instance_assignment -to IO_PRINT[14] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[15] PIN_58
+> set_instance_assignment -to IO_PRINT[15] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[16] PIN_57
+> set_instance_assignment -to IO_PRINT[16] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[17] PIN_56
+> set_instance_assignment -to IO_PRINT[17] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[18] PIN_53
+> set_instance_assignment -to IO_PRINT[18] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[19] PIN_52
+> set_instance_assignment -to IO_PRINT[19] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[1] PIN_78
+> set_instance_assignment -to IO_PRINT[1] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[20] PIN_50
+> set_instance_assignment -to IO_PRINT[20] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[21] PIN_49
+> set_instance_assignment -to IO_PRINT[21] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[22] PIN_48
+> set_instance_assignment -to IO_PRINT[22] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[23] PIN_47
+> set_instance_assignment -to IO_PRINT[23] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[24] PIN_42
+> set_instance_assignment -to IO_PRINT[24] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[25] PIN_40
+> set_instance_assignment -to IO_PRINT[25] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[26] PIN_39
+> set_instance_assignment -to IO_PRINT[26] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[27] PIN_38
+> set_instance_assignment -to IO_PRINT[27] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[28] PIN_37
+> set_instance_assignment -to IO_PRINT[28] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[29] PIN_36
+> set_instance_assignment -to IO_PRINT[29] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[2] PIN_77
+> set_instance_assignment -to IO_PRINT[2] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[30] PIN_35
+> set_instance_assignment -to IO_PRINT[30] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[31] PIN_34
+> set_instance_assignment -to IO_PRINT[31] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[3] PIN_76
+> set_instance_assignment -to IO_PRINT[3] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[4] PIN_75
+> set_instance_assignment -to IO_PRINT[4] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[5] PIN_74
+> set_instance_assignment -to IO_PRINT[5] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[6] PIN_72
+> set_instance_assignment -to IO_PRINT[6] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[7] PIN_70
+> set_instance_assignment -to IO_PRINT[7] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[8] PIN_65
+> set_instance_assignment -to IO_PRINT[8] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to IO_PRINT[9] PIN_64
+> set_instance_assignment -to IO_PRINT[9] -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to JTCK PIN_103
+> set_instance_assignment -to JTCK -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to JTDI PIN_101
+> set_instance_assignment -to JTDI -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to JTDO PIN_102
+> set_instance_assignment -to JTDO -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to JTMS PIN_104
+> set_instance_assignment -to JTMS -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to SPI1_CS_N PIN_168
+> set_instance_assignment -to SPI1_CS_N -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to SPI1_MISO PIN_165
+> set_instance_assignment -to SPI1_MISO -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to SPI1_MOSI PIN_163
+> set_instance_assignment -to SPI1_MOSI -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to SPI1_SCK PIN_166
+> set_instance_assignment -to SPI1_SCK -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to SWITCH PIN_67
+> set_instance_assignment -to SWITCH -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to UART0_RXD PIN_170
+> set_instance_assignment -to UART0_RXD -name IO_STANDARD "3.3-V LVCMOS"
+> set_location_assignment -to UART0_TXD PIN_171
+> set_instance_assignment -to UART0_TXD -name IO_STANDARD "3.3-V LVCMOS"
+> set_instance_assignment -to altera_reserved_tck -name VIRTUAL_PIN ON
+> set_instance_assignment -to altera_reserved_tdi -name VIRTUAL_PIN ON
+> set_instance_assignment -to altera_reserved_tdo -name VIRTUAL_PIN ON
+> set_instance_assignment -to altera_reserved_tms -name VIRTUAL_PIN ON
+Info: Found GCLK net auto_signaltap_0|sld_signaltap_body|sld_signaltap_body|reset_all~clkctrl_outclk (51).
+Info: Found GCLK net rst_mod|rst_n~clkctrl_outclk (59).
+Info: Found GCLK net CLK~inputclkctrl_outclk (5).
+Info: Found GCLK net pll_inst|altpll_component|auto_generated|wire_pll1_clk[3]~clkctrl_outclk (42).
+Info: Found GCLK net altera_internal_jtag~TCKUTAPclkctrl_outclk (83).
+Info: Found GCLK net pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk (105).
+Info: Adding byte enable net u_ahb2ram|byteena[0] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a0.
+Info: Adding byte enable net u_ahb2ram|byteena[1] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a12.
+Info: Adding byte enable net u_ahb2ram|byteena[2] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a16.
+Info: Adding byte enable net u_ahb2ram|byteena[2] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20.
+Info: Adding byte enable net u_ahb2ram|byteena[3] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a24.
+Info: Adding byte enable net u_ahb2ram|byteena[3] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a28.
+Info: Adding byte enable net u_ahb2ram|byteena[0] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a4.
+Info: Adding byte enable net u_ahb2ram|byteena[1] to write enable for ram u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a8.
+Info: Slice ~VCC is removed.
+Info: Slice auto_hub|~GND is removed.
+Info: Applying IP info mcu_inst to slice mcu_inst.
+## CPU time: 0:0:0, REAL time: 0:0:1
+## Memory Usage: 861MB (861MB)
+Using design SDC file ./top.sdc.
+read_sdc -quiet "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/../src/top.sdc"
+> ## Generated SDC file "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/src/top.sdc"
+> 
+> ## Copyright (C) 1991-2013 Altera Corporation
+> ## Your use of Altera Corporation's design tools, logic functions 
+> ## and other software and tools, and its AMPP partner logic 
+> ## functions, and any output files from any of the foregoing 
+> ## (including device programming or simulation files), and any 
+> ## associated documentation or information are expressly subject 
+> ## to the terms and conditions of the Altera Program License 
+> ## Subscription Agreement, Altera MegaCore Function License 
+> ## Agreement, or other applicable license agreement, including, 
+> ## without limitation, that your use is for the sole purpose of 
+> ## programming logic devices manufactured by Altera and sold by 
+> ## Altera or its authorized distributors.  Please refer to the 
+> ## applicable agreement for further details.
+> 
+> 
+> ## VENDOR  "Altera"
+> ## PROGRAM "Quartus II"
+> ## VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Full Version"
+> 
+> ## DATE    "Sat Jan 15 22:45:47 2022"
+> 
+> ##
+> ## DEVICE  "EP4CE10F17C8"
+> ##
+> 
+> 
+> #**************************************************************
+> # Time Information
+> #**************************************************************
+> 
+> set_time_format -unit ns -decimal_places 3
+> 
+> 
+> 
+> #**************************************************************
+> # Create Clock
+> #**************************************************************
+> 
+> create_clock -name {altera_reserved_tck} -period 100.000 -waveform { 0.000 50.000 } [get_ports {altera_reserved_tck}]
+> create_clock -name {clk} -period 20.000 -waveform { 0.000 10.000 } [get_ports {CLK}]
+> 
+> 
+> #**************************************************************
+> # Create Generated Clock
+> #**************************************************************
+> 
+> create_generated_clock -name {cpu_clk} -source [get_ports {CLK}] -master_clock {clk} [get_pins {pll_inst|altpll_component|auto_generated|pll1|clk[0]}] 
+> create_generated_clock -name {clk_100M} -source [get_ports {CLK}] -master_clock {clk} [get_pins {pll_inst|altpll_component|auto_generated|pll1|clk[1]}] 
+> create_generated_clock -name {spi_clk} -source [get_ports {CLK}] -master_clock {clk} [get_pins {pll_inst|altpll_component|auto_generated|pll1|clk[3]}] 
+> 
+> 
+> #**************************************************************
+> # Set Clock Latency
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Clock Uncertainty
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Input Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Output Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Clock Groups
+> #**************************************************************
+> 
+> set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+> set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+> 
+> 
+> #**************************************************************
+> # Set False Path
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Multicycle Path
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Maximum Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Minimum Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Input Transition
+> #**************************************************************
+> 
+read_sdc -quiet "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/top.sdc"
+> ## Generated SDC file "top.sdc"
+> 
+> ## Copyright (C) 1991-2013 Altera Corporation
+> ## Your use of Altera Corporation's design tools, logic functions 
+> ## and other software and tools, and its AMPP partner logic 
+> ## functions, and any output files from any of the foregoing 
+> ## (including device programming or simulation files), and any 
+> ## associated documentation or information are expressly subject 
+> ## to the terms and conditions of the Altera Program License 
+> ## Subscription Agreement, Altera MegaCore Function License 
+> ## Agreement, or other applicable license agreement, including, 
+> ## without limitation, that your use is for the sole purpose of 
+> ## programming logic devices manufactured by Altera and sold by 
+> ## Altera or its authorized distributors.  Please refer to the 
+> ## applicable agreement for further details.
+> 
+> 
+> ## VENDOR  "Altera"
+> ## PROGRAM "Quartus II"
+> ## VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Full Version"
+> 
+> ## DATE    "Sat Jan 29 22:32:42 2022"
+> 
+> ##
+> ## DEVICE  "EP4CE15F23C8"
+> ##
+> 
+> 
+> #**************************************************************
+> # Time Information
+> #**************************************************************
+> 
+> set_time_format -unit ns -decimal_places 3
+> 
+> 
+> 
+> #**************************************************************
+> # Create Clock
+> #**************************************************************
+> 
+> create_clock -name {altera_reserved_tck} -period 100.000 -waveform { 0.000 50.000 } [get_ports {altera_reserved_tck}]
+Info: Clock altera_reserved_tck is overwriting an existing clock.
+> create_clock -name {clk} -period 20.000 -waveform { 0.000 10.000 } [get_ports {CLK}]
+Info: Clock clk is overwriting an existing clock.
+> 
+> 
+> #**************************************************************
+> # Create Generated Clock
+> #**************************************************************
+> 
+> create_generated_clock -name {cpu_clk} -source [get_ports {CLK}] -master_clock {clk} [get_pins {pll_inst|altpll_component|auto_generated|pll1|clk[0]}] 
+Info: Generated clock cpu_clk is overwriting an existing clock.
+> create_generated_clock -name {spi_clk} -source [get_ports {CLK}] -master_clock {clk} [get_pins {pll_inst|altpll_component|auto_generated|pll1|clk[3]}] 
+Info: Generated clock spi_clk is overwriting an existing clock.
+> 
+> 
+> #**************************************************************
+> # Set Clock Latency
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Clock Uncertainty
+> #**************************************************************
+> 
+> set_clock_uncertainty -rise_from [get_clocks {spi_clk}] -rise_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {spi_clk}] -fall_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {spi_clk}] -rise_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {spi_clk}] -rise_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {spi_clk}] -fall_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {spi_clk}] -fall_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {spi_clk}] -rise_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {spi_clk}] -fall_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {spi_clk}] -rise_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {spi_clk}] -rise_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {spi_clk}] -fall_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {spi_clk}] -fall_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -rise_to [get_clocks {spi_clk}] -setup 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -rise_to [get_clocks {spi_clk}] -hold 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -fall_to [get_clocks {spi_clk}] -setup 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -fall_to [get_clocks {spi_clk}] -hold 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -rise_to [get_clocks {clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -fall_to [get_clocks {clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -rise_to [get_clocks {cpu_clk}] -setup 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -rise_to [get_clocks {cpu_clk}] -hold 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -fall_to [get_clocks {cpu_clk}] -setup 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {clk}] -fall_to [get_clocks {cpu_clk}] -hold 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -rise_to [get_clocks {spi_clk}] -setup 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -rise_to [get_clocks {spi_clk}] -hold 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {spi_clk}] -setup 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {spi_clk}] -hold 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -rise_to [get_clocks {clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -rise_to [get_clocks {cpu_clk}] -setup 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -rise_to [get_clocks {cpu_clk}] -hold 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {cpu_clk}] -setup 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {cpu_clk}] -hold 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -rise_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -fall_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -rise_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -rise_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -fall_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -fall_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -rise_to [get_clocks {cpu_clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {cpu_clk}] -fall_to [get_clocks {cpu_clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -rise_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -fall_to [get_clocks {spi_clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -rise_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -rise_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -fall_to [get_clocks {clk}] -setup 0.100  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -fall_to [get_clocks {clk}] -hold 0.070  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -rise_to [get_clocks {cpu_clk}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {cpu_clk}] -fall_to [get_clocks {cpu_clk}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}]  0.020  
+> set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}]  0.020  
+> set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}]  0.020  
+> 
+> 
+> #**************************************************************
+> # Set Input Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Output Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Clock Groups
+> #**************************************************************
+> 
+> set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+> set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+> set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+> 
+> 
+> #**************************************************************
+> # Set False Path
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Multicycle Path
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Maximum Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Minimum Delay
+> #**************************************************************
+> 
+> 
+> 
+> #**************************************************************
+> # Set Input Transition
+> #**************************************************************
+> 
+> 
+> if { [info exists FITTING] } {
+  if { $FITTING == "Auto" } { set FITTING auto; }
+  set_mode -fitting $FITTING
+}
+>  set pl_criticality_wratio  "5.00 5.00 5.00 1.00"
+> #set pl_max_iter_eco        "10 20 300 40 3  100 100 1"
+> ##et pl_eco_slack_crit      "99999. 1.00  0.10 8 0.03 35 0.01 170"
+> 
+> ##et pl_priority_compare  "2 2 2 3"
+> #set pl_priority_result   "2 1 1 0"
+> #set pl_priority_pass     "2 1 1 0"
+> #set pl_swap_cost_margin       "200.0  0.0  200.0  0.0  200.0  0.0   0.00  0.0"
+>  set pl_swap_wirelength_margin "200.0  0.0  200.0  0.0  200.0  0.0   020.0 -0.3  2000. 1.50"
+>  set pl_swap_congestion_margin "100.0  0.0  100.0  0.0  100.0  0.0   010.0 -0.3  1000. 1.25"
+> #set pl_criticality_beta "1.0 3.0 1.0  1.0 3.0 1.0  1.0 3.0 1.0  99999 3.0 3.0"
+> 
+>  set rt_retiming_idx         5
+>  set rt_converge_accelerator "3 1 0 0"
+> #set rt_pres_cost_ratio      "1.00 1.50  2.00 2.50"
+>  set rt_dly_ratio            "0.55 0.35 0.30  0.50 0.50 0.30"
+>  set rt_reroute_max_iter     "6  4 5  7 9  12"
+>  set rt_reroute_start_iter   "0  0 1  2 4  0 "
+>  set rt_quick_converge_ratio 0.00
+> if { [info exists FITTER] } {
+  if { $FITTER == "Auto" } {
+    if { $MODE == "QUARTUS" } { set FITTER hybrid; } else { set FITTER full; }
+  }
+  if { $MODE == "SYNPLICITY" || $MODE == "NATIVE" } { set FITTER full; }
+  set_mode -fitter $FITTER
+}
+>  set pl_reuse_existing_placement true
+>  set pl_fix_bram_cells 0
+>  set pl_fix_mult_cells 0
+> if { [info exists EFFORT] } { set_mode -effort $EFFORT; }
+> #set pl_neighbor_swap_range "2  6  6  3 "
+>  set pl_pass_result "1 1 1 1"
+>  set pl_max_pass    "2 1 1 1 1"
+>  set pl_max_iter       10
+>  set pl_max_iter_part  20
+>  set pl_max_iter_final 20
+>  set pl_max_iter_legal 10
+>  set pl_max_iter_touch 00
+> #set pl_neighbor_swap_range "2  6  6  3 "
+> #set pl_spread_swap_max_iter "3 5  5 4"
+> #set pl_use_initial_place_once 0
+>  set rt_min_converge "7"
+>  set rt_optimize_max "3"
+> if { [info exists SKEW  ] } { set_mode -skew   $SKEW  ; }
+>  set pl_useful_skew_level -1
+>  set rt_useful_skew_level 0
+>  set rt_useful_skew_bram         true
+>  set rt_useful_skew_io           false
+>  set rt_useful_skew_io_ireg      false
+>  set rt_useful_skew_io_oreg      false
+>  set rt_useful_skew_output_io    false
+>  set rt_useful_skew_input_io     false
+>  set rt_useful_skew_unconstraint "false false"
+>  set rt_useful_skew_max                "0 100"
+>  set rt_skew_crit_minmax               "0.00 1.00"
+> #set rt_useful_skew_setup_slac_margin  "1.00 1.00  1.00 1.00  1.00 0.10 0.50 0.10 0.70 0.10  1.00"
+> #set rt_useful_skew_hold_slack_margin  "0.10 0.10  0.30 0.30  0.30 0.30"
+> #set rt_useful_skew_hold_slack_ratio   "0.05 0.05  0.10 0.10  0.10 0.10"
+> if { [info exists SKOPE ] } { set_mode -skope  $SKOPE ; }
+> if { [info exists HOLDX ] } { set_mode -holdx  $HOLDX; }
+> # Minimal logical slice hold fix, only by routing to bram/mult, no IO delay
+> 
+>  set ta_cross_clock_slack "2 0"
+> 
+> #set pl_max_iter_hold_fix "30 1 3"
+> #set pl_hold_slack_margin  0.2
+> #set pl_setup_slack_margin "0.5 -1000."
+> #set pl_net_hold_fix_target "alta_bram alta_bram9k alta_mult"
+> 
+>  set rt_hold_slack_margin  "0.2 0.2    0.2 0.2    0.2 0.7   -1000. 0.0"
+>  set rt_setup_slack_margin "0.5 -1000. 0.5 -1000. 0.0 -1000."
+> #set rt_net_hold_crit_minmax "0.5 0.5"
+>  set rt_net_hold_budget_method 0
+>  set rt_net_hold_fix_target "alta_bram alta_bram9k alta_mult"
+> 
+> #set pl_net_hold_fix_clock false
+> #set pl_net_hold_fix_auto  false
+> #set pl_net_hold_fix_io    false
+> #set rt_net_hold_fix_start false
+> #set rt_net_hold_fix_clock false
+> #set rt_net_hold_fix_auto  false
+> #set rt_net_hold_fix_io    false
+> if { [info exists TUNING] } { set_mode -tuning $TUNING; }
+> if { [info exists TARGET] } { set_mode -target $TARGET; }
+> if { [info exists PRESET] } { set_mode -preset $PRESET; }
+> if { [info exists ADJUST] } { set pl_criticality_wadjust $ADJUST; }
+> 
+> set alta_aqf $::alta_work/alta.aqf
+> if { $LOAD_DB } {
+  # Empty
+} elseif { true } {
+  if { [file exists $VE_FILE] } {
+    set ORIGINAL_PIN ""
+  } elseif { ! [file exists $ORIGINAL_PIN] } {
+    if { $is_migrated } {
+      error "Can not find design PIN file $ORIGINAL_PIN, please compile design first"
+    }
+    set ORIGINAL_PIN ""
+  }
+  if { [file exists $ORIGINAL_QSF] } {
+    alta::convert_quartus_settings_cmd $ORIGINAL_QSF $ORIGINAL_PIN $alta_aqf
+  } elseif { $is_migrated } {
+    error "Can not find design exported QSF file $ORIGINAL_QSF, please export assigments first"
+  }
+}
+> if { [file exists "$alta_aqf"] } {
+  alta::tcl_highlight "Using AQF file $alta_aqf.\n"
+  source "$alta_aqf"
+}
+Using AQF file ./alta_db/alta.aqf.
+> set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+> set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
+> set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+> set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+> set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
+> set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION "ON"
+> set_global_assignment -name DEVICE_IO_STANDARD "3.3-V LVCMOS"
+> set_instance_assignment -name WEAK_PULL_UP_RESISTOR "ON" -to SWITCH
+> read_qip "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./../src/remote_reconf.qip"
+> set_global_assignment -name IP_TOOL_NAME "ALTREMOTE_UPDATE"
+> set_global_assignment -name IP_TOOL_VERSION "13.0"
+> set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "remote_reconf.v"]
+> set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "remote_reconf_bb.v"]
+> read_qip "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./../src/ram_two_port.qip"
+> set_global_assignment -name IP_TOOL_NAME "RAM: 2-PORT"
+> set_global_assignment -name IP_TOOL_VERSION "13.1"
+> set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "ram_two_port.v"]
+> set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "ram_two_port_bb.v"]
+> read_qip "E:/Project/FPGA_altera/AG16KSDE176_DemoBoard/altera/./../src/pll.qip"
+> set_global_assignment -name IP_TOOL_NAME "ALTPLL"
+> set_global_assignment -name IP_TOOL_VERSION "13.1"
+> set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "pll.v"]
+> set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "pll_bb.v"]
+> set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "pll.ppf"]
+> set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "pll_syn.v"]
+> if { [file exists "./${DESIGN}.asf"] } {
+  alta::tcl_highlight "Using ASF file ${DESIGN}.asf.\n"
+  source "./${DESIGN}.asf"
+}
+Using ASF file top.asf.
+> 
+> if { $FLOW == "PROBE" } {
+  set ret [place_pseudo -user_io -place_io -place_pll -place_gclk]
+  if { !$ret } { exit -1 }
+
+  set force ""
+  if { [info exists PROBE_FORCE] && $PROBE_FORCE } { set force "-force" }
+  eval "probe_design -froms {${PROBE_FROMS}} -tos {${PROBE_TOS}} ${force}"
+
+} elseif { $FLOW == "CHECK" } {
+  set ret [place_pseudo -user_io -place_io -place_pll -place_gclk]
+  if { !$ret } { exit -1 }
+
+  if { [file exists "./${DESIGN}.chk"] } {
+    alta::tcl_highlight "Using CHK file ${DESIGN}.chk.\n"
+    source "./${DESIGN}.chk"
+    place_design -dry
+    check_design -rule led_guide
+  } else {
+    error "Can not find design CHECK file ${DESIGN}.chk"
+  }
+
+} else {
+  set ret [place_pseudo -user_io -place_io -place_pll -place_gclk -warn_io]
+  if { !$ret } { exit -1 }
+  if { $FLOW == "PACK" } { exit }
+
+  set org_place ""
+  set load_place ""
+  set load_route ""
+  set quiet ""
+  if {  $ORG_PLACE } { set  org_place "-org_place" ; }
+  if { $LOAD_PLACE } { set load_place "-load_place"; }
+  if { $LOAD_ROUTE } { set load_route "-load_route"; }
+  eval "place_and_route_design $org_place $load_place $load_route \
+                               -retry $RETRY $seed_rand $quiet"
+}
+Info: Applying IP info mcu_inst to slice mcu_inst.
+Warn: Auto constraint INTERNAL: create_clock -name Internal_generated_clock_altera_internal_jtag|tckutap -period 100.000 altera_internal_jtag|tckutap.
+Placement Statistics
+ Total  Logic    Tiles   : 182/1039 (17.5%)
+ Total  Other    Tiles   : 16/56 (28.6%)
+ Total  Valid    Nets    : 2742 (896+1846)
+ Total  Valid    Fanouts : 11558 (4101+7457)
+ Total  Tile     Fanouts : 1961
+ Tile   Zip      Fanins  : 7 (0:34)
+ Tile   Zip      Fanouts : 11 (0:121)
+ Total  Ignored  Nets    : 1924
+ Total  Valid    Blocks  : 224 (196/24)
+ Total  Ignored  Blocks  : 10
+ Total  Zip Complexities : 731/2419 1.50/1094.30
+ Avg    Zip   Bottleneck : 3.51 29.92
+ Avg    Net   Bottleneck : 8.83 220.68
+Iter #1/1 ...
+Pass 1 #1/2 ...
+Partitioning...
+ step = 4, partition : 2,2
+....................
+ step = 5, partition : 2,2
+....................
+
+## CPU time: 0:0:12, REAL time: 0:0:13
+Pass 1 #2/2 ...
+Partitioning...
+ step = 4, partition : 2,2
+....................
+ step = 5, partition : 2,2
+....................
+
+## CPU time: 0:0:13, REAL time: 0:0:14
+Pass 2 #1/1 ...
+Legalization and Swapping...
+..........
+
+## CPU time: 0:0:11, REAL time: 0:0:11
+Pass 3 #1/1 ...
+Touchup...
+
+
+## CPU time: 0:0:0, REAL time: 0:0:0
+Pass 4 #1/1 ...
+Optimization...
+............................................................
+Finishing...
+
+## CPU time: 0:0:7, REAL time: 0:0:8
+Total wire cost after placement: 11.599:0.57995:0.292(11.599:0.57995) 4666.75(1506.61)+11755(7)+4856.94 4723.15(789.984)+1944.25
+
+*** Post Placement Timing Report ***
+=== User constraints ===
+Fmax report
+  User constraint:  10.000MHz, Fmax:  59.616MHz, Clock: Internal_generated_clock_altera_internal_jtag|tckutap
+  User constraint:  50.000MHz, Fmax: 119.789MHz, Clock: clk
+  User constraint:  50.000MHz, Fmax: 119.789MHz, Clock: cpu_clk
+  User constraint:  50.000MHz, Fmax: 119.033MHz, Clock: spi_clk
+
+Clock transfer report:
+  Worst setup:  41.613, with clock Internal_generated_clock_altera_internal_jtag|tckutap
+  Worst setup:  15.850, with clock clk
+  Worst setup:  13.198, with clock cpu_clk
+  Worst setup:  11.599, with clock spi_clk
+  Worst setup:  11.652, from clock clk to cpu_clk
+  Worst setup:  11.695, from clock clk to spi_clk
+  Worst setup:  17.774, from clock cpu_clk to spi_clk
+  Worst setup:  14.989, from clock spi_clk to cpu_clk
+
+  Worst  hold:   0.550, with clock Internal_generated_clock_altera_internal_jtag|tckutap
+  Worst  hold:   0.550, with clock clk
+  Worst  hold:   0.546, with clock cpu_clk
+  Worst  hold:   0.292, with clock spi_clk
+  Worst  hold:   4.575, from clock clk to cpu_clk
+  Worst  hold:   7.440, from clock clk to spi_clk
+  Worst  hold:   0.845, from clock cpu_clk to spi_clk
+  Worst  hold:   0.831, from clock spi_clk to cpu_clk
+
+=== Auto constraints ===
+
+
+Coverage report
+  User constraints covered 7386 connections out of 7442 total, coverage: 99.2%
+  Auto constraints covered 7386 connections out of 7442 total, coverage: 99.2%
+
+
+Hold from u_ahb2ram|usr_address[4] to u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20, clock spi_clk, constraint 0.000
+  Slack:   0.292
+    Arrival Time:    0.556
+    Required Time:   0.264
+
+*** End Timing Report ***
+
+route_design -dump ./alta_db/route.tx -replace ./alta_db/replace.tx 
+Route Design Statistics
+ Total Routing Nets : 2745
+ Fanout     Average : 3.24 (1..122)
+ Max   Fanout  Net  : pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl_outclk
+ Logic       Slices : 1773/16624 (10.7%)
+
+Routing...
+ Budget Useful Skew...
+=== User constraints ===
+Fmax report
+  User constraint:  10.000MHz, Fmax:  59.616MHz, Clock: Internal_generated_clock_altera_internal_jtag|tckutap
+  User constraint:  50.000MHz, Fmax: 120.409MHz, Clock: clk
+  User constraint:  50.000MHz, Fmax: 120.409MHz, Clock: cpu_clk
+  User constraint:  50.000MHz, Fmax: 120.409MHz, Clock: spi_clk
+
+=== Auto constraints ===
+## CPU time: 0:0:1, REAL time: 0:0:2
+ iter = 1/1, route#: 2745, violation# : 708, overflow# : 676, conflict# : 868, node#: 15054
+## CPU time: 0:0:2, REAL time: 0:0:2
+ iter = 2/2, route#: 2745, violation# : 385, overflow# : 376, conflict# : 472, node#: 15621
+## CPU time: 0:0:3, REAL time: 0:0:3
+ iter = 3/3, route#: 2745, violation# : 138, overflow# : 138, conflict# : 194, node#: 16021
+## CPU time: 0:0:3, REAL time: 0:0:4
+ iter = 4/4, route#: 2745, violation# : 12, overflow# : 12, conflict# : 24, node#: 16189
+## CPU time: 0:0:4, REAL time: 0:0:5
+ iter = 5/5, route#: 2745, violation# : 1, overflow# : 1, conflict# : 2, node#: 16209
+## CPU time: 0:0:5, REAL time: 0:0:6
+ iter = 6/6, route#: 2745, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+## CPU time: 0:0:6, REAL time: 0:0:6
+ iter = 7/1, route#: 3, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+## CPU time: 0:0:7, REAL time: 0:0:7
+ iter = 8/1, route#: 3, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+## CPU time: 0:0:7, REAL time: 0:0:8
+ iter = 9/2, route#: 3, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+## CPU time: 0:0:8, REAL time: 0:0:9
+ iter = 10/2, route#: 3, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+## CPU time: 0:0:9, REAL time: 0:0:10
+ iter = 11/2, route#: 3, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+## CPU time: 0:0:10, REAL time: 0:0:11
+ iter = 12/2, route#: 3, violation# : 0, overflow# : 0, conflict# : 0, node#: 16224
+Optimizing...
+...
+
+Done
+
+*** Post Routing Timing Report ***
+=== User constraints ===
+Fmax report
+  User constraint:  10.000MHz, Fmax:  58.997MHz, Clock: Internal_generated_clock_altera_internal_jtag|tckutap
+  User constraint:  50.000MHz, Fmax: 119.789MHz, Clock: clk
+  User constraint:  50.000MHz, Fmax: 119.789MHz, Clock: cpu_clk
+  User constraint:  50.000MHz, Fmax: 120.366MHz, Clock: spi_clk
+
+Clock transfer report:
+  Worst setup:  41.525, with clock Internal_generated_clock_altera_internal_jtag|tckutap
+  Worst setup:  15.847, with clock clk
+  Worst setup:  13.118, with clock cpu_clk
+  Worst setup:  12.782, with clock spi_clk
+  Worst setup:  11.652, from clock clk to cpu_clk
+  Worst setup:  11.692, from clock clk to spi_clk
+  Worst setup:  17.368, from clock cpu_clk to spi_clk
+  Worst setup:  14.075, from clock spi_clk to cpu_clk
+
+  Worst  hold:   0.431, with clock Internal_generated_clock_altera_internal_jtag|tckutap
+  Worst  hold:   0.550, with clock clk
+  Worst  hold:   0.550, with clock cpu_clk
+  Worst  hold:   0.292, with clock spi_clk
+  Worst  hold:   4.609, from clock clk to cpu_clk
+  Worst  hold:   6.050, from clock clk to spi_clk
+  Worst  hold:   0.898, from clock cpu_clk to spi_clk
+  Worst  hold:   0.831, from clock spi_clk to cpu_clk
+
+=== Auto constraints ===
+
+
+Coverage report
+  User constraints covered 7386 connections out of 7442 total, coverage: 99.2%
+  Auto constraints covered 7386 connections out of 7442 total, coverage: 99.2%
+
+
+Hold from u_ahb2ram|usr_address[4] to u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20, clock spi_clk, constraint 0.000
+  Slack:   0.292
+    Arrival Time:    0.556
+    Required Time:   0.264
+
+*** End Timing Report ***
+
+> 
+> date_time
+Thu Feb 03 16:10:43 2022
+> if { $FLOW != "CHECK" } {
+if { $FLOW != "PROBE" } {
+#report_timing -verbose 1 -file $::alta_work/timing.rpt.gz
+report_timing -verbose 2 -setup -file $::alta_work/setup.rpt.gz
+report_timing -verbose 2 -setup -brief -file $::alta_work/setup_summary.rpt.gz
+report_timing -verbose 2 -hold -file $::alta_work/hold.rpt.gz
+report_timing -verbose 2 -hold -brief -file $::alta_work/hold_summary.rpt.gz
+
+set ta_report_auto_constraints 0
+report_timing -fmax -file $::alta_work/fmax.rpt
+report_timing -xfer -file $::alta_work/xfer.rpt
+set ta_report_auto_constraints $ta_report_auto
+
+#set ta_coverage_limit "0.95 0.90"
+set ta_dump_uncovered 1
+report_timing -verbose 1 -coverage >! $::alta_work/coverage.rpt.gz
+#unset ta_coverage_limit
+unset ta_dump_uncovered
+
+
+if { ! [info exists rt_report_timing_fast] } {
+  set rt_report_timing_fast false
+}
+if { $rt_report_timing_fast } {
+  set_timing_corner fast
+  route_delay -quiet
+  report_timing -verbose 2 -setup -file $::alta_work/setup_fast.rpt.gz
+  report_timing -verbose 2 -setup -brief -file $::alta_work/setup_fast_summary.rpt.gz
+  report_timing -verbose 2 -hold -file $::alta_work/hold_fast.rpt.gz
+  report_timing -verbose 2 -hold -brief -file $::alta_work/hold_fast_summary.rpt.gz
+  set ta_report_auto_constraints 0
+  report_timing -fmax -file $::alta_work/fmax_fast.rpt
+  report_timing -xfer -file $::alta_work/xfer_fast.rpt
+  set ta_report_auto_constraints $ta_report_auto
+}
+
+write_routed_design "${RESULT_DIR}/${RESULT}_routed.v"
+}
+
+bitgen normal -prg "${RESULT_DIR}/${RESULT}.prg" -bin "${RESULT_DIR}/${RESULT}.bin"
+bitgen sram -prg "${RESULT_DIR}/${RESULT}_sram.prg"
+bitgen download -bin "${RESULT_DIR}/${RESULT}.bin" -svf "${RESULT_DIR}/${RESULT}_download.svf"
+generate_binary -slave "${RESULT_DIR}/${RESULT}_slave.rbf" \
+                -inputs "${RESULT_DIR}/${RESULT}.bin" -reverse
+generate_binary -master "${RESULT_DIR}/${RESULT}_master.bin" \
+                -inputs "${RESULT_DIR}/${RESULT}.bin"
+generate_programming_file "${RESULT_DIR}/${RESULT}_master.bin" -prg "${RESULT_DIR}/${RESULT}_master.prg" \
+  -as "${RESULT_DIR}/${RESULT}_master_as.prg" -hybrid "${RESULT_DIR}/${RESULT}_hybrid.prg"
+}
+> 
+> if { [file exists "./${DESIGN}.post.asf"] } {
+  alta::tcl_highlight "Using post-ASF file ${DESIGN}.post.asf.\n"
+  source "./${DESIGN}.post.asf"
+}
+Using post-ASF file top.post.asf.
+> date_time
+Thu Feb 03 16:10:58 2022
+> exit
+
+Total 0 fatals, 0 errors, 1 warnings, 150 infos.

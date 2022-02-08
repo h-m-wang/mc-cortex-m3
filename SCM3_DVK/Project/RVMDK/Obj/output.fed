@@ -1,0 +1,53 @@
+;#<FEEDBACK># ARM Linker, 5050106: Last Updated: Wed Jun 13 12:27:33 2018
+;VERSION 0.2
+;FILE core_cm3.o
+__REV16 <= USED 0
+__REVSH <= USED 0
+__get_MSP <= USED 0
+__get_PSP <= USED 0
+__set_MSP <= USED 0
+__set_PSP <= USED 0
+;FILE hyhw_spiflash.o
+hyhwSpiFlash_EraseSector <= USED 0
+hyhwSpiFlash_Init <= USED 0
+hyhwSpiFlash_Read <= USED 0
+hyhwSpiFlash_ReadBuffer <= USED 0
+hyhwSpiFlash_ReadID <= USED 0
+hyhwSpiFlash_ReadUniqueID <= USED 0
+hyhwSpiFlash_WaitForWriteEnd <= USED 0
+hyhwSpiFlash_Write <= USED 0
+hyhwSpiFlash_WriteDisable <= USED 0
+hyhwSpiFlash_WriteEnable <= USED 0
+hyhwSpiFlash_WritePage <= USED 0
+;FILE hyhwdma.o
+hyhwDMAC_Init <= USED 0
+hyhwDma_Config <= USED 0
+hyhwUartDma_Config <= USED 0
+;FILE hyhwgpio.o
+hyhwGpio_IntConfig <= USED 0
+hyhwGpio_Read <= USED 0
+hyhwGpio_SetIn <= USED 0
+;FILE hyhwspi.o
+hyhwDelayUS <= USED 0
+hyhwSPI_Init <= USED 0
+;FILE hyhwtimer.o
+hyhwTimerA_InitTimer1 <= USED 0
+hyhwTimerA_InitTimer2 <= USED 0
+;FILE hyhwuart.o
+hyhwUart_DeInit <= USED 0
+hyhwUart_Init <= USED 0
+hyhwUart__IntConfig <= USED 0
+;FILE hyhwwatchdog.o
+hyhwWatchdog_Feed <= USED 0
+hyhwWatchdog_Init <= USED 0
+;FILE main.o
+;FILE retarget.o
+fgetc <= USED 0
+fputc <= USED 0
+;FILE scm3_it.o
+;FILE startup_scm3.o
+SystemInit_ExtMemCtl <= USED 0
+;FILE sys_ctl.o
+Get_Flash_Data_base <= USED 0
+Sys_Remap <= USED 0
+Sys_Reset <= USED 0

@@ -1,0 +1,9 @@
+.\obj\hyhwspi.o: ..\..\Driver\src\hyhwSpi.c
+.\obj\hyhwspi.o: ..\..\Driver\inc\hyTypes.h
+.\obj\hyhwspi.o: ..\..\Driver\inc\BoardSupportPackage.h
+.\obj\hyhwspi.o: ..\..\Driver\inc\hyhwSpi.h
+.\obj\hyhwspi.o: ..\..\Source\inc\SCM3.h
+.\obj\hyhwspi.o: ..\..\Source\inc\core_cm3.h
+.\obj\hyhwspi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\hyhwspi.o: ..\..\Driver\inc\hyhwGpio.h
+.\obj\hyhwspi.o: ..\..\Driver\inc\hyhwDma.h

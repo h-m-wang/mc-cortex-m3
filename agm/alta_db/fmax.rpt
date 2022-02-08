@@ -1,0 +1,42 @@
+Fmax report
+  User constraint:  10.000MHz, Fmax:  58.997MHz, Clock: Internal_generated_clock_altera_internal_jtag|tckutap
+  User constraint:  50.000MHz, Fmax: 119.789MHz, Clock: clk
+  User constraint:  50.000MHz, Fmax: 119.789MHz, Clock: cpu_clk
+  User constraint:  50.000MHz, Fmax: 120.366MHz, Clock: spi_clk
+
+
+
+Setup from rst_mod|rst_n to u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20, clock clk to cpu_clk, constraint 20.000
+  Slack:  11.652
+    Arrival Time:    7.840
+        0.000    0.000   R                         Launch Clock Edge
+      Launch Clock Path:
+        0.000    0.000   RR                                  top|CLK =>                          CLK~input|padio 
+        1.100    1.100   RR                          CLK~input|padio =>                        CLK~input|combout 
+        1.452    0.352   RR                        CLK~input|combout =>                   CLK~inputclkctrl|inclk 
+        1.452    0.000   RR                   CLK~inputclkctrl|inclk =>                  CLK~inputclkctrl|outclk 
+        3.801    2.349   RR                  CLK~inputclkctrl|outclk =>                clken_ctrl_X7_Y2_N0|ClkIn 
+        3.945    0.144   RR                clken_ctrl_X7_Y2_N0|ClkIn =>               clken_ctrl_X7_Y2_N0|ClkOut 
+        4.070    0.125   RR               clken_ctrl_X7_Y2_N0|ClkOut =>                        rst_mod|rst_n|Clk 
+      Data Path:
+        4.291    0.221   RF                        rst_mod|rst_n|Clk =>                          rst_mod|rst_n|Q D
+        5.389    1.098   FF                          rst_mod|rst_n|Q =>              rst_mod|rst_n~clkctrl|inclk 
+        5.389    0.000   FF              rst_mod|rst_n~clkctrl|inclk =>             rst_mod|rst_n~clkctrl|outclk 
+        7.840    2.451   FF             rst_mod|rst_n~clkctrl|outclk => u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|AsyncReset0 E
+    Required Time:  19.492
+       20.000   20.000   R                          Latch Clock Edge
+      Latch Clock Path:
+       20.000    0.000   RR                                  top|CLK =>                          CLK~input|padio 
+       21.100    1.100   RR                          CLK~input|padio =>                        CLK~input|combout 
+       21.727    0.627   RR                        CLK~input|combout => pll_inst|altpll_component|auto_generated|pll1|clkin 
+      Compensation Path:
+       16.206   -5.521   RR pll_inst|altpll_component|auto_generated|pll1|clkfb => pll_inst|altpll_component|auto_generated|pll1|clkfbout 
+       16.206   -0.000   RR pll_inst|altpll_component|auto_generated|pll1|clkfbout => pll_inst|altpll_component|auto_generated|pll1|clkfb 
+      Compensation Path End
+       16.606    0.400   RR pll_inst|altpll_component|auto_generated|pll1|clkin => pll_inst|altpll_component|auto_generated|pll1|clkout0 D
+       17.347    0.741   RR pll_inst|altpll_component|auto_generated|pll1|clkout0 => pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl|inclk D
+       17.347    0.000   RR pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl|inclk => pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl|outclk 
+       19.593    2.246   RR pll_inst|altpll_component|auto_generated|wire_pll1_clk[0]~clkctrl|outclk => u_ahb2ram|u1_ram_two_port|altsyncram_component|auto_generated|ram_block1a20|Clk0 
+       19.523   -0.070                             Clock Uncertainty
+       19.492   -0.031   R                                     Setup
+

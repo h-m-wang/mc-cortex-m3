@@ -1,0 +1,1232 @@
+Partition Merge report for top
+Thu Feb 03 16:05:49 2022
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Connections to In-System Debugging Instance "auto_signaltap_0"
+  5. Partition Merge Partition Warnings
+  6. Partition Merge Partition Statistics
+  7. Partition Merge Partition Pin Processing
+  8. Partition Merge Resource Usage Summary
+  9. Partition Merge RAM Summary
+ 10. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Partition Merge Summary                                                          ;
++------------------------------------+---------------------------------------------+
+; Partition Merge Status             ; Successful - Thu Feb 03 16:05:49 2022       ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
+; Revision Name                      ; top                                         ;
+; Top-level Entity Name              ; top                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 1,856 / 15,408 ( 12 % )                     ;
+;     Total combinational functions  ; 944 / 15,408 ( 6 % )                        ;
+;     Dedicated logic registers      ; 1,498 / 15,408 ( 10 % )                     ;
+; Total registers                    ; 1498                                        ;
+; Total pins                         ; 61 / 344 ( 18 % )                           ;
+; Total virtual pins                 ; 32                                          ;
+; Total memory bits                  ; 138,240 / 516,096 ( 27 % )                  ;
+; Embedded Multiplier 9-bit elements ; 0 / 112 ( 0 % )                             ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
++------------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Post-Fit          ; Post-Fit               ;                                ;
+; alta_mcu_m3:mcu_inst           ; User-created   ; Post-Fit          ; Post-Fit               ; alta_mcu_m3:mcu_inst           ;
+; sld_hub:auto_hub               ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_hub:auto_hub               ;
+; sld_signaltap:auto_signaltap_0 ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_signaltap:auto_signaltap_0 ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Connections to In-System Debugging Instance "auto_signaltap_0"                                                                                                                                                                              ;
++---------------------------------------------------------------------------------+--------------+-----------+----------------+-------------------+---------------------------------------------------------------------------------+---------+
+; Name                                                                            ; Type         ; Status    ; Partition Name ; Netlist Type Used ; Actual Connection                                                               ; Details ;
++---------------------------------------------------------------------------------+--------------+-----------+----------------+-------------------+---------------------------------------------------------------------------------+---------+
+; busy                                                                            ; post-fitting ; connected ; Top            ; post-fit          ; busy                                                                            ; N/A     ;
+; busy                                                                            ; post-fitting ; connected ; Top            ; post-fit          ; busy                                                                            ; N/A     ;
+; counter[0]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[0]                                                                      ; N/A     ;
+; counter[0]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[0]                                                                      ; N/A     ;
+; counter[1]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[1]                                                                      ; N/A     ;
+; counter[1]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[1]                                                                      ; N/A     ;
+; counter[2]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[2]                                                                      ; N/A     ;
+; counter[2]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[2]                                                                      ; N/A     ;
+; counter[3]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[3]                                                                      ; N/A     ;
+; counter[3]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; counter[3]                                                                      ; N/A     ;
+; data_in[0]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[0]                                                                      ; N/A     ;
+; data_in[0]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[0]                                                                      ; N/A     ;
+; data_in[10]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[10]                                                                     ; N/A     ;
+; data_in[10]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[10]                                                                     ; N/A     ;
+; data_in[11]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[11]                                                                     ; N/A     ;
+; data_in[11]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[11]                                                                     ; N/A     ;
+; data_in[12]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[12]                                                                     ; N/A     ;
+; data_in[12]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[12]                                                                     ; N/A     ;
+; data_in[13]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[13]                                                                     ; N/A     ;
+; data_in[13]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[13]                                                                     ; N/A     ;
+; data_in[14]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[14]                                                                     ; N/A     ;
+; data_in[14]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[14]                                                                     ; N/A     ;
+; data_in[15]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[15]                                                                     ; N/A     ;
+; data_in[15]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[15]                                                                     ; N/A     ;
+; data_in[16]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[16]                                                                     ; N/A     ;
+; data_in[16]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[16]                                                                     ; N/A     ;
+; data_in[17]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[17]                                                                     ; N/A     ;
+; data_in[17]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[17]                                                                     ; N/A     ;
+; data_in[18]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[18]                                                                     ; N/A     ;
+; data_in[18]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[18]                                                                     ; N/A     ;
+; data_in[19]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[19]                                                                     ; N/A     ;
+; data_in[19]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[19]                                                                     ; N/A     ;
+; data_in[1]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[1]                                                                      ; N/A     ;
+; data_in[1]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[1]                                                                      ; N/A     ;
+; data_in[20]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[20]                                                                     ; N/A     ;
+; data_in[20]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[20]                                                                     ; N/A     ;
+; data_in[21]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[21]                                                                     ; N/A     ;
+; data_in[21]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_in[21]                                                                     ; N/A     ;
+; data_in[2]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[2]                                                                      ; N/A     ;
+; data_in[2]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[2]                                                                      ; N/A     ;
+; data_in[3]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[3]                                                                      ; N/A     ;
+; data_in[3]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[3]                                                                      ; N/A     ;
+; data_in[4]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[4]                                                                      ; N/A     ;
+; data_in[4]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[4]                                                                      ; N/A     ;
+; data_in[5]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[5]                                                                      ; N/A     ;
+; data_in[5]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[5]                                                                      ; N/A     ;
+; data_in[6]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[6]                                                                      ; N/A     ;
+; data_in[6]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[6]                                                                      ; N/A     ;
+; data_in[7]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[7]                                                                      ; N/A     ;
+; data_in[7]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[7]                                                                      ; N/A     ;
+; data_in[8]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[8]                                                                      ; N/A     ;
+; data_in[8]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[8]                                                                      ; N/A     ;
+; data_in[9]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[9]                                                                      ; N/A     ;
+; data_in[9]                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; data_in[9]                                                                      ; N/A     ;
+; data_out[0]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[0]                                                                     ; N/A     ;
+; data_out[0]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[0]                                                                     ; N/A     ;
+; data_out[10]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[10]                                                                    ; N/A     ;
+; data_out[10]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[10]                                                                    ; N/A     ;
+; data_out[11]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[11]                                                                    ; N/A     ;
+; data_out[11]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[11]                                                                    ; N/A     ;
+; data_out[12]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[12]                                                                    ; N/A     ;
+; data_out[12]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[12]                                                                    ; N/A     ;
+; data_out[13]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[13]                                                                    ; N/A     ;
+; data_out[13]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[13]                                                                    ; N/A     ;
+; data_out[14]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[14]                                                                    ; N/A     ;
+; data_out[14]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[14]                                                                    ; N/A     ;
+; data_out[15]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[15]                                                                    ; N/A     ;
+; data_out[15]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[15]                                                                    ; N/A     ;
+; data_out[16]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[16]                                                                    ; N/A     ;
+; data_out[16]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[16]                                                                    ; N/A     ;
+; data_out[17]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[17]                                                                    ; N/A     ;
+; data_out[17]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[17]                                                                    ; N/A     ;
+; data_out[18]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[18]                                                                    ; N/A     ;
+; data_out[18]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[18]                                                                    ; N/A     ;
+; data_out[19]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[19]                                                                    ; N/A     ;
+; data_out[19]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[19]                                                                    ; N/A     ;
+; data_out[1]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[1]                                                                     ; N/A     ;
+; data_out[1]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[1]                                                                     ; N/A     ;
+; data_out[20]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[20]                                                                    ; N/A     ;
+; data_out[20]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[20]                                                                    ; N/A     ;
+; data_out[21]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[21]                                                                    ; N/A     ;
+; data_out[21]                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; data_out[21]                                                                    ; N/A     ;
+; data_out[2]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[2]                                                                     ; N/A     ;
+; data_out[2]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[2]                                                                     ; N/A     ;
+; data_out[3]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[3]                                                                     ; N/A     ;
+; data_out[3]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[3]                                                                     ; N/A     ;
+; data_out[4]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[4]                                                                     ; N/A     ;
+; data_out[4]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[4]                                                                     ; N/A     ;
+; data_out[5]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[5]                                                                     ; N/A     ;
+; data_out[5]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[5]                                                                     ; N/A     ;
+; data_out[6]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[6]                                                                     ; N/A     ;
+; data_out[6]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[6]                                                                     ; N/A     ;
+; data_out[7]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[7]                                                                     ; N/A     ;
+; data_out[7]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[7]                                                                     ; N/A     ;
+; data_out[8]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[8]                                                                     ; N/A     ;
+; data_out[8]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[8]                                                                     ; N/A     ;
+; data_out[9]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[9]                                                                     ; N/A     ;
+; data_out[9]                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; data_out[9]                                                                     ; N/A     ;
+; param[0]                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; param[0]                                                                        ; N/A     ;
+; param[0]                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; param[0]                                                                        ; N/A     ;
+; param[1]                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; param[1]                                                                        ; N/A     ;
+; param[1]                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; param[1]                                                                        ; N/A     ;
+; param[2]                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; param[2]                                                                        ; N/A     ;
+; param[2]                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; param[2]                                                                        ; N/A     ;
+; pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated|wire_pll1_clk[0] ; post-fitting ; connected ; Top            ; post-fit          ; pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated|wire_pll1_clk[0] ; N/A     ;
+; printer_io:printer_io|io_reg[0]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[0]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[0]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[0]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[1]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[1]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[1]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[1]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[2]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[2]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[2]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[2]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[3]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[3]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[3]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[3]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[4]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[4]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[4]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[4]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[5]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[5]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[5]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[5]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[6]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[6]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[6]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[6]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[7]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[7]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[7]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[7]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[8]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[8]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[8]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[8]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[9]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[9]                                                 ; N/A     ;
+; printer_io:printer_io|io_reg[9]                                                 ; post-fitting ; connected ; Top            ; post-fit          ; printer_io:printer_io|io_reg[9]                                                 ; N/A     ;
+; read_param                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; read_param                                                                      ; N/A     ;
+; read_param                                                                      ; post-fitting ; connected ; Top            ; post-fit          ; read_param                                                                      ; N/A     ;
+; read_param_d                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; read_param_d                                                                    ; N/A     ;
+; read_param_d                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; read_param_d                                                                    ; N/A     ;
+; read_source[0]                                                                  ; post-fitting ; connected ; Top            ; post-fit          ; read_source[0]                                                                  ; N/A     ;
+; read_source[0]                                                                  ; post-fitting ; connected ; Top            ; post-fit          ; read_source[0]                                                                  ; N/A     ;
+; read_source[1]                                                                  ; post-fitting ; connected ; Top            ; post-fit          ; read_source[1]                                                                  ; N/A     ;
+; read_source[1]                                                                  ; post-fitting ; connected ; Top            ; post-fit          ; read_source[1]                                                                  ; N/A     ;
+; reconfig                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; reconfig                                                                        ; N/A     ;
+; reconfig                                                                        ; post-fitting ; connected ; Top            ; post-fit          ; reconfig                                                                        ; N/A     ;
+; reset_module:rst_mod|rst_n                                                      ; post-fitting ; connected ; Top            ; post-fit          ; reset_module:rst_mod|rst_n                                                      ; N/A     ;
+; reset_module:rst_mod|rst_n                                                      ; post-fitting ; connected ; Top            ; post-fit          ; reset_module:rst_mod|rst_n                                                      ; N/A     ;
+; w_read_param                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; w_read_param                                                                    ; N/A     ;
+; w_read_param                                                                    ; post-fitting ; connected ; Top            ; post-fit          ; w_read_param                                                                    ; N/A     ;
+; w_write_param                                                                   ; post-fitting ; connected ; Top            ; post-fit          ; w_write_param                                                                   ; N/A     ;
+; w_write_param                                                                   ; post-fitting ; connected ; Top            ; post-fit          ; w_write_param                                                                   ; N/A     ;
+; write_param                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; write_param                                                                     ; N/A     ;
+; write_param                                                                     ; post-fitting ; connected ; Top            ; post-fit          ; write_param                                                                     ; N/A     ;
++---------------------------------------------------------------------------------+--------------+-----------+----------------+-------------------+---------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------+
+; Partition Merge Partition Warnings                                                      ;
++-----------------------------------------+----------------------+------------------------+
+; Port                                    ; Partition            ; Info                   ;
++-----------------------------------------+----------------------+------------------------+
+; alta_mcu_m3:mcu_inst|GPIO2_I[7]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[6]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[5]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[4]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[3]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[2]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[1]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[0]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[7]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[6]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[5]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[4]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[3]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[2]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[1]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[0]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[7]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[6]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[5]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[4]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[3]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[2]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[1]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[0]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRESP_EXT[1]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRESP_EXT[0]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_EN         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[7]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[6]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[5]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[4]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[3]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[2]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[1]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN2[0]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[7]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[6]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[5]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[4]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[3]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[2]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[1]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN1[0]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[7]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[6]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[5]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[4]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[3]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[2]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[1]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|nGPEN0[0]          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[7]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[6]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[5]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[4]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[3]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[2]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[1]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[0]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[7]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[6]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[5]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[4]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[3]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[2]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[1]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[0]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[7]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[6]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[5]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[4]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[3]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[2]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[1]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[0]         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HOLDn_IO3_OE       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|WPn_IO2_OE         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_SO_OE        ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_SI_OE        ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_IO3_HOLDn    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_IO2_WPn      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_IO1_SO       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_IO0_SI       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[31]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[30]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[29]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[28]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[27]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[26]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[25]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[24]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[23]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[22]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[21]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[20]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[19]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[18]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[17]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[16]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[15]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[14]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[13]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[12]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[11]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[10]  ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[9]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[8]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[7]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[6]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[5]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[4]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[3]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[2]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[1]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[0]   ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|JTDO               ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|UART_RTS_n         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|UART_TXD           ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_CS_n         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|FLASH_SCK          ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[31]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[30]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[29]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[28]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[27]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[26]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[25]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[24]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[23]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[22]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[21]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[20]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[19]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[18]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[17]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[16]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[15]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[14]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[13]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[12]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[11]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[10]    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[9]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[8]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[7]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[6]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[5]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[4]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[3]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[2]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[1]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[0]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HREADY_OUT_EXTM    ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRESP_EXTM[1]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HRESP_EXTM[0]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HREADY_IN_EXT      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HSIZE_EXT[2]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HSIZE_EXT[1]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HSIZE_EXT[0]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[31]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[30]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[29]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[28]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[27]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[26]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[25]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[24]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[23]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[22]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[21]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[20]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[19]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[18]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[17]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[16]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[15]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[14]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[13]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[12]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[11]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[10]     ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[9]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[8]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[7]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[6]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[5]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[4]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[3]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[2]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[1]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXT[0]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HSEL_EXT           ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HWRITE_EXT         ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[31]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[30]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[29]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[28]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[27]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[26]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[25]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[24]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[23]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[22]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[21]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[20]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[19]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[18]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[17]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[16]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[15]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[14]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[13]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[12]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[11]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[10]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[9]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[8]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[7]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[6]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[5]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[4]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[3]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[2]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[1]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[0]       ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HTRANS_EXT[1]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|HTRANS_EXT[0]      ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|SWDOEN             ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|SWDO               ; alta_mcu_m3:mcu_inst ; Driven by constant GND ;
+; alta_mcu_m3:mcu_inst|CLK                ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|JTCK               ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|POR_n              ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_CPU_RST_n      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|JTRST_n            ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|UART_RXD           ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|UART_CTS_n         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|JTDI               ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|JTMS               ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_EN         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WR         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[0]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[1]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[2]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[3]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[4]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[5]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[6]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[7]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[8]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[9]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[10]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[11]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[12]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[13]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_ADDR[14]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_BYTE_EN[0] ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_BYTE_EN[1] ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_BYTE_EN[2] ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_BYTE_EN[3] ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[0]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[1]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[2]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[3]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[4]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[5]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[6]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[7]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[8]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[9]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[10]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[11]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[12]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[13]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[14]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[15]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[16]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[17]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[18]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[19]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[20]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[21]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[22]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[23]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[24]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[25]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[26]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[27]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[28]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[29]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[30]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_WDATA[31]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRESP_EXT[0]       ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRESP_EXT[1]       ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HREADY_OUT_EXT     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HTRANS_EXT[0]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[13]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[14]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[15]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[16]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[17]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[18]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[19]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[20]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[21]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[22]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[23]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[24]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[25]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[26]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[27]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[28]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[29]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[30]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXT[31]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HREADY_IN_EXT      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRESP_EXTM[0]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRESP_EXTM[1]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HREADY_OUT_EXTM    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[0]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[1]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[2]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[3]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[4]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[5]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[6]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[7]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[8]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[9]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[10]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[11]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[12]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[13]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[14]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[15]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[16]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[17]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[18]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[19]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[20]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[21]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[22]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[23]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[24]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[25]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[26]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[27]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[28]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[29]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[30]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HRDATA_EXTM[31]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HTRANS_EXTM[0]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HTRANS_EXTM[1]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[0]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[1]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[2]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[3]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[4]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[5]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[6]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[7]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[8]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[9]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[10]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[11]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[12]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[13]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[14]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[15]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[16]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[17]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[18]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[19]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[20]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[21]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[22]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[23]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[24]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[25]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[26]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[27]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[28]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[29]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[30]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HADDR_EXTM[31]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWRITE_EXTM        ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HSEL_EXTM          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[0]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[1]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[2]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[3]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[4]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[5]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[6]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[7]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[8]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[9]     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[10]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[11]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[12]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[13]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[14]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[15]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[16]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[17]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[18]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[19]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[20]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[21]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[22]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[23]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[24]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[25]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[26]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[27]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[28]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[29]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[30]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HWDATA_EXTM[31]    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HSIZE_EXTM[0]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HSIZE_EXTM[1]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HSIZE_EXTM[2]      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HREADY_IN_EXTM     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HBURSTM[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HBURSTM[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HBURSTM[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HPROTM[0]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HPROTM[1]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HPROTM[2]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HPROTM[3]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|UART_RTS_n         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[0]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[1]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[2]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[3]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[4]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[5]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[6]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[7]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[8]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[9]   ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[10]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[11]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[12]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[13]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[14]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[15]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[16]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[17]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[18]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[19]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[20]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[21]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[22]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[23]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[24]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[25]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[26]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[27]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[28]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[29]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[30]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|EXT_RAM_RDATA[31]  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|FLASH_IO2_WPn      ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|FLASH_IO3_HOLDn    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|FLASH_IO0_SI_i     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|FLASH_IO1_SO_i     ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|FLASH_IO2_WPn_i    ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|FLASH_IO3_HOLDn_i  ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|WPn_IO2_OE         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|HOLDn_IO3_OE       ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[3]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[4]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[5]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[6]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_I[7]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[3]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[4]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[5]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[6]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_I[7]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[3]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[4]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[5]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[6]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_I[7]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[3]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[4]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[5]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[6]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO0_O[7]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[3]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[4]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[5]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[6]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO1_O[7]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[0]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[1]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[2]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[3]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[4]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[5]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[6]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|GPIO2_O[7]         ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[0]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[1]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[2]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[3]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[4]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[5]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[6]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN0[7]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[0]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[1]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[2]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[3]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[4]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[5]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[6]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN1[7]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[0]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[1]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[2]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[3]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[4]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[5]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[6]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
+; alta_mcu_m3:mcu_inst|nGPEN2[7]          ; alta_mcu_m3:mcu_inst ; No fanout              ;
++-----------------------------------------+----------------------+------------------------+
+Note: The Incremental Compilation Advisor can be used to get more detailed recommendations.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                                                                                                                               ;
++---------------------------------------------+---------------------+----------------------+-----------------------+--------------------------------+--------------------------------+
+; Statistic                                   ; Top                 ; alta_mcu_m3:mcu_inst ; sld_hub:auto_hub      ; sld_signaltap:auto_signaltap_0 ; hard_block:auto_generated_inst ;
++---------------------------------------------+---------------------+----------------------+-----------------------+--------------------------------+--------------------------------+
+; Estimated Total logic elements              ; 344 / 15408 ( 2 % ) ; 1 / 15408 ( < 1 % )  ; 145 / 15408 ( < 1 % ) ; 1391 / 15408 ( 9 % )           ; 0 / 15408 ( 0 % )              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Total combinational functions               ; 259                 ; 1                    ; 119                   ; 565                            ; 0                              ;
+; Logic element usage by number of LUT inputs ;                     ;                      ;                       ;                                ;                                ;
+;     -- 4 input functions                    ; 102                 ; 0                    ; 50                    ; 268                            ; 0                              ;
+;     -- 3 input functions                    ; 35                  ; 0                    ; 33                    ; 173                            ; 0                              ;
+;     -- <=2 input functions                  ; 122                 ; 1                    ; 36                    ; 124                            ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Logic elements by mode                      ;                     ;                      ;                       ;                                ;                                ;
+;     -- normal mode                          ; 218                 ; 1                    ; 111                   ; 484                            ; 0                              ;
+;     -- arithmetic mode                      ; 41                  ; 0                    ; 8                     ; 81                             ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Total registers                             ; 224                 ; 0                    ; 90                    ; 1184                           ; 0                              ;
+;     -- Dedicated logic registers            ; 224 / 15408 ( 1 % ) ; 0 / 15408 ( 0 % )    ; 90 / 15408 ( < 1 % )  ; 1184 / 15408 ( 8 % )           ; 0 / 15408 ( 0 % )              ;
+;     -- I/O registers                        ; 0                   ; 0                    ; 0                     ; 0                              ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Virtual pins                                ; 0                   ; 32                   ; 0                     ; 0                              ; 0                              ;
+; I/O pins                                    ; 61                  ; 0                    ; 0                     ; 0                              ; 0                              ;
+; Embedded Multiplier 9-bit elements          ; 0 / 112 ( 0 % )     ; 0 / 112 ( 0 % )      ; 0 / 112 ( 0 % )       ; 0 / 112 ( 0 % )                ; 0 / 112 ( 0 % )                ;
+; Total memory bits                           ; 65536               ; 0                    ; 0                     ; 72704                          ; 0                              ;
+; Total RAM block bits                        ; 73728               ; 0                    ; 0                     ; 73728                          ; 0                              ;
+; JTAG                                        ; 1 / 1 ( 100 % )     ; 0 / 1 ( 0 % )        ; 0 / 1 ( 0 % )         ; 0 / 1 ( 0 % )                  ; 0 / 1 ( 0 % )                  ;
+; PLL                                         ; 0 / 4 ( 0 % )       ; 0 / 4 ( 0 % )        ; 0 / 4 ( 0 % )         ; 0 / 4 ( 0 % )                  ; 1 / 4 ( 25 % )                 ;
+; M9K                                         ; 8 / 56 ( 14 % )     ; 0 / 56 ( 0 % )       ; 0 / 56 ( 0 % )        ; 8 / 56 ( 14 % )                ; 0 / 56 ( 0 % )                 ;
+; ASMI block                                  ; 1 / 1 ( 100 % )     ; 0 / 1 ( 0 % )        ; 0 / 1 ( 0 % )         ; 0 / 1 ( 0 % )                  ; 0 / 1 ( 0 % )                  ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Connections                                 ;                     ;                      ;                       ;                                ;                                ;
+;     -- Input Connections                    ; 293                 ; 32                   ; 133                   ; 1682                           ; 2                              ;
+;     -- Registered Input Connections         ; 246                 ; 0                    ; 101                   ; 1351                           ; 0                              ;
+;     -- Output Connections                   ; 860                 ; 86                   ; 219                   ; 1                              ; 976                            ;
+;     -- Registered Output Connections        ; 125                 ; 0                    ; 218                   ; 0                              ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Internal Connections                        ;                     ;                      ;                       ;                                ;                                ;
+;     -- Total Connections                    ; 2790                ; 118                  ; 879                   ; 7047                           ; 979                            ;
+;     -- Registered Connections               ; 1115                ; 0                    ; 657                   ; 5203                           ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; External Connections                        ;                     ;                      ;                       ;                                ;                                ;
+;     -- Top                                  ; 4                   ; 118                  ; 123                   ; 702                            ; 206                            ;
+;     -- alta_mcu_m3:mcu_inst                 ; 118                 ; 0                    ; 0                     ; 0                              ; 0                              ;
+;     -- sld_hub:auto_hub                     ; 123                 ; 0                    ; 20                    ; 209                            ; 0                              ;
+;     -- sld_signaltap:auto_signaltap_0       ; 702                 ; 0                    ; 209                   ; 0                              ; 772                            ;
+;     -- hard_block:auto_generated_inst       ; 206                 ; 0                    ; 0                     ; 772                            ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Partition Interface                         ;                     ;                      ;                       ;                                ;                                ;
+;     -- Input Ports                          ; 16                  ; 204                  ; 21                    ; 201                            ; 2                              ;
+;     -- Output Ports                         ; 47                  ; 202                  ; 39                    ; 154                            ; 2                              ;
+;     -- Bidir Ports                          ; 2                   ; 0                    ; 0                     ; 0                              ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Registered Ports                            ;                     ;                      ;                       ;                                ;                                ;
+;     -- Registered Input Ports               ; 0                   ; 0                    ; 4                     ; 147                            ; 0                              ;
+;     -- Registered Output Ports              ; 0                   ; 0                    ; 28                    ; 143                            ; 0                              ;
+;                                             ;                     ;                      ;                       ;                                ;                                ;
+; Port Connectivity                           ;                     ;                      ;                       ;                                ;                                ;
+;     -- Input Ports driven by GND            ; 0                   ; 27                   ; 1                     ; 0                              ; 0                              ;
+;     -- Output Ports driven by GND           ; 0                   ; 202                  ; 1                     ; 0                              ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0                   ; 7                    ; 0                     ; 0                              ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0                   ; 0                    ; 0                     ; 0                              ; 0                              ;
+;     -- Input Ports with no Source           ; 0                   ; 129                  ; 1                     ; 35                             ; 0                              ;
+;     -- Output Ports with no Source          ; 0                   ; 0                    ; 0                     ; 0                              ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0                   ; 172                  ; 2                     ; 40                             ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0                   ; 141                  ; 15                    ; 143                            ; 0                              ;
++---------------------------------------------+---------------------+----------------------+-----------------------+--------------------------------+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                                                                                         ;
++----------------------------------------+----------------------+---------------+--------------------+---------------------------------------------+
+; Name                                   ; Partition            ; Type          ; Location           ; Status                                      ;
++----------------------------------------+----------------------+---------------+--------------------+---------------------------------------------+
+; BEEP                                   ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- BEEP                            ; Top                  ; Output Pad    ; IOPAD_X0_Y8_N21    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- BEEP~output                     ; Top                  ; Output Buffer ; IOOBUF_X0_Y8_N23   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; CLK                                    ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- CLK                             ; Top                  ; Input Pad     ; IOPAD_X0_Y14_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- CLK~input                       ; Top                  ; Input Buffer  ; IOIBUF_X0_Y14_N8   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[0]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[0]                     ; Top                  ; Input Pad     ; IOPAD_X41_Y8_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[0]~input               ; Top                  ; Input Buffer  ; IOIBUF_X41_Y8_N1   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[1]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[1]                     ; Top                  ; Input Pad     ; IOPAD_X0_Y11_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[1]~input               ; Top                  ; Input Buffer  ; IOIBUF_X0_Y11_N1   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[2]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[2]                     ; Top                  ; Input Pad     ; IOPAD_X30_Y29_N7   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[2]~input               ; Top                  ; Input Buffer  ; IOIBUF_X30_Y29_N8  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[3]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[3]                     ; Top                  ; Input Pad     ; IOPAD_X37_Y0_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[3]~input               ; Top                  ; Input Buffer  ; IOIBUF_X37_Y0_N22  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[4]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[4]                     ; Top                  ; Input Pad     ; IOPAD_X28_Y0_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[4]~input               ; Top                  ; Input Buffer  ; IOIBUF_X28_Y0_N1   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[5]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[5]                     ; Top                  ; Input Pad     ; IOPAD_X23_Y0_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[5]~input               ; Top                  ; Input Buffer  ; IOIBUF_X23_Y0_N22  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[6]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[6]                     ; Top                  ; Input Pad     ; IOPAD_X37_Y29_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[6]~input               ; Top                  ; Input Buffer  ; IOIBUF_X37_Y29_N1  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYIN[7]                            ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- IO_KEYIN[7]                     ; Top                  ; Input Pad     ; IOPAD_X28_Y0_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYIN[7]~input               ; Top                  ; Input Buffer  ; IOIBUF_X28_Y0_N22  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[0]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[0]                    ; Top                  ; Output Pad    ; IOPAD_X0_Y23_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[0]~output             ; Top                  ; Output Buffer ; IOOBUF_X0_Y23_N9   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[1]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[1]                    ; Top                  ; Output Pad    ; IOPAD_X30_Y29_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[1]~output             ; Top                  ; Output Buffer ; IOOBUF_X30_Y29_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[2]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[2]                    ; Top                  ; Output Pad    ; IOPAD_X1_Y29_N14   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[2]~output             ; Top                  ; Output Buffer ; IOOBUF_X1_Y29_N16  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[3]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[3]                    ; Top                  ; Output Pad    ; IOPAD_X41_Y20_N21  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[3]~output             ; Top                  ; Output Buffer ; IOOBUF_X41_Y20_N23 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[4]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[4]                    ; Top                  ; Output Pad    ; IOPAD_X7_Y0_N0     ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[4]~output             ; Top                  ; Output Buffer ; IOOBUF_X7_Y0_N2    ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[5]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[5]                    ; Top                  ; Output Pad    ; IOPAD_X26_Y29_N7   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[5]~output             ; Top                  ; Output Buffer ; IOOBUF_X26_Y29_N9  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[6]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[6]                    ; Top                  ; Output Pad    ; IOPAD_X41_Y2_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[6]~output             ; Top                  ; Output Buffer ; IOOBUF_X41_Y2_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_KEYOUT[7]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_KEYOUT[7]                    ; Top                  ; Output Pad    ; IOPAD_X11_Y0_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_KEYOUT[7]~output             ; Top                  ; Output Buffer ; IOOBUF_X11_Y0_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[0]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[0]                     ; Top                  ; Output Pad    ; IOPAD_X14_Y29_N7   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[0]~output              ; Top                  ; Output Buffer ; IOOBUF_X14_Y29_N9  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[10]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[10]                    ; Top                  ; Output Pad    ; IOPAD_X3_Y29_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[10]~output             ; Top                  ; Output Buffer ; IOOBUF_X3_Y29_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[11]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[11]                    ; Top                  ; Output Pad    ; IOPAD_X11_Y29_N21  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[11]~output             ; Top                  ; Output Buffer ; IOOBUF_X11_Y29_N23 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[12]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[12]                    ; Top                  ; Output Pad    ; IOPAD_X5_Y29_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[12]~output             ; Top                  ; Output Buffer ; IOOBUF_X5_Y29_N9   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[13]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[13]                    ; Top                  ; Output Pad    ; IOPAD_X0_Y21_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[13]~output             ; Top                  ; Output Buffer ; IOOBUF_X0_Y21_N23  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[14]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[14]                    ; Top                  ; Output Pad    ; IOPAD_X0_Y27_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[14]~output             ; Top                  ; Output Buffer ; IOOBUF_X0_Y27_N23  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[15]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[15]                    ; Top                  ; Output Pad    ; IOPAD_X5_Y29_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[15]~output             ; Top                  ; Output Buffer ; IOOBUF_X5_Y29_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[16]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[16]                    ; Top                  ; Output Pad    ; IOPAD_X9_Y29_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[16]~output             ; Top                  ; Output Buffer ; IOOBUF_X9_Y29_N9   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[17]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[17]                    ; Top                  ; Output Pad    ; IOPAD_X9_Y29_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[17]~output             ; Top                  ; Output Buffer ; IOOBUF_X9_Y29_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[18]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[18]                    ; Top                  ; Output Pad    ; IOPAD_X7_Y29_N28   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[18]~output             ; Top                  ; Output Buffer ; IOOBUF_X7_Y29_N30  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[19]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[19]                    ; Top                  ; Output Pad    ; IOPAD_X5_Y29_N28   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[19]~output             ; Top                  ; Output Buffer ; IOOBUF_X5_Y29_N30  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[1]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[1]                     ; Top                  ; Output Pad    ; IOPAD_X11_Y29_N14  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[1]~output              ; Top                  ; Output Buffer ; IOOBUF_X11_Y29_N16 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[20]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[20]                    ; Top                  ; Output Pad    ; IOPAD_X5_Y29_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[20]~output             ; Top                  ; Output Buffer ; IOOBUF_X5_Y29_N23  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[21]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[21]                    ; Top                  ; Output Pad    ; IOPAD_X7_Y29_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[21]~output             ; Top                  ; Output Buffer ; IOOBUF_X7_Y29_N9   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[22]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[22]                    ; Top                  ; Output Pad    ; IOPAD_X9_Y29_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[22]~output             ; Top                  ; Output Buffer ; IOOBUF_X9_Y29_N23  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[23]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[23]                    ; Top                  ; Output Pad    ; IOPAD_X1_Y29_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[23]~output             ; Top                  ; Output Buffer ; IOOBUF_X1_Y29_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[24]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[24]                    ; Top                  ; Output Pad    ; IOPAD_X0_Y27_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[24]~output             ; Top                  ; Output Buffer ; IOOBUF_X0_Y27_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[25]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[25]                    ; Top                  ; Output Pad    ; IOPAD_X11_Y29_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[25]~output             ; Top                  ; Output Buffer ; IOOBUF_X11_Y29_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[26]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[26]                    ; Top                  ; Output Pad    ; IOPAD_X5_Y29_N14   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[26]~output             ; Top                  ; Output Buffer ; IOOBUF_X5_Y29_N16  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[27]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[27]                    ; Top                  ; Output Pad    ; IOPAD_X7_Y29_N14   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[27]~output             ; Top                  ; Output Buffer ; IOOBUF_X7_Y29_N16  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[28]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[28]                    ; Top                  ; Output Pad    ; IOPAD_X7_Y29_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[28]~output             ; Top                  ; Output Buffer ; IOOBUF_X7_Y29_N2   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[29]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[29]                    ; Top                  ; Output Pad    ; IOPAD_X1_Y29_N28   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[29]~output             ; Top                  ; Output Buffer ; IOOBUF_X1_Y29_N30  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[2]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[2]                     ; Top                  ; Output Pad    ; IOPAD_X14_Y29_N14  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[2]~output              ; Top                  ; Output Buffer ; IOOBUF_X14_Y29_N16 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[30]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[30]                    ; Top                  ; Output Pad    ; IOPAD_X0_Y26_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[30]~output             ; Top                  ; Output Buffer ; IOOBUF_X0_Y26_N9   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[31]                           ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[31]                    ; Top                  ; Output Pad    ; IOPAD_X23_Y29_N21  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[31]~output             ; Top                  ; Output Buffer ; IOOBUF_X23_Y29_N23 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[3]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[3]                     ; Top                  ; Output Pad    ; IOPAD_X14_Y29_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[3]~output              ; Top                  ; Output Buffer ; IOOBUF_X14_Y29_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[4]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[4]                     ; Top                  ; Output Pad    ; IOPAD_X9_Y29_N14   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[4]~output              ; Top                  ; Output Buffer ; IOOBUF_X9_Y29_N16  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[5]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[5]                     ; Top                  ; Output Pad    ; IOPAD_X11_Y29_N7   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[5]~output              ; Top                  ; Output Buffer ; IOOBUF_X11_Y29_N9  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[6]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[6]                     ; Top                  ; Output Pad    ; IOPAD_X3_Y29_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[6]~output              ; Top                  ; Output Buffer ; IOOBUF_X3_Y29_N9   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[7]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[7]                     ; Top                  ; Output Pad    ; IOPAD_X7_Y29_N21   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[7]~output              ; Top                  ; Output Buffer ; IOOBUF_X7_Y29_N23  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[8]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[8]                     ; Top                  ; Output Pad    ; IOPAD_X9_Y29_N28   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[8]~output              ; Top                  ; Output Buffer ; IOOBUF_X9_Y29_N30  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; IO_PRINT[9]                            ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- IO_PRINT[9]                     ; Top                  ; Output Pad    ; IOPAD_X0_Y24_N14   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- IO_PRINT[9]~output              ; Top                  ; Output Buffer ; IOOBUF_X0_Y24_N16  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; JTCK                                   ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- JTCK                            ; Top                  ; Input Pad     ; IOPAD_X16_Y29_N7   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- JTCK~input                      ; Top                  ; Input Buffer  ; IOIBUF_X16_Y29_N8  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|JTCK       ; alta_mcu_m3:mcu_inst ; Input Port    ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; JTDI                                   ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- JTDI                            ; Top                  ; Input Pad     ; IOPAD_X19_Y29_N28  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- JTDI~input                      ; Top                  ; Input Buffer  ; IOIBUF_X19_Y29_N29 ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|JTDI       ; alta_mcu_m3:mcu_inst ; Input Port    ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; JTDO                                   ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- JTDO                            ; Top                  ; Output Pad    ; IOPAD_X16_Y29_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- JTDO~output                     ; Top                  ; Output Buffer ; IOOBUF_X16_Y29_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|JTDO       ; alta_mcu_m3:mcu_inst ; Output Port   ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; JTMS                                   ; Top                  ; Bidir Port    ; n/a                ;                                             ;
+;     -- JTMS                            ; Top                  ; Bidir Pad     ; IOPAD_X21_Y29_N0   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- JTMS~output                     ; Top                  ; Output Buffer ; IOOBUF_X21_Y29_N2  ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; SPI1_CS_N                              ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- SPI1_CS_N                       ; Top                  ; Output Pad    ; IOPAD_X21_Y29_N21  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- SPI1_CS_N~output                ; Top                  ; Output Buffer ; IOOBUF_X21_Y29_N23 ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|FLASH_CS_n ; alta_mcu_m3:mcu_inst ; Output Port   ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; SPI1_MISO                              ; Top                  ; Bidir Port    ; n/a                ;                                             ;
+;     -- SPI1_MISO                       ; Top                  ; Bidir Pad     ; IOPAD_X14_Y29_N21  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- SPI1_MISO~output                ; Top                  ; Output Buffer ; IOOBUF_X14_Y29_N23 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; SPI1_MOSI                              ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- SPI1_MOSI                       ; Top                  ; Output Pad    ; IOPAD_X16_Y29_N14  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- SPI1_MOSI~output                ; Top                  ; Output Buffer ; IOOBUF_X16_Y29_N16 ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; SPI1_SCK                               ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- SPI1_SCK                        ; Top                  ; Output Pad    ; IOPAD_X21_Y29_N14  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- SPI1_SCK~output                 ; Top                  ; Output Buffer ; IOOBUF_X21_Y29_N16 ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|FLASH_SCK  ; alta_mcu_m3:mcu_inst ; Output Port   ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; SWITCH                                 ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- SWITCH                          ; Top                  ; Input Pad     ; IOPAD_X0_Y20_N0    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- SWITCH~input                    ; Top                  ; Input Buffer  ; IOIBUF_X0_Y20_N1   ; Preserved from Post-Fit or Imported Netlist ;
+;                                        ;                      ;               ;                    ;                                             ;
+; UART0_RXD                              ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- UART0_RXD                       ; Top                  ; Input Pad     ; IOPAD_X41_Y7_N7    ; Preserved from Post-Fit or Imported Netlist ;
+;     -- UART0_RXD~input                 ; Top                  ; Input Buffer  ; IOIBUF_X41_Y7_N8   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|UART_RXD   ; alta_mcu_m3:mcu_inst ; Input Port    ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; UART0_TXD                              ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- UART0_TXD                       ; Top                  ; Output Pad    ; IOPAD_X23_Y29_N7   ; Preserved from Post-Fit or Imported Netlist ;
+;     -- UART0_TXD~output                ; Top                  ; Output Buffer ; IOOBUF_X23_Y29_N9  ; Preserved from Post-Fit or Imported Netlist ;
+;     -- alta_mcu_m3:mcu_inst|UART_TXD   ; alta_mcu_m3:mcu_inst ; Output Port   ; n/a                ;                                             ;
+;                                        ;                      ;               ;                    ;                                             ;
+; altera_reserved_tck                    ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- altera_reserved_tck             ; Top                  ; Input Pad     ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tck~input       ; Top                  ; Input Buffer  ; Unplaced           ; Synthesized                                 ;
+;                                        ;                      ;               ;                    ;                                             ;
+; altera_reserved_tdi                    ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- altera_reserved_tdi             ; Top                  ; Input Pad     ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tdi~input       ; Top                  ; Input Buffer  ; Unplaced           ; Synthesized                                 ;
+;                                        ;                      ;               ;                    ;                                             ;
+; altera_reserved_tdo                    ; Top                  ; Output Port   ; n/a                ;                                             ;
+;     -- altera_reserved_tdo             ; Top                  ; Output Pad    ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tdo~output      ; Top                  ; Output Buffer ; Unplaced           ; Synthesized                                 ;
+;                                        ;                      ;               ;                    ;                                             ;
+; altera_reserved_tms                    ; Top                  ; Input Port    ; n/a                ;                                             ;
+;     -- altera_reserved_tms             ; Top                  ; Input Pad     ; Unplaced           ; Synthesized                                 ;
+;     -- altera_reserved_tms~input       ; Top                  ; Input Buffer  ; Unplaced           ; Synthesized                                 ;
+;                                        ;                      ;               ;                    ;                                             ;
++----------------------------------------+----------------------+---------------+--------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                                                                                        ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                           ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 1,856 / 15,408 ( 12 % )                                                         ;
+;                                             ;                                                                                 ;
+; Total combinational functions               ; 944                                                                             ;
+; Logic element usage by number of LUT inputs ;                                                                                 ;
+;     -- 4 input functions                    ; 420                                                                             ;
+;     -- 3 input functions                    ; 241                                                                             ;
+;     -- <=2 input functions                  ; 283                                                                             ;
+;                                             ;                                                                                 ;
+; Logic elements by mode                      ;                                                                                 ;
+;     -- normal mode                          ; 814                                                                             ;
+;     -- arithmetic mode                      ; 130                                                                             ;
+;                                             ;                                                                                 ;
+; Total registers                             ; 1498                                                                            ;
+;     -- Dedicated logic registers            ; 1498                                                                            ;
+;     -- I/O registers                        ; 0                                                                               ;
+;                                             ;                                                                                 ;
+; Virtual pins                                ; 32                                                                              ;
+; I/O pins                                    ; 61                                                                              ;
+; Total memory bits                           ; 138240                                                                          ;
+; Embedded Multiplier 9-bit elements          ; 0                                                                               ;
+; Total PLLs                                  ; 1                                                                               ;
+;     -- PLLs                                 ; 1                                                                               ;
+;                                             ;                                                                                 ;
+; Maximum fan-out node                        ; pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated|wire_pll1_clk[0] ;
+; Maximum fan-out                             ; 969                                                                             ;
+; Total fan-out                               ; 9543                                                                            ;
+; Average fan-out                             ; 3.48                                                                            ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge RAM Summary                                                                                                                                                                                                                                                                                 ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; Name                                                                                                                                                                                                  ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF  ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+; ahb2ram:u_ahb2ram|ram_two_port:u1_ram_two_port|altsyncram:altsyncram_component|altsyncram_1mf2:auto_generated|ALTSYNCRAM                                                                              ; AUTO ; True Dual Port   ; 4096         ; 32           ; 4096         ; 32           ; 131072 ; None ;
+; sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|altsyncram:\stp_non_zero_ram_gen:stp_buffer_ram|altsyncram_sr14:auto_generated|ALTSYNCRAM ; M9K  ; Simple Dual Port ; 1024         ; 71           ; 1024         ; 71           ; 72704  ; None ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Partition Merge
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+    Info: Processing started: Thu Feb 03 16:05:47 2022
+Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off top -c top --merge=on
+Info (35006): Using previously generated Fitter netlist for partition "Top"
+Info (35006): Using previously generated Fitter netlist for partition "alta_mcu_m3:mcu_inst"
+Info (35007): Using synthesis netlist for partition "sld_hub:auto_hub"
+Info (35007): Using synthesis netlist for partition "sld_signaltap:auto_signaltap_0"
+Info (35024): Succesfully connected in-system debug instance "auto_signaltap_0" to all 143 required data inputs, trigger inputs, acquisition clocks, and dynamic pins
+Info (35002): Resolved and merged 4 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Info (35048): Found 229 ports with constant drivers. For more information, refer to the Partition Merger report
+Info (35047): Found 313 ports with no fan-out. For more information, refer to the Partition Merger report
+Warning (35016): Found partition port(s) not driving logic, possibly wasting area
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|FLASH_IO0_SI_i", driven by node "SPI1_MOSI~1", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|POR_n", driven by node "reset_module:rst_mod|rst_n", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[7]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[6]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[5]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[4]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[3]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[2]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[1]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO2_I[0]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[7]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[6]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[5]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[4]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[3]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[2]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[1]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO1_I[0]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO0_I[7]", driven by node "~GND", does not drive logic
+    Warning (35018): Partition port "alta_mcu_m3:mcu_inst|GPIO0_I[6]", driven by node "~GND", does not drive logic
+    Warning (35039): Only the first 20 ports are reported. For a full list of ports, refer to the Partition Warnings panel in the Partition Merge report
+Warning (15899): PLL "pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated|pll1" has parameters clk1_multiply_by and clk1_divide_by specified but port CLK[1] is not connected
+Warning (21074): Design contains 11 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "IO_KEYIN[0]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[1]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[2]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[3]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[4]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[5]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[6]"
+    Warning (15610): No output dependent on input pin "IO_KEYIN[7]"
+    Warning (15610): No output dependent on input pin "JTCK"
+    Warning (15610): No output dependent on input pin "JTDI"
+    Warning (15610): No output dependent on input pin "UART0_RXD"
+Info (21057): Implemented 2081 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 16 input pins
+    Info (21059): Implemented 47 output pins
+    Info (21060): Implemented 2 bidirectional pins
+    Info (21061): Implemented 1932 logic cells
+    Info (21064): Implemented 79 RAM segments
+    Info (21065): Implemented 1 PLLs
+Info: Quartus II 64-Bit Partition Merge was successful. 0 errors, 35 warnings
+    Info: Peak virtual memory: 609 megabytes
+    Info: Processing ended: Thu Feb 03 16:05:50 2022
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
+
+

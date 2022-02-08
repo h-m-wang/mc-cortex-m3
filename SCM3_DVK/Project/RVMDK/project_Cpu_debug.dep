@@ -1,0 +1,14 @@
+Dependencies for Project 'project', Target 'Cpu_debug': (DO NOT MODIFY !)
+F (..\..\Source\src\main.c)(0x54FFD677)(-c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\PACK\Keil\ARMCortex_DFP\0.0.1\Device\Include-o .\obj\main.o --list_dir ".\\List\\" --list --omf_browse .\obj\main.crf --depend .\obj\main.d)
+I (E:\cotex_m3\SCM3_GPIO输入和输出\Source\inc\SCM3.h)(0x54DD678B)
+I (E:\cotex_m3\SCM3_GPIO输入和输出\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7B744)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7B744)
+F (..\..\Source\src\SCM3_it.c)(0x54258832)(-c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\PACK\Keil\ARMCortex_DFP\0.0.1\Device\Include-o .\obj\scm3_it.o --list_dir ".\\List\\" --list --omf_browse .\obj\scm3_it.crf --depend .\obj\scm3_it.d)
+I (E:\cotex_m3\SCM3_GPIO输入和输出\Source\inc\SCM3_it.h)(0x54258B6D)
+I (E:\cotex_m3\SCM3_GPIO输入和输出\Source\inc\SCM3.h)(0x54DD678B)
+I (E:\cotex_m3\SCM3_GPIO输入和输出\Source\inc\core_cm3.h)(0x4AC0A34A)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7B744)
+F (..\..\Source\src\startup_SCM3.s)(0x54DD6FF0)(--cpu Cortex-M3 -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\PACK\Keil\ARMCortex_DFP\0.0.1\Device\Include--list .\list\startup_scm3.lst --xref -o .\obj\startup_scm3.o --depend .\obj\startup_scm3.d)
+F (..\..\Libraries\CMSIS\Core\CM3\core_cm3.c)(0x4AC0A34A)(-c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Source\inc-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\PACK\Keil\ARMCortex_DFP\0.0.1\Device\Include-o .\obj\core_cm3.o --list_dir ".\\List\\" --list --omf_browse .\obj\core_cm3.crf --depend .\obj\core_cm3.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7B744)
